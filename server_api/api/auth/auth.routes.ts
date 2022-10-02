@@ -1,11 +1,11 @@
 import express from 'express';
-import { uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import {generateTokens} from '~/server_api/utils/jwt';
-import {addTokenToWhiteList, deleteRefreshToken, findRefreshTokenById} from '~/server_api/api/auth/auth.services';
+import {addTokenToWhiteList, deleteRefreshToken, findRefreshTokenById} from './auth.services';
 import {findUserByEmail, createUserByEmailAndPassword, findUserById} from '~/server_api/api/users/users.services';
 import bcrypt from 'bcrypt';
 import hashToken from '~/server_api/utils/hashToken';
-import { jsonwebtoken as jwt } from 'jsonwebtoken';
+import jsonwebtoken from 'jsonwebtoken';
 
 const router = express.Router();
 router.post('/register', async (req, res, next) => {
@@ -71,7 +71,7 @@ router.post('/refreshToken', async (req, res, next) => {
         res.status(400);
         throw new Error('Missing refresh token.');
       }
-      const payload = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+      const payload = jsonwebtoken.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
       const savedRefreshToken = await findRefreshTokenById(payload.jti);
   
       if (!savedRefreshToken || savedRefreshToken.revoked === true) {

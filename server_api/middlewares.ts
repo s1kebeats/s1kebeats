@@ -1,4 +1,4 @@
-import { jsonwebtoken as jwt } from 'jsonwebtoken';
+import jsonwebtoken from 'jsonwebtoken';
 const isAuthenticated = (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization) {
@@ -6,7 +6,7 @@ const isAuthenticated = (req, res, next) => {
         throw new Error('Not Authorized.');
     }
     try {
-        const payload = jwt.verify(authorization, process.env.JWT_ACCESS_SECRET);
+        const payload = jsonwebtoken.verify(authorization, process.env.JWT_ACCESS_SECRET);
         req.payload = payload;
       } catch (err) {
         res.status(401);

@@ -19,5 +19,6 @@
     "jsonwebtoken": "^8.5.1",
     "prisma": "^4.4.0",
     "uuid": "^9.0.0"
-  }
+  },
+  "type": "module"
 }

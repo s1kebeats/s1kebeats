@@ -1,4 +1,4 @@
-import hashToken from "~~/server_api/utils/hashToken";
+import hashToken from "~/server_api/utils/hashToken";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 

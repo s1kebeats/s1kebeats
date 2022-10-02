@@ -1,6 +1,6 @@
 import express from 'express';
-import isAuthenticated from '~~/server_api/middlewares';
-import FindUserById
+import isAuthenticated from '~/server_api/middlewares';
+import { findUserById } from './users.services';
 
 const router = express.Router();
 
