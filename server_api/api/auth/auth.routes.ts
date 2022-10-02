@@ -1,9 +1,11 @@
-const express = require('express');
-const { v4: uuidv4 } = require('uuid');
-const { generateTokens } = require('../../utils/jwt');
-const { addTokenToWhiteList } = require('./auth.services');
-const { findUserByEmail, createUserByEmailAndPassword } = require('../users/users.services')
-const bcrypt = require('bcrypt');
+import express from 'express';
+import { uuidv4 } from 'uuid';
+import {generateTokens} from '~/server_api/utils/jwt';
+import {addTokenToWhiteList, deleteRefreshToken, findRefreshTokenById} from '~/server_api/api/auth/auth.services';
+import {findUserByEmail, createUserByEmailAndPassword, findUserById} from '~/server_api/api/users/users.services';
+import bcrypt from 'bcrypt';
+import hashToken from '~/server_api/utils/hashToken';
+import { jsonwebtoken as jwt } from 'jsonwebtoken';
 
 const router = express.Router();
 router.post('/register', async (req, res, next) => {
@@ -103,4 +105,4 @@ router.post('/refreshToken', async (req, res, next) => {
     }
 });
 
-module.exports = router;
+export default router;

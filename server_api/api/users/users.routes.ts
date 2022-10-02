@@ -1,6 +1,6 @@
-const express = require('express');
-const { isAuthenticated } = require('../../middlewares');
-const { findUserById } = require('./users.services');
+import express from 'express';
+import isAuthenticated from '~~/server_api/middlewares';
+import FindUserById
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.get('/profile', isAuthenticated, async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;

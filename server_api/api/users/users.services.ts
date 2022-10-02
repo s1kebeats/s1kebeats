@@ -1,28 +1,22 @@
-const bcrypt = require('bcrypt');
-const { PrismaClient } = require('@prisma/client');
+import bcrypt from 'bcrypt';
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient()
 
-const findUserByEmail = (email) => {
+export const findUserByEmail = (email) => {
     return prisma.user.findUnique({
         where: {
             email,
         }
     })
 }
-const createUserByEmailAndPassword = (user) => {
+export const createUserByEmailAndPassword = (user) => {
     user.password = bcrypt.hashSync(user.password, 12);
     return prisma.user.create({
         data: { password: user.password, email: user.email }
     })
 }
-const findUserById = (id) => {
+export const findUserById = (id) => {
     return prisma.user.findUnique({
         where: { id }
     })
 }
-
-module.exports = {
-    findUserByEmail,
-    findUserById,
-    createUserByEmailAndPassword
-  };

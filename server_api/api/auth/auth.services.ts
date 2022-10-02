@@ -1,8 +1,8 @@
-const { hashToken } = require('../../utils/hashToken');
-const { PrismaClient } = require('@prisma/client');
+import hashToken from "~~/server_api/utils/hashToken";
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
-const addTokenToWhiteList = ({ jti, refreshToken, userId }) => {
+export const addTokenToWhiteList = ({ jti, refreshToken, userId }) => {
     return prisma.refreshToken.create({
         data: {
             id: jti, 
@@ -11,12 +11,12 @@ const addTokenToWhiteList = ({ jti, refreshToken, userId }) => {
         }
     })
 }
-const findRefreshTokenById = (id) => {
+export const findRefreshTokenById = (id) => {
     return prisma.refreshToken.findUnique({
         where: { id }
     })
 }
-const deleteRefreshToken = (id) => {
+export const deleteRefreshToken = (id) => {
     return prisma.refreshToken.update({
         where: { id },
         data: {
@@ -24,16 +24,9 @@ const deleteRefreshToken = (id) => {
         }
     })
 }
-const revokeUserTokens = (userId) => {
+export const revokeUserTokens = (userId) => {
     return prisma.refreshToken.updateMany({
         where: { userId },
         data: { revoked: true, }
     })
 }
-
-module.exports = {
-    addTokenToWhiteList,
-    findRefreshTokenById,
-    deleteRefreshToken,
-    revokeUserTokens
-};
