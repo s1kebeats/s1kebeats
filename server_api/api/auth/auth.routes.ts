@@ -2,7 +2,7 @@ import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import {generateTokens} from '~/server_api/utils/jwt';
 import {addTokenToWhiteList, deleteRefreshToken, findRefreshTokenById} from './auth.services';
-import {findUserByEmail, createUserByEmailAndPassword, findUserById} from '~/server_api/api/users/users.services';
+import {findUserByEmail, createUser, findUserById, findUserByUsername} from '~/server_api/api/users/users.services';
 import bcrypt from 'bcrypt';
 import hashToken from '~/server_api/utils/hashToken';
 import jsonwebtoken from 'jsonwebtoken';
@@ -10,16 +10,21 @@ import jsonwebtoken from 'jsonwebtoken';
 const router = express.Router();
 router.post('/register', async (req, res, next) => {
     try {
-        const { email, password } = req.body;
-        if (!email || !password) {res.status(400); throw new Error('You must provide an email and a password.')}
+        const { email, password, username } = req.body;
+        if (!email || !password || !username) {res.status(400); throw new Error('Provide email, username and password.')}
 
-        const existingUser = await findUserByEmail(email);
+        let existingUser = await findUserByEmail(email);
         if (existingUser) {
             res.status(400);
             throw new Error('Email already in use.');
         }
+        existingUser = await findUserByUsername(username);
+        if (existingUser) {
+            res.status(400);
+            throw new Error('Username already in use.');
+        }
 
-        const user = await createUserByEmailAndPassword({ email, password });
+        const user = await createUser({ email, password, username });
         const jti = uuidv4();
         const { accessToken, refreshToken } = generateTokens(user, jti);
         await addTokenToWhiteList({ jti, refreshToken, userId: user.id });
@@ -37,7 +42,7 @@ router.post('/login', async (req, res, next) => {
         const { email, password } = req.body;
         if (!email || !password) {
           res.status(400);
-          throw new Error('You must provide an email and a password.');
+          throw new Error('You must provide email and password.');
         }
     
         const existingUser = await findUserByEmail(email);
@@ -64,7 +69,7 @@ router.post('/login', async (req, res, next) => {
         next(err);
     }
 })
-router.post('/refreshToken', async (req, res, next) => {
+router.post('/refresh', async (req, res, next) => {
     try {
       const { refreshToken } = req.body;
       if (!refreshToken) {

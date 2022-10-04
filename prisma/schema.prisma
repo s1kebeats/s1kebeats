@@ -10,21 +10,73 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model RefreshToken {
+  id          String   @id @unique @default(uuid())
+  hashedToken String
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model User {
   id            String         @id @unique @default(uuid())
   email         String         @unique
   password      String
+  username      String         @unique
   refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
+  beats         Beat[]
+  comments      Comment[]
+  Likes         Like[]
+  displayedName String?        @db.VarChar(63)
+  about         String?        @db.VarChar(255)
+  image         String         @default("")
 }
 
-model RefreshToken {
-  id          String   @id @unique @default(uuid())
-  hashedToken String
-  userId      String
-  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  revoked     Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Beat {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(255)
+  bpm        Int
+  createdAt  DateTime  @default(now())
+  tags       Tag[]
+  comments   Comment[]
+  likes      Like[]
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   String
+  downloads  Int       @default(0)
+  plays      Int       @default(0)
+  image      String    @default("")
+  wave       String
+  mp3        String
+  stems      String?
+  wavePrice  Int
+  stemsPrice Int?
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(63)
+  beats Beat[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  beat      Beat     @relation(fields: [beatId], references: [id])
+  beatId    Int
+  content   String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  beat      Beat     @relation(fields: [beatId], references: [id])
+  beatId    Int
+  createdAt DateTime @default(now())
 }
