@@ -14,6 +14,7 @@ export const findUserByEmail = (email: string) => prisma.user.findUnique({
   select: {
     id: true,
     username: true,
+    password: true,
     createdAt: true,
     displayedName: true,
     about: true,
