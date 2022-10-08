@@ -21,6 +21,9 @@ const searchQuery = reactive<{
 })
 const changeSearchType = (value) => {
     searchQuery.type = value
+    if (searchInput.value) {
+        searchInput.value.focus()
+    }
 }
 const searchQueryInput = (e: Event): void => {
   const target = e.target as HTMLInputElement;
@@ -31,7 +34,7 @@ const submitSearchQuery = async () => {
     await navigateTo(`/search?${new URLSearchParams(searchQuery).toString()}`)
 }
 const submitOnEnter = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') {submitSearchQuery()}
+    if (e.key === 'Enter' && document.activeElement === searchInput.value) {submitSearchQuery()}
 }
 onMounted(() => {
     document.addEventListener('keyup', submitOnEnter)
