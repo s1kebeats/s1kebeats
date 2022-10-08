@@ -1,26 +1,18 @@
 export {};
 
 declare global {
-  interface Artist {
-    id: number;
-    name: string;
+  interface Author {
+    username: string;
+    displayedName?: string;
   }
   interface Beat {
     id: number;
     name: string;
     bpm: number;
-    artist: Artist;
+    author: Author;
+    plays: number;
+    image: string;
     mp3: string;
-    wave: string;
-    wrap: string;
-
-    downloads: number;
-    listenings: number;
-  }
-  interface PriceCard {
-    id: number;
-    title: string;
-    description: string;
-    price: string;
+    wavePrice: string;
   }
 }

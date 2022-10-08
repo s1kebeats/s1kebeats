@@ -6,26 +6,18 @@
       </h1>
       <NuxtLink
         class="hover:text-black transition-all"
-        to="/beats?ordering=-id"
+        to="/beats?orderBy=createdAt"
       >
         See all beats
       </NuxtLink>
     </div>
-
-    <span v-if="isError">Error: {{ error }}</span>
-    <BeatstoreMostPopularList
+    <h1 v-if="error">An error occured.</h1>
+    <SectionMostPopularList
       v-else
-      :list="!isLoading ? data!.data.results.slice(0, 7) : null"
+      :list="!pending ? data : null"
     />
   </section>
 </template>
 <script setup lang="ts">
-import { useQuery } from "vue-query";
-import axios from "axios";
-import BeatstoreMostPopularList from "@/components/ui/__lists/BeatstoreMostPopularList.vue";
-const { isLoading, isError, data, error } = useQuery(
-  "mostPopular",
-  () => axios.get("http://localhost:8000/api/beats/?ordering=-listenings"),
-  { staleTime: 1000 * 60 * 20, cacheTime: 1000 * 60 * 20 }
-);
+const{ data, pending, error, refresh } = await useFetch('http://localhost:3000/api/beats')
 </script>

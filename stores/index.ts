@@ -3,7 +3,8 @@ import { defineStore } from "pinia";
 export const useStore = defineStore("main", {
   state: () => ({
     showOverlay: false,
-    currentBeat: <Beat>{},
+    _currentBeat: <Beat>{},
+    audioPlaying: false,
   }),
   actions: {
     toggleOverlay(): void {
@@ -12,5 +13,14 @@ export const useStore = defineStore("main", {
       // changing overlay state
       this.overlay = !this.overlay;
     },
+    getCurrentBeat(): Beat {
+      return this._currentBeat
+    },
+    setCurrentBeat(beat: Beat): void {
+      Object.assign(this._currentBeat, beat)
+    },
+    playPause(): void {
+      this.audioPlaying = !this.audioPlaying
+    }
   },
 });

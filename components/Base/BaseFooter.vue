@@ -2,7 +2,7 @@
   <footer
     class="h-[25px] w-full box-border bg-black px-5 select-none"
     :class="
-      store.currentBeat.name && !store.showOverlay ? 'pb-[45px] h-[75px]' : ''
+      store.getCurrentBeat().name && !store.showOverlay ? 'pb-[45px] h-[75px]' : ''
     "
   >
     <div class="flex h-full">

@@ -16,7 +16,7 @@
           class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
         >
           <svg
-            v-show="store.beat.mp3 === beat.mp3 && copyHovered && store.playing"
+            v-show="store.getCurrentBeat().mp3 === beat.mp3 && copyHovered && store.audioPlaying"
             data-test="pauseIcon"
             xmlns="http://www.w3.org/2000/svg"
             class="w-[60px]"
@@ -30,7 +30,7 @@
           </svg>
           <svg
             v-show="
-              store.beat.mp3 === beat.mp3 && !copyHovered && store.playing
+              store.getCurrentBeat().mp3 === beat.mp3 && !copyHovered && store.audioPlaying
             "
             data-test="playingIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@
           </svg>
           <svg
             v-show="
-              (store.beat.mp3 && store.beat.mp3 !== beat.mp3) || !store.playing
+              (store.getCurrentBeat().mp3 && store.getCurrentBeat().mp3 !== beat.mp3) || !store.audioPlaying
             "
             data-test="playIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@
       </transition>
       <img
         data-test="beatWrap"
-        :src="beat.wrap"
+        :src="beat.image"
         class="rounded-lg object-cover w-full h-full shadow-lg"
       />
     </div>
@@ -94,7 +94,7 @@
             stroke-width="48"
           />
         </svg>
-        {{ beat.listenings }}
+        {{ beat.plays }}
       </div>
       <div
         title="Number of downloads"
@@ -128,34 +128,31 @@
     </div>
 
     <div class="text-black text-sm">
-      {{ beat.artist.name }}
+      {{ beat.author.displayedName ? beat.author.displayedName : beat.author.username}}
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
-import { useRouter } from "vue-router";
 // global store
 import { storeToRefs } from "pinia";
-import { useStore } from "@/stores/index";
 const store = useStore();
 const router = useRouter();
 const props = defineProps<{ beat: Beat }>();
 // global playing state
-const { playing } = storeToRefs(store);
+const { audioPlaying } = storeToRefs(store);
 // overlay value
 const hovered = ref(false);
 // overlay inside overlay value (was made to be able to change icons when beat is playing)
 const copyHovered = ref(false);
 onMounted((): void => {
   // indicate if beat if playing when we change page
-  if (store.beat.mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
     hovered.value = true;
   }
 });
-watch(playing, (): void => {
+watch(audioPlaying, (): void => {
   // set hovered value to show volume icon when playing
-  if (store.beat.mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
     hovered.value = true;
     return;
   }
@@ -170,7 +167,7 @@ const showOverlay = (): void => {
 // on unhover function
 const hideOverlay = (): void => {
   // if beat is currently playing, we turn of only nested overlay, but keep main one, to be able to show volume icon
-  if (store.beat.mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
     copyHovered.value = false;
     return;
   }
@@ -181,10 +178,10 @@ const hideOverlay = (): void => {
 // changes global beat value or pauses beat if it's currenty playing
 const playBeat = (): void => {
   // pause
-  if (store.beat.mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
     store.playPause();
     return;
   }
-  store.changeBeat(props.beat);
+  store.setCurrentBeat(props.beat);
 };
 </script>
