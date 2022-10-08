@@ -1,7 +1,7 @@
 <template>
   <main class="grow flex flex-col items-center">
     <SectionLanding />
-    <SectionMostPopular />
+    <SectionNewestBeats />
     <!-- <SectionArtistsLanding /> -->
   </main>
 </template>

@@ -12,7 +12,7 @@
       </NuxtLink>
     </div>
     <h1 v-if="error">Возникла ошибка.</h1>
-    <SectionMostPopularList
+    <SectionNewestBeatsList
       v-else
       :list="!pending ? data : null"
     />
