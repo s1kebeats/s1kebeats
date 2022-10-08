@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <main class="grow flex flex-col items-center">
     <SectionLanding />
-    <SectionMostPopular />
-    <SectionArtistsLanding />
-  </div>
+    <!-- <SectionMostPopular />
+    <SectionArtistsLanding /> -->
+  </main>
 </template>

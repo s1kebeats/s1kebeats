@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <section
     class="flex-1 flex flex-col items-center pt-5 pb-[75px] min-h-[calc(100vh-85px)]"
   >
@@ -77,4 +77,4 @@ onMounted(() => {
     `http://localhost:8000/api/beats/?${new URLSearchParams(query).toString()}`
   );
 });
-</script>
+</script> -->

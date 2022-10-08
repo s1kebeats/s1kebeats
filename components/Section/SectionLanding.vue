@@ -18,7 +18,6 @@
     </div>
   </section>
 </template>
-<script setup lang="ts"></script>
 <style lang="scss" scoped>
 .landing {
   background: linear-gradient(

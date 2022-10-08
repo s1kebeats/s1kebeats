@@ -1,14 +1,14 @@
 <template>
   <transition name="player">
     <div
-      v-if="store.beat.mp3"
+      v-if="store.currentBeat.mp3"
       id="player"
       data-test="player"
       class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
       @mouseenter="toggleThumb(true)"
       @mouseleave="toggleThumb(false)"
     >
-      <CustomRange
+      <BaseRangeInput
         :thumb-state="thumbState"
         :max="audioDuration - 1"
         class="player__timeline"
@@ -55,15 +55,7 @@
   </transition>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from "vue";
 import { storeToRefs } from "pinia";
-import axios from "axios";
-import CustomRange from "@/components/ui/CustomRange.vue";
-import { timeOutput } from "@/components/functions/timeOutput.js";
-// global store
-import { useStore } from "@/stores/index";
-import PlayerInfo from "@/components/ui/__player/BeatstorePlayerInfo.vue";
-import PlayerVolume from "@/components/ui/__player/BeatstorePlayerVolume.vue";
 const store = useStore();
 // global beat and playing values
 const { beat, playing } = storeToRefs(store);
@@ -176,9 +168,9 @@ const setAudioVolume = (newValue: number) => {
   // volume range has max=100 for the ease of perception
   audio.volume = +(newValue / 100).toFixed(2);
 };
-const downloadIncrement = () => {
-  axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
-};
+// const downloadIncrement = () => {
+//   axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
+// };
 </script>
 <style lang="scss" scoped>
 .play {

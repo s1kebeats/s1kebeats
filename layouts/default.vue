@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <BeatstoreOverlayMain />
+  <div id="default">
+    <SectionOverlay />
     <BaseHeader />
-    <main class="grow flex flex-col items-center">
-      <slot />
-    </main>
+    <slot />
     <BaseFooter />
-    <Player />
+    <MainPlayer />
   </div>
 </template>

@@ -4,7 +4,7 @@
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
   >
-    <CustomRange
+    <BaseRangeInput
       :thumb-state="thumbState"
       :value="audioVolume"
       :max="100"
@@ -21,8 +21,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
-import CustomRange from "@/components/ui/CustomRange.vue";
 const emit = defineEmits<{
   (e: "updateAudioVolume", value: number): void;
 }>();

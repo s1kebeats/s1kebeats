@@ -1,7 +1,9 @@
 <template>
   <footer
     class="h-[25px] w-full box-border bg-black px-5 select-none"
-    :class="store.beat.name && !store.overlay ? 'pb-[45px] h-[75px]' : ''"
+    :class="
+      store.currentBeat.name && !store.showOverlay ? 'pb-[45px] h-[75px]' : ''
+    "
   >
     <div class="flex h-full">
       <div class="flex flex-1 items-center justify-start">
@@ -10,7 +12,7 @@
         </p>
       </div>
       <div class="flex flex-1 items-center justify-end">
-        <BeatstoreSocials />
+        <BaseFooterSocials />
       </div>
     </div>
   </footer>

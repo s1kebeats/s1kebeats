@@ -9,7 +9,11 @@
       <span :class="showSelect ? 'text-black' : ''">
         {{ selectedValue.text }}
       </span>
-      <img src="~/assets/chevron-down.svg" class="w-[16px] transition-all" :class="showSelect ? 'rotate-180' : ''">
+      <img
+        src="~/assets/chevron-down.svg"
+        class="w-[16px] transition-all"
+        :class="showSelect ? 'rotate-180' : ''"
+      />
     </button>
     <div
       v-show="showSelect"

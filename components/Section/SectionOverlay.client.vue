@@ -1,18 +1,18 @@
 <template>
-  <BeatstoreOverlay
+  <BaseOverlay
     data-test="mainOverlay"
     class="main-overlay"
-    :active="store.overlay"
+    :active="store.showOverlay"
   >
-    <BeatstoreHeader class="min-h-[60px]">
+    <BaseHeader class="min-h-[60px]">
       <button
         title="Close overlay"
         class="btn btn-primary btn-square btn-xs absolute right-5 hover:bg-primary hover:border-primary overlay-btn_close"
         @click="store.toggleOverlay"
       ></button>
-    </BeatstoreHeader>
+    </BaseHeader>
     <main class="grow flex items-center justify-center flex-col h-full w-full">
-      <BeatstoreNav
+      <BaseNav
         :classes="{
           main: 'grow-0 flex flex-col gap-[5px]',
           link: 'text-white text-xl',
@@ -20,16 +20,10 @@
         @click="store.toggleOverlay"
       />
     </main>
-    <BeatstoreFooter />
-  </BeatstoreOverlay>
+    <BaseFooter />
+  </BaseOverlay>
 </template>
 <script setup lang="ts">
-import BeatstoreOverlay from "@/components/ui/BeatstoreOverlay.vue";
-import BeatstoreHeader from "@/components/sections/BeatstoreHeader.vue";
-import BeatstoreNav from "@/components/ui/BeatstoreNav.vue";
-import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
-// global store
-import { useStore } from "@/stores/index";
 const store = useStore();
 </script>
 <style lang="scss">
