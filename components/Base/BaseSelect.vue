@@ -15,35 +15,51 @@
         :class="showSelect ? 'rotate-180 pb-[3px]' : ''"
       />
     </button>
-    <div
-      v-show="showSelect"
-      ref="orderingsPanel"
-      class="absolute z-[2] border-full border-[1px] bg-base-100 rounded-md py-1 flex flex-col gap-1 shadow-md right-0"
-    >
-      <button
-        v-for="option in options"
-        :key="option.id"
-        ref="orderOption1"
-        class="selectOption w-full flex hover:text-black px-3 rounded-lg text-sm items-center gap-1"
-        :class="selectedOption.id == option.id ? 'text-black' : ''"
-        @click="selectOption(option)"
+    <transition name="modal">
+      <div
+        v-show="showSelect"
+        ref="orderingsPanel"
+        class="absolute z-[2] border-full border-[1px] bg-base-100 rounded-md py-1 px-3 flex flex-col gap-1 shadow-md right-0 top-[30px]"
       >
-        {{ option.text }}
-      </button>
-    </div>
+        <button
+          v-for="option in options"
+          :key="option.id"
+          ref="orderOption1"
+          class="w-full flex hover:text-black text-sm items-center gap-1"
+          :class="selectedOption.id == option.id ? 'text-black' : ''"
+          @click="selectOption(option)"
+        >
+          <!-- odd:border-b-[1px] odd:pb-1 last:border-none last:pb-0 -->
+          {{ option.text }}
+        </button>
+      </div>
+    </transition>
   </div>
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-  options: { id: number; value: number | string; text: string; default: boolean; }[];
+  options: {
+    id: number;
+    value: number | string;
+    text: string;
+    default: boolean;
+  }[];
 }>();
 const emit = defineEmits<{
   (e: "select", value: number | string): void;
 }>();
 const selectButton = ref();
 const showSelect = ref(false);
-const selectedOption = ref<{ id: number; value: number | string; text: string; default: boolean; }>({
-  id: null, value: null, text: null, default: null
+const selectedOption = ref<{
+  id: number;
+  value: number | string;
+  text: string;
+  default: boolean;
+}>({
+  id: null,
+  value: null,
+  text: null,
+  default: null,
 });
 // changing value
 const selectOption = (option: {
@@ -63,14 +79,11 @@ const toggleSelect = () => {
   showSelect.value = !showSelect.value;
 };
 const hideSelect = () => {
-  if (!document.activeElement.classList.contains("selectOption")) {
-    // need timeout to be able to change order
-    setTimeout(() => {
-      showSelect.value = false;
-    }, 100);
-  }
+  setTimeout(() => {
+    showSelect.value = false;
+  }, 100);
 };
 onBeforeMount(() => {
-  selectOption(props.options.filter(item => item.default)[0])
-})
+  selectOption(props.options.filter((item) => item.default)[0]);
+});
 </script>

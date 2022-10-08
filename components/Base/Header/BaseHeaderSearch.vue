@@ -30,4 +30,13 @@ const submitSearchQuery = async () => {
     if (!searchQuery.query) delete searchQuery.query
     await navigateTo(`/search?${new URLSearchParams(searchQuery).toString()}`)
 }
+const submitOnEnter = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {submitSearchQuery()}
+}
+onMounted(() => {
+    document.addEventListener('keyup', submitOnEnter)
+})
+onUnmounted(() => {
+    document.removeEventListener('keyup', submitOnEnter)
+})
 </script>

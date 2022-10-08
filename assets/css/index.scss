@@ -17,6 +17,14 @@ html {
 .overlay-leave-to {
   opacity: 0;
 }
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.1s ease;
+}
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
 .responsive {
   width: 1520px;
   max-width: 1520px;

@@ -6,10 +6,11 @@
     <BaseHeaderLogo class="525:flex-1" />
     <slot>
       <BaseHeaderSearch />
-      <BaseNav
-        class="525:hidden text-black text-sm"
-      />
-      <BaseOverlayButton />
+      <div class="flex gap-5 items-center">
+        <BaseNav class="525:hidden text-black text-sm" />
+        <!-- <BaseOverlayButton /> -->
+        <BaseHeaderProfile />
+      </div>
     </slot>
   </header>
 </template>

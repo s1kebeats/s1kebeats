@@ -12,5 +12,5 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["stores"],
   },
-  css: [ "@/assets/css/index.scss", "@/assets/css/fonts.css" ]
+  css: ["@/assets/css/index.scss", "@/assets/css/fonts.css"],
 });
