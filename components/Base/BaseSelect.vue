@@ -2,30 +2,30 @@
   <div class="relative">
     <button
       ref="selectButton"
-      class="flex hover:text-black px-2 rounded-lg text-sm h-[24px] items-center gap-1"
+      class="flex text-black rounded-lg text-sm h-[24px] items-center gap-[3px]"
       @click="toggleSelect"
       @focusout="hideSelect"
     >
       <span :class="showSelect ? 'text-black' : ''">
-        {{ selectedValue.text }}
+        {{ selectedOption.text }}
       </span>
       <img
-        src="~/assets/chevron-down.svg"
-        class="w-[16px] transition-all"
-        :class="showSelect ? 'rotate-180' : ''"
+        src="~/assets/images/chevron-down.svg"
+        class="w-[15px] transition-all"
+        :class="showSelect ? 'rotate-180 pb-[3px]' : ''"
       />
     </button>
     <div
       v-show="showSelect"
       ref="orderingsPanel"
-      class="absolute z-[2] w-[115px] border-full border-[1px] bg-base-100 rounded-md p-2 flex flex-col gap-1 shadow-md right-0"
+      class="absolute z-[2] border-full border-[1px] bg-base-100 rounded-md py-1 flex flex-col gap-1 shadow-md right-0"
     >
       <button
         v-for="option in options"
         :key="option.id"
         ref="orderOption1"
-        class="selectOption w-full flex hover:text-black px-2 rounded-lg text-sm items-center gap-1"
-        :class="selectedValue.id == option.id ? 'text-black' : ''"
+        class="selectOption w-full flex hover:text-black px-3 rounded-lg text-sm items-center gap-1"
+        :class="selectedOption.id == option.id ? 'text-black' : ''"
         @click="selectOption(option)"
       >
         {{ option.text }}
@@ -35,28 +35,29 @@
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-  options: { id: number; value: number | string; text: string }[];
+  options: { id: number; value: number | string; text: string; default: boolean; }[];
 }>();
 const emit = defineEmits<{
   (e: "select", value: number | string): void;
 }>();
 const selectButton = ref();
 const showSelect = ref(false);
-const selectedValue = ref();
+const selectedOption = ref<{ id: number; value: number | string; text: string; default: boolean; }>({
+  id: null, value: null, text: null, default: null
+});
 // changing value
 const selectOption = (option: {
   id: number;
   value: number | string;
   text: string;
+  default: boolean;
 }): void => {
-  if (selectedValue.value.id === option.id) {
+  if (selectedOption.value.id === option.id) {
     return;
   }
-  Object.assign(selectedValue.value, option);
-  // hiding options after click
-  showSelect.value = false;
+  Object.assign(selectedOption.value, option);
   // emitting new value
-  emit("select", selectedValue.value);
+  emit("select", selectedOption.value.value);
 };
 const toggleSelect = () => {
   showSelect.value = !showSelect.value;
@@ -69,4 +70,7 @@ const hideSelect = () => {
     }, 100);
   }
 };
+onBeforeMount(() => {
+  selectOption(props.options.filter(item => item.default)[0])
+})
 </script>

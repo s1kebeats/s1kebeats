@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex gap-4 grow justify-end"
+    class="flex gap-4 justify-end"
     data-test="main"
   >
     <NuxtLink
@@ -21,11 +21,3 @@
     </NuxtLink>
   </nav>
 </template>
-<!-- <script setup lang="ts">
-const props = defineProps<{
-  classes: {
-    main: string;
-    link: string;
-  };
-}>();
-</script> -->
