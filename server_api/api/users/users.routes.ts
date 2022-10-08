@@ -1,7 +1,7 @@
-import express from 'express'
-import { findUserByUsername } from './users.services'
+import express from "express";
+import { findUserByUsername } from "./users.services";
 
-const router = express.Router()
+const router = express.Router();
 
 // router.get('/:username', isAuthenticated, async (req, res, next) => {
 //   try {
@@ -16,14 +16,14 @@ const router = express.Router()
 //   }
 // });
 
-router.get('/:username', async (req, res, next) => {
+router.get("/:username", async (req, res, next) => {
   try {
-    const username = req.params.username
-    const user = await findUserByUsername(username)
-    res.json(user)
+    const username = req.params.username;
+    const user = await findUserByUsername(username);
+    res.json(user);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
-export default router
+export default router;
