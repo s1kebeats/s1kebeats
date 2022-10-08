@@ -1,10 +1,10 @@
 <template>
   <div
     class="flex justify-center transition-all"
-    :class="store.overlay ? ' text-white' : ' text-black'"
+    :class="store.showOverlay ? ' text-white' : ' text-black'"
     data-test="logo"
   >
-    <NuxtLink title="Home" to="/" class="flex items-center gap-2">
+    <NuxtLink title="На главную" to="/" class="flex items-center gap-2">
       <img class="h-[26px] drop-shadow-sm" src="~/assets/images/logo.svg" />
       <span class="text-[23px] font-['Poppins']"> s1kebeats </span>
     </NuxtLink>

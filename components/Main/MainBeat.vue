@@ -1,12 +1,12 @@
 <template>
   <div
     data-test="beat"
-    class="flex flex-col w-[200px] 930:w-[145px] bg-base-100 rounded-lg"
+    class="flex flex-col w-[230px] 930:w-[145px] bg-base-100 rounded-lg"
     @mouseenter="showOverlay"
     @mouseleave="hideOverlay"
   >
     <div
-      class="w-full h-[200px] 930:h-[145px] relative mb-3 select-none cursor-pointer"
+      class="w-full h-[230px] 930:h-[145px] relative mb-3 select-none cursor-pointer"
       @click="playBeat"
     >
       <transition name="overlay">
@@ -69,67 +69,24 @@
         class="rounded-lg object-cover w-full h-full shadow-lg"
       />
     </div>
-    <div class="flex gap-1 mb-2 select-none">
+    <div class="flex gap-2 mb-[1px] select-none">
+      <div title="Цена за .wav файл" class="flex items-center text-sm text-primary font-semibold">{{ beat.wavePrice }}руб.</div>
       <div
-        title="BPM"
-        class="flex-1 px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px] 930:text-[9px]"
+        title="Удары в минуту"
+        class="flex items-center text-sm text-black font-semibold"
       >
         {{ beat.bpm }}BPM
       </div>
-      <div
-        title="Number of listenings"
-        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px] 930:text-[9px]"
-      >
-        <svg
-          width="9px"
-          xmlns="http://www.w3.org/2000/svg"
-          class="ionicon"
-          viewBox="0 -20 512 512"
-        >
-          <path
-            d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
-            fill="white"
-            stroke="white"
-            stroke-miterlimit="10"
-            stroke-width="48"
-          />
-        </svg>
-        {{ beat.plays }}
-      </div>
-      <div
-        title="Number of downloads"
-        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-green-500 text-white flex justify-center items-center gap-[2px] 930:text-[9px]"
-      >
-        {{ beat.downloads }}
-        <svg
-          width="13px"
-          xmlns="http://www.w3.org/2000/svg"
-          class="ionicon"
-          viewBox="0 -30 512 512"
-        >
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="48"
-            d="M112 268l144 144 144-144M256 392V100"
-          />
-        </svg>
-      </div>
     </div>
-    <div>
-      <NuxtLink
-        :to="`beat/${beat.id}`"
-        class="text-black font-semibold text-2xl link link-hover"
-      >
-        {{ beat.name }}
-      </NuxtLink>
-    </div>
-
-    <div class="text-black text-sm">
+    <NuxtLink
+      :to="`beat/${beat.id}`"
+      class="text-black font-semibold text-2xl link link-hover"
+    >
+      {{ beat.name }}
+    </NuxtLink>
+    <NuxtLink :to="beat.author.username" class="text-black text-sm link link-hover">
       {{ beat.author.displayedName ? beat.author.displayedName : beat.author.username}}
-    </div>
+    </NuxtLink>
   </div>
 </template>
 <script setup lang="ts">

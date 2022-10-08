@@ -1,10 +1,8 @@
 <template>
-  <button
-    class="relative cursor-pointer border-l-[1px] border-base-200 pl-5"
-    @focusout="hideDialog"
-    @click="toggleProfileDialog"
+  <div
+    class="relative border-l-[1px] border-base-200 pl-5"
   >
-    <div class="flex items-center gap-1">
+    <button class="flex cursor-pointer items-center gap-1" @focusout="hideDialog" @click="toggleProfileDialog">
       <img
         class="w-[24px] rounded-full"
         src="~/assets/images/profile-default.svg"
@@ -15,7 +13,7 @@
         class="w-[15px] transition-all"
         :class="showDialog ? 'rotate-180 pb-[3px]' : ''"
       />
-    </div>
+    </button>
     <transition name="modal">
         <div
             v-show="showDialog"
@@ -26,18 +24,17 @@
             class="bg-primary rounded-md px-3 py-1 min-w-[60px] text-sm text-white"
             @click="loginNavigation"
         >
-            Sign In
+            Вход
         </button>
         <button
             class="bg-base-200 rounded-md px-3 py-1 min-w-[60px] text-sm text-black"
             @click="registrationNavigation"
         >
-            Register
+            Регистрация
         </button>
         </div>
     </transition>
-
-  </button>
+  </div>
 </template>
 <script setup lang="ts">
 const showDialog = ref(false);

@@ -1,20 +1,20 @@
 <template>
   <nav class="flex gap-4 justify-end" data-test="main">
     <NuxtLink
-      title="Home"
+      title="На главную"
       to="/"
       class="font-medium transition-all"
       data-test="link"
     >
-      Home
+      Главная
     </NuxtLink>
     <NuxtLink
-      title="Beats"
+      title="К битам"
       to="/beats"
       class="font-medium transition-all"
       data-test="link"
     >
-      Beats
+      Биты
     </NuxtLink>
   </nav>
 </template>

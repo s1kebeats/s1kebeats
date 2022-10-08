@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap gap-5 h-[292px] 930:h-[237px] overflow-hidden">
+  <div class="flex flex-wrap gap-5 h-[322px] 930:h-[237px] overflow-hidden">
     <template v-if="list">
       <MainBeat v-for="beat in list" :key="beat.id" :beat="beat" />
     </template>
