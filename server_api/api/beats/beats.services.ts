@@ -55,7 +55,6 @@ export const findBeats = (sort: string, { tags, name, bpm }) =>
           displayedName: true,
         },
       },
-      plays: true,
       image: true,
       mp3: true,
       wavePrice: true,

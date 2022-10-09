@@ -6,13 +6,8 @@ const app = express();
 
 dotenv.config();
 
-const corsOptions = {
-    origin: 'http://localhost:3000/api/',
-    allowedHeaders: 'http://localhost:3000/'
-}
-
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use("/", api);
 
 export default app;

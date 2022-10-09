@@ -1,6 +1,11 @@
 export {};
 
 declare global {
+  interface AuthorIndividual {
+    displayedName?: string;
+    username: string;
+    image: string;
+  }
   interface Author {
     username: string;
     displayedName?: string;
@@ -10,9 +15,8 @@ declare global {
     name: string;
     bpm: number;
     author: Author;
-    plays: number;
     image: string;
     mp3: string;
-    wavePrice: string;
+    wavePrice: number;
   }
 }

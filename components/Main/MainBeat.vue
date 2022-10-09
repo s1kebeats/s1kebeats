@@ -69,22 +69,21 @@
         class="rounded-lg object-cover w-full h-full shadow-lg"
       />
     </div>
-    <div class="flex gap-2 mb-[1px] select-none">
-      <div title="Цена за .wav файл" class="flex items-center text-sm text-primary font-semibold">{{ beat.wavePrice }}руб.</div>
+    <div class="flex gap-2">
+      <div class="flex items-center text-sm text-primary font-semibold truncate h-[20px]">{{ beat.wavePrice }}руб.</div>
       <div
-        title="Удары в минуту"
-        class="flex items-center text-sm text-black font-semibold"
+        class="flex items-center text-sm text-black font-semibold truncate h-[20px]"
       >
         {{ beat.bpm }}BPM
       </div>
     </div>
     <NuxtLink
       :to="`beat/${beat.id}`"
-      class="text-black font-semibold text-2xl link link-hover"
+      class="text-black font-semibold text-2xl link link-hover truncate h-[32px]"
     >
       {{ beat.name }}
     </NuxtLink>
-    <NuxtLink :to="beat.author.username" class="text-black text-sm link link-hover">
+    <NuxtLink :to="beat.author.username" class="text-black text-sm link link-hover truncate h-[20px]">
       {{ beat.author.displayedName ? beat.author.displayedName : beat.author.username}}
     </NuxtLink>
   </div>

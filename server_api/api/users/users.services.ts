@@ -46,11 +46,21 @@ export const findUserByUsername = (username: string) =>
   prisma.user.findUnique({
     where: { username },
     select: {
-      id: true,
       username: true,
       createdAt: true,
       displayedName: true,
       about: true,
       image: true,
+      beats: true,
     },
-  });
+});
+export const allUsers = () => (
+  prisma.user.findMany({
+    select: {
+      username: true,
+      displayedName: true,
+      image: true,
+    }
+  })
+)
+

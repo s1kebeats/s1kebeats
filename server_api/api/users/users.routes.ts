@@ -1,5 +1,5 @@
 import express from "express";
-import { findUserByUsername } from "./users.services";
+import { findUserByUsername, allUsers } from "./users.services";
 
 const router = express.Router();
 
@@ -25,5 +25,13 @@ router.get("/:username", async (req, res, next) => {
     next(err);
   }
 });
+router.get('/', async (req, res, next) => {
+  try {
+    const users = await allUsers()
+    res.json(users)
+  } catch (error) {
+    next(error);
+  }
+})
 
 export default router;
