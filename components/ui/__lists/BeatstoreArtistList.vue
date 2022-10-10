@@ -9,7 +9,7 @@
     />
   </template>
   <template v-else>
-    <LoadingShimmer
+    <BaseLoadingShimmer
       v-for="item in [{}, {}, {}, {}]"
       class="rounded-lg border-none min-w-[90px] max-w-[110px] h-[24px] flex-1"
     />

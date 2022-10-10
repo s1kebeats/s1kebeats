@@ -17,7 +17,7 @@
         allowfullscreen
       >
       </iframe>
-      <LoadingShimmer v-if="loading" class="rounded-lg" />
+      <BaseLoadingShimmer v-if="loading" class="rounded-lg" />
     </div>
   </section>
 </template>

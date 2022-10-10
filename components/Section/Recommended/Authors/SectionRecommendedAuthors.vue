@@ -4,12 +4,6 @@
       <h1 class="text-left text-xl font-semibold my-5 text-black">
         Рекоммендуемые авторы
       </h1>
-      <NuxtLink
-        class="hover:text-black transition-all"
-        to="/authors"
-      >
-        Посмотреть всех авторов
-      </NuxtLink>
     </div>
     <h1 v-if="error">Возникла ошибка.</h1>
     <SectionRecommendedAuthorsList

@@ -9,7 +9,7 @@
         :artist="artist"
       />
     </template>
-    <LoadingShimmer
+    <BaseLoadingShimmer
       v-for="item in [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]"
       v-else
       class="artist_landing rounded-full"

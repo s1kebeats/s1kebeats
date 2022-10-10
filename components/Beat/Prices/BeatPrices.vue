@@ -23,9 +23,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import BeatstoreUsage from "@/components/sections/BeatstoreUsage.vue";
-import CartSVG from "@/components/ui/__svg/CartSVG.vue";
-import BeatstorePriceCardList from "@/components/ui/__prices/BeatstorePriceCardList.vue";
+const store = useStore()
 const props = defineProps<{
   beat: Beat;
 }>();

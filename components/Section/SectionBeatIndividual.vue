@@ -1,23 +1,35 @@
 <template>
   <section class="responsive py-5">
-    <span v-if="isError">Error: {{ error }}</span>
-    <div v-else class="flex items-start gap-5">
-      <BeatstoreBeatIndividualInfo :beat="!isLoading ? data!.data : null" />
-      <BeatstorePrices :beat="!isLoading ? data!.data : null" />
+    <span v-if="error">Возникла ошибка.</span>
+    <div v-else class="flex justify-center gap-5">
+      <BeatIndividualInfo :beat="!pending ? data : null" />
+      <BeatPrices :beat="!pending ? data : null" />
     </div>
   </section>
 </template>
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-import axios from "axios";
-import { useQuery } from "vue-query";
-import BeatstoreBeatIndividualInfo from "@/components/ui/__beatIndividual/BeatstoreBeatIndividualInfo.vue";
-import BeatstorePrices from "@/components/ui/__beatIndividual/BeatstorePrices.vue";
-
 const route = useRoute();
-// fetch artists data
-const { isLoading, isError, data, error } = useQuery(
-  `beat/${route.params.id}`,
-  () => axios.get(`http://localhost:8000/api/beat/${route.params.id}`)
-);
+// const{ data, pending, error, refresh } = await useFetch(`http://localhost:3000/api/beat/${route.params.id}`)
+const error = ref(false)
+const pending = ref(false)
+const data = ref<BeatIndividual>({
+  id: 1,
+  name: 'Sum fire asfdsafsdfasddfaf beat',
+  bpm: 140,
+  createdAt: "2022-10-05T14:43:45.748Z",
+  downloads: 9,
+  plays: 10000,
+  image: '/sample.jpg',
+  mp3: '/sample.mp3',
+  wavePrice: 1499,
+  stemsPrice: 3099,
+  likes: [],
+  comments: [],
+  tags: [],
+  author: {
+    displayedName: 'sikebeats',
+    username: 'sbeats',
+    image: '/sample.jpg'
+  }
+})
 </script>
