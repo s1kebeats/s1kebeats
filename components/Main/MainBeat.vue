@@ -16,7 +16,7 @@
           class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
         >
           <svg
-            v-show="store.getCurrentBeat().mp3 === beat.mp3 && copyHovered && store.audioPlaying"
+            v-show="store.getCurrentBeat().mp3 === data.mp3 && copyHovered && store.audioPlaying"
             data-test="pauseIcon"
             xmlns="http://www.w3.org/2000/svg"
             class="w-[60px]"
@@ -30,7 +30,7 @@
           </svg>
           <svg
             v-show="
-              store.getCurrentBeat().mp3 === beat.mp3 && !copyHovered && store.audioPlaying
+              store.getCurrentBeat().mp3 === data.mp3 && !copyHovered && store.audioPlaying
             "
             data-test="playingIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@
           </svg>
           <svg
             v-show="
-              (store.getCurrentBeat().mp3 && store.getCurrentBeat().mp3 !== beat.mp3) || !store.audioPlaying
+              (store.getCurrentBeat().mp3 && store.getCurrentBeat().mp3 !== data.mp3) || !store.audioPlaying
             "
             data-test="playIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -65,26 +65,26 @@
       </transition>
       <img
         data-test="beatWrap"
-        :src="beat.image"
+        :src="data.image"
         class="rounded-lg object-cover w-full h-full shadow-lg"
       />
     </div>
     <div class="flex gap-2">
-      <div class="flex items-center text-sm text-primary font-semibold truncate h-[20px]">{{ beat.wavePrice }}руб.</div>
+      <div class="flex items-center text-sm text-primary font-semibold truncate h-[20px]">{{ data.wavePrice }}руб.</div>
       <div
         class="flex items-center text-sm text-black font-semibold truncate h-[20px]"
       >
-        {{ beat.bpm }}BPM
+        {{ data.bpm }}BPM
       </div>
     </div>
     <NuxtLink
-      :to="`beat/${beat.id}`"
+      :to="`beat/${data.id}`"
       class="text-black font-semibold text-2xl link link-hover truncate h-[32px]"
     >
-      {{ beat.name }}
+      {{ data.name }}
     </NuxtLink>
-    <NuxtLink :to="beat.author.username" class="text-black text-sm link link-hover truncate h-[20px]">
-      {{ beat.author.displayedName ? beat.author.displayedName : beat.author.username}}
+    <NuxtLink :to="data.author.username" class="text-black text-sm link link-hover truncate h-[20px]">
+      {{ data.author.displayedName ? data.author.displayedName : data.author.username}}
     </NuxtLink>
   </div>
 </template>
@@ -93,7 +93,7 @@
 import { storeToRefs } from "pinia";
 const store = useStore();
 const router = useRouter();
-const props = defineProps<{ beat: Beat }>();
+const props = defineProps<{ data: Beat }>();
 // global playing state
 const { audioPlaying } = storeToRefs(store);
 // overlay value
@@ -102,13 +102,13 @@ const hovered = ref(false);
 const copyHovered = ref(false);
 onMounted((): void => {
   // indicate if beat if playing when we change page
-  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.data.mp3) {
     hovered.value = true;
   }
 });
 watch(audioPlaying, (): void => {
   // set hovered value to show volume icon when playing
-  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.data.mp3) {
     hovered.value = true;
     return;
   }
@@ -123,7 +123,7 @@ const showOverlay = (): void => {
 // on unhover function
 const hideOverlay = (): void => {
   // if beat is currently playing, we turn of only nested overlay, but keep main one, to be able to show volume icon
-  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.data.mp3) {
     copyHovered.value = false;
     return;
   }
@@ -134,10 +134,10 @@ const hideOverlay = (): void => {
 // changes global beat value or pauses beat if it's currenty playing
 const playBeat = (): void => {
   // pause
-  if (store.getCurrentBeat().mp3 === props.beat.mp3) {
+  if (store.getCurrentBeat().mp3 === props.data.mp3) {
     store.playPause();
     return;
   }
-  store.setCurrentBeat(props.beat);
+  store.setCurrentBeat(props.data);
 };
 </script>

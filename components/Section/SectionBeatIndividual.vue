@@ -1,7 +1,6 @@
 <template>
-  <section class="responsive py-5">
-    <span v-if="error">Возникла ошибка.</span>
-    <div v-else class="flex justify-center gap-5">
+  <section class="responsive">
+    <div class="flex justify-center gap-5">
       <BeatIndividualInfo :beat="!pending ? data : null" />
       <BeatPrices :beat="!pending ? data : null" />
     </div>
