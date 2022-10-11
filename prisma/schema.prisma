@@ -37,23 +37,24 @@ model User {
 }
 
 model Beat {
-  id         Int       @id @default(autoincrement())
-  name       String    @db.VarChar(255)
-  bpm        Int
-  createdAt  DateTime  @default(now())
-  tags       Tag[]
-  comments   Comment[]
-  likes      Like[]
-  author     User      @relation(fields: [authorId], references: [id])
-  authorId   String
-  downloads  Int       @default(0)
-  plays      Int       @default(0)
-  image      String    @default("")
-  wave       String
-  mp3        String
-  stems      String?
-  wavePrice  Int
-  stemsPrice Int?
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  bpm         Int
+  description String?
+  createdAt   DateTime  @default(now())
+  tags        Tag[]
+  comments    Comment[]
+  likes       Like[]
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String
+  downloads   Int       @default(0)
+  plays       Int       @default(0)
+  image       String    @default("")
+  wave        String
+  mp3         String
+  stems       String?
+  wavePrice   Int
+  stemsPrice  Int?
 }
 
 model Tag {

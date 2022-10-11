@@ -1,8 +1,16 @@
 <template>
-    <SectionBeatIndividualLoadingShimmer v-if="beatData.pending" />
-    <SectionBeatIndividual v-else :data="beatData.data" />
+    <main class="grow flex flex-col items-center gap-10">
+        <SectionBeatIndividualLoadingShimmer v-if="isLoading" />
+        <!-- <SectionBeatIndividual v-else :data="data.data" /> -->
+    </main>
 </template>
 <script setup lang="ts">
+import { useQuery } from "vue-query";
+import axios from "axios";
 const route = useRoute()
-const beatData: any = reactive(await useFetch(`http://localhost:3000/api/beats/${route.params.id}`))
+// const beatData: any = reactive(await useFetch(`http://localhost:3000/api/beats/${route.params.id}`))
+const { isLoading, isError, data, error } = useQuery(
+  "recommededBeatsData",
+  () => axios.get(`http://localhost:3000/api/beats/${route.params.id}`)
+);
 </script>

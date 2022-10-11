@@ -83,7 +83,5 @@ const hideSelect = () => {
     showSelect.value = false;
   }, 100);
 };
-onBeforeMount(() => {
-  selectOption(props.options.filter((item) => item.default)[0]);
-});
+selectOption(props.options.filter((item) => item.default)[0])
 </script>

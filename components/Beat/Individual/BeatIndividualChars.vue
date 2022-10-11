@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full border-t-[1px]">
-    <table class="mt-5 text-sm text-black">
+  <div class="w-full border-y-[1px]">
+    <table class="my-5 text-sm text-black">
       <tr>
         <td class="text-left">Опубликован</td>
         <td class="w-full text-right">

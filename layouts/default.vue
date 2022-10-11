@@ -1,11 +1,9 @@
 <template>
   <div id="default">
-    <SectionOverlay />
+    <!-- <SectionOverlay /> -->
     <BaseHeader />
-    <main class="grow flex flex-col items-center gap-10">
-      <slot />
-    </main>
+    <slot />
     <BaseFooter />
-    <MainPlayer />
+    <!-- <MainPlayer /> -->
   </div>
 </template>

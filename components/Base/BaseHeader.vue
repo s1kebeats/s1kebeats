@@ -8,7 +8,6 @@
       <BaseHeaderSearch />
       <div class="flex gap-5 items-center">
         <BaseNav class="525:hidden text-black text-sm" />
-        <!-- <BaseOverlayButton /> -->
         <BaseHeaderProfile />
       </div>
     </slot>

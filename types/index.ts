@@ -32,7 +32,7 @@ declare global {
   }
   interface Comment {
     id: number;
-    authorId: string;
+    author: AuthorIndividual;
     beatId: number;
     content: string;
     createdAt: string;
@@ -41,6 +41,7 @@ declare global {
     id: number;
     name: string;
     bpm: number;
+    description?: string;
     createdAt: string;
     downloads: number;
     plays: number;
@@ -49,7 +50,7 @@ declare global {
     wavePrice: number;
     stemsPrice?: number;
     likes: Like[];
-    comments: Comment[];
+    // comments: Comment[];
     tags: Tag[];
     author: AuthorIndividual;
   }

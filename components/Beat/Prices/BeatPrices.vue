@@ -1,29 +1,30 @@
 <template>
   <div class="border-[1px] flex-1 rounded-lg p-5 flex flex-col gap-5">
-    <div class="border-b-[1px] pb-5 flex justify-between">
+    <div class="flex justify-between">
       <div class="text-lg font-semibold text-black flex items-center">
         Покупка
       </div>
       <div class="flex items-center gap-5">
-        <div class="text-black text-left text-xs">
+        <div class="text-black text-left text-sm">
           TOTAL:
-          <span class="font-semibold">{{  }}</span>
+          <span class="font-semibold">{{ data[store.getSelected()] }}руб.</span>
         </div>
         <button
-          class="bg-primary text-white text-sm px-3 rounded-lg h-[40px] shadow-md flex items-center gap-2"
-          @click="store.addToCart"
+          class="bg-primary text-white text-sm px-3 rounded-lg h-[40px] w-[200px] shadow-md flex items-center gap-2"
+          @click="store.checkItem(data.id, store.getSelected()) ? store.removeItem(data.id) : store.addItem(data.id, store.getSelected())"
         >
           <img src="~/assets/images/cart.svg">
-          <span>Add to cart</span>
+          <span class="w-full text-center">{{ store.checkItem(data.id, store.getSelected()) ? 'Посмотреть корзину' : 'Добавить в корзину' }}</span>
         </button>
       </div>
     </div>
-    <!-- <BeatstorePriceCardList />
-    <SectionUsage /> -->
+    <BeatPricesSelect :prices="data.stemsPrice ? [data.wavePrice, data.stemsPrice ] : [data.wavePrice]" />
+    <!-- <SectionUsage /> -->
+    <SectionComments />
   </div>
 </template>
 <script setup lang="ts">
-const store = useStore()
+const store = useCart()
 const props = defineProps<{
   data: BeatIndividual;
 }>();

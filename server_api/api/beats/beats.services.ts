@@ -9,6 +9,7 @@ export const findBeatById = (id: number) =>
       id: true,
       name: true,
       bpm: true,
+      description: true,
       createdAt: true,
       downloads: true,
       plays: true,
@@ -17,7 +18,6 @@ export const findBeatById = (id: number) =>
       wavePrice: true,
       stemsPrice: true,
       likes: true,
-      comments: true,
       tags: true,
       author: {
         select: {
