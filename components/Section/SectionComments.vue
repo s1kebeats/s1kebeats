@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-5 flex-1">
         <div class="text-lg font-semibold text-black flex items-center h-[40px]">Комментарии</div>
         <CommentsForm />
         <CommentsListLoadingShimmer v-if="isLoading" />
