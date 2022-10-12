@@ -1,5 +1,4 @@
 <template>
-  <div class="border-[1px] flex-1 rounded-lg p-5 flex flex-col gap-5">
     <div class="flex justify-between">
       <div class="text-lg font-semibold text-black flex items-center">
         Покупка
@@ -19,9 +18,6 @@
       </div>
     </div>
     <BeatPricesSelect :prices="data.stemsPrice ? [data.wavePrice, data.stemsPrice ] : [data.wavePrice]" />
-    <!-- <SectionUsage /> -->
-    <SectionComments />
-  </div>
 </template>
 <script setup lang="ts">
 const store = useCart()
