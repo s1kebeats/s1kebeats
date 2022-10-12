@@ -1,5 +1,5 @@
 import express from "express";
-import { findBeatById, createBeat, allBeats } from "./beats.services";
+import { findBeatById, createBeat, findBeats } from "./beats.services";
 import isAuthenticated from "~/server_api/middlewares";
 
 const router = express.Router();
@@ -7,7 +7,21 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
     const sort = req.query.orderBy ? req.query.orderBy : "createdAt";
-    const beats = await allBeats(sort);
+    const query = {
+      tags: [],
+      name: '',
+      bpm: 0,
+    }
+    if (req.query.name) {
+      query['name'] = req.query.name
+    }
+    if (req.query.bpm) {
+      query['bpm'] = req.query.bpm
+    }
+    if (req.query.tags) {
+      query['tags'] = req.query.tags.split(',').map((item: string): number => +item)
+    }
+    const beats = await findBeats(sort, query);
     res.json(beats);
   } catch (err) {
     next(err);

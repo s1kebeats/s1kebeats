@@ -5,6 +5,7 @@
       <BeatPrices :data="data" /> 
       <SectionComments />
     </div>
+    <SectionRelatedBeats />
   </section>
 </template>
 <script setup lang="ts">

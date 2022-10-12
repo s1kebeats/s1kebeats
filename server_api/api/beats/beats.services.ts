@@ -28,23 +28,10 @@ export const findBeatById = (id: number) =>
       },
     },
   });
-export const findBeats = (sort: string, { tags, name, bpm }) =>
-  prisma.beat.findMany({
+export const findBeats = (sort: string, { tags, name, bpm }) => {
+  const queryArgs = {
     orderBy: { [sort]: "desc" },
-    where: {
-      tags: {
-        some: {
-          id: {
-            in: tags,
-          },
-        },
-      },
-      name: {
-        contains: name,
-        mode: "insensitive",
-      },
-      bpm: { equals: bpm },
-    },
+    where: {},
     select: {
       id: true,
       name: true,
@@ -59,7 +46,32 @@ export const findBeats = (sort: string, { tags, name, bpm }) =>
       mp3: true,
       wavePrice: true,
     },
-  });
+  }
+
+  if (tags.length) {
+    queryArgs.where['tags'] = {
+      some: {
+        id: {
+          in: tags,
+        },
+      },
+    }
+  }
+  if (name) {
+    queryArgs.where['name'] = {
+      contains: name,
+      mode: "insensitive",
+    }
+  }
+  if (bpm) {
+    queryArgs.where['bpm'] = {
+      equals: bpm
+    }
+  }
+
+  return prisma.beat.findMany(queryArgs)
+}
+  
 export const allBeats = (sort: string) =>
   prisma.beat.findMany({
     orderBy: {
