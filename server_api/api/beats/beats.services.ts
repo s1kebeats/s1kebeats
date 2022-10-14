@@ -46,32 +46,32 @@ export const findBeats = (sort: string, { tags, name, bpm }) => {
       mp3: true,
       wavePrice: true,
     },
-  }
+  };
 
   if (tags.length) {
-    queryArgs.where['tags'] = {
+    queryArgs.where.tags = {
       some: {
         id: {
           in: tags,
         },
       },
-    }
+    };
   }
   if (name) {
-    queryArgs.where['name'] = {
+    queryArgs.where.name = {
       contains: name,
       mode: "insensitive",
-    }
+    };
   }
   if (bpm) {
-    queryArgs.where['bpm'] = {
-      equals: bpm
-    }
+    queryArgs.where.bpm = {
+      equals: bpm,
+    };
   }
 
-  return prisma.beat.findMany(queryArgs)
-}
-  
+  return prisma.beat.findMany(queryArgs);
+};
+
 export const allBeats = (sort: string) =>
   prisma.beat.findMany({
     orderBy: {

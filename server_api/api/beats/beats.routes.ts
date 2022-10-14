@@ -9,17 +9,19 @@ router.get("/", async (req, res, next) => {
     const sort = req.query.orderBy ? req.query.orderBy : "createdAt";
     const query = {
       tags: [],
-      name: '',
+      name: "",
       bpm: 0,
-    }
+    };
     if (req.query.name) {
-      query['name'] = req.query.name
+      query.name = req.query.name;
     }
     if (req.query.bpm) {
-      query['bpm'] = req.query.bpm
+      query.bpm = req.query.bpm;
     }
     if (req.query.tags) {
-      query['tags'] = req.query.tags.split(',').map((item: string): number => +item)
+      query.tags = req.query.tags
+        .split(",")
+        .map((item: string): number => +item);
     }
     const beats = await findBeats(sort, query);
     res.json(beats);

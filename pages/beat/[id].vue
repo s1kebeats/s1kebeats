@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { useQuery } from "vue-query";
 import axios from "axios";
-const route = useRoute()
+const route = useRoute();
 const { isLoading, isError, data, error } = useQuery(
   "recommededBeatsData",
   () => axios.get(`http://localhost:3000/api/beats/${route.params.id}`)

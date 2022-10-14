@@ -16,7 +16,11 @@
           class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
         >
           <svg
-            v-show="store.getCurrentBeat().mp3 === data.mp3 && copyHovered && store.getAudioPlaying()"
+            v-show="
+              store.getCurrentBeat().mp3 === data.mp3 &&
+              copyHovered &&
+              store.getAudioPlaying()
+            "
             data-test="pauseIcon"
             xmlns="http://www.w3.org/2000/svg"
             class="w-[60px]"
@@ -30,7 +34,9 @@
           </svg>
           <svg
             v-show="
-              store.getCurrentBeat().mp3 === data.mp3 && !copyHovered && store.getAudioPlaying()
+              store.getCurrentBeat().mp3 === data.mp3 &&
+              !copyHovered &&
+              store.getAudioPlaying()
             "
             data-test="playingIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +54,9 @@
           </svg>
           <svg
             v-show="
-              (store.getCurrentBeat().mp3 && store.getCurrentBeat().mp3 !== data.mp3) || !store.getAudioPlaying()
+              (store.getCurrentBeat().mp3 &&
+                store.getCurrentBeat().mp3 !== data.mp3) ||
+              !store.getAudioPlaying()
             "
             data-test="playIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +78,11 @@
       />
     </div>
     <div class="flex gap-2">
-      <div class="flex items-center text-sm text-primary font-semibold truncate h-[20px]">{{ data.wavePrice }}руб.</div>
+      <div
+        class="flex items-center text-sm text-primary font-semibold truncate h-[20px]"
+      >
+        {{ data.wavePrice }}руб.
+      </div>
       <div
         class="flex items-center text-sm text-black font-semibold truncate h-[20px]"
       >
@@ -83,8 +95,15 @@
     >
       {{ data.name }}
     </NuxtLink>
-    <NuxtLink :to="`/${data.author.username}`" class="text-black text-sm link link-hover truncate h-[20px]">
-      {{ data.author.displayedName ? data.author.displayedName : data.author.username}}
+    <NuxtLink
+      :to="`/${data.author.username}`"
+      class="text-black text-sm link link-hover truncate h-[20px]"
+    >
+      {{
+        data.author.displayedName
+          ? data.author.displayedName
+          : data.author.username
+      }}
     </NuxtLink>
   </div>
 </template>

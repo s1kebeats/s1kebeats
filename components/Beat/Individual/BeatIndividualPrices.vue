@@ -6,7 +6,7 @@
       </div>
       <BeatIndividualCartControls :data="data" />
     </div>
-    <BeatIndividualPricesSelect :data="data" /> 
+    <BeatIndividualPricesSelect :data="data" />
   </div>
 </template>
 <script setup lang="ts">

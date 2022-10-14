@@ -6,11 +6,20 @@
       class="rounded-lg object-cover h-[230px] w-[230px] shadow-lg"
     />
     <div class="mt-3 w-full flex flex-col items-center">
-      <div class="text-black text-center font-semibold text-2xl w-full truncate">
+      <div
+        class="text-black text-center font-semibold text-2xl w-full truncate"
+      >
         {{ data.name }}
       </div>
-      <NuxtLink :to="`/${data.author.username}`"  class="text-black text-center text-sm truncate w-full link link-hover">
-        {{ data.author.displayedName ? data.author.displayedName : data.author.username }}
+      <NuxtLink
+        :to="`/${data.author.username}`"
+        class="text-black text-center text-sm truncate w-full link link-hover"
+      >
+        {{
+          data.author.displayedName
+            ? data.author.displayedName
+            : data.author.username
+        }}
       </NuxtLink>
     </div>
   </div>

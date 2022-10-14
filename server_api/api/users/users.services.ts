@@ -53,14 +53,12 @@ export const findUserByUsername = (username: string) =>
       image: true,
       beats: true,
     },
-});
-export const allUsers = () => (
+  });
+export const allUsers = () =>
   prisma.user.findMany({
     select: {
       username: true,
       displayedName: true,
       image: true,
-    }
-  })
-)
-
+    },
+  });

@@ -1,8 +1,10 @@
 <template>
-  <div
-    class="relative border-l-[1px] border-base-200 pl-5"
-  >
-    <button class="flex cursor-pointer items-center gap-1" @focusout="hideDialog" @click="toggleProfileDialog">
+  <div class="relative border-l-[1px] border-base-200 pl-5">
+    <button
+      class="flex cursor-pointer items-center gap-1"
+      @focusout="hideDialog"
+      @click="toggleProfileDialog"
+    >
       <img
         class="w-[24px] rounded-full"
         src="~/assets/images/profile-default.svg"
@@ -15,24 +17,24 @@
       />
     </button>
     <transition name="modal">
-        <div
-            v-show="showDialog"
-            ref="dialogPanel"
-            class="absolute z-[2] bg-white rounded-md p-2 border-[1px] flex flex-col gap-2 shadow-md right-0 top-[34px]"
-        >
+      <div
+        v-show="showDialog"
+        ref="dialogPanel"
+        class="absolute z-[2] bg-white rounded-md p-2 border-[1px] flex flex-col gap-2 shadow-md right-0 top-[34px]"
+      >
         <button
-            class="bg-primary rounded-md px-3 py-1 min-w-[60px] text-sm text-white"
-            @click="loginNavigation"
+          class="bg-primary rounded-md px-3 py-1 min-w-[60px] text-sm text-white"
+          @click="loginNavigation"
         >
-            Вход
+          Вход
         </button>
         <button
-            class="bg-base-200 rounded-md px-3 py-1 min-w-[60px] text-sm text-black"
-            @click="registrationNavigation"
+          class="bg-base-200 rounded-md px-3 py-1 min-w-[60px] text-sm text-black"
+          @click="registrationNavigation"
         >
-            Регистрация
+          Регистрация
         </button>
-        </div>
+      </div>
     </transition>
   </div>
 </template>

@@ -25,13 +25,13 @@ router.get("/:username", async (req, res, next) => {
     next(err);
   }
 });
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const users = await allUsers()
-    res.json(users)
+    const users = await allUsers();
+    res.json(users);
   } catch (error) {
     next(error);
   }
-})
+});
 
 export default router;

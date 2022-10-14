@@ -1,5 +1,3 @@
 <template>
-    <div>
-        some user!!!!
-    </div>
+  <div>some user!!!!</div>
 </template>

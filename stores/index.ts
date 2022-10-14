@@ -14,19 +14,20 @@ export const useStore = defineStore("main", {
       this.overlay = !this.overlay;
     },
     getCurrentBeat(): Beat {
-      return this._currentBeat
+      return this._currentBeat;
     },
     setCurrentBeat(beat: Beat): void {
-      Object.assign(this._currentBeat, beat)
+      Object.assign(this._currentBeat, beat);
     },
     setAudioPlaying(value?: boolean): void {
-      if (value !== undefined) { this._audioPlaying = value }
-      else {
-        this._audioPlaying = !this._audioPlaying
+      if (value !== undefined) {
+        this._audioPlaying = value;
+      } else {
+        this._audioPlaying = !this._audioPlaying;
       }
     },
     getAudioPlaying(): boolean {
-      return this._audioPlaying
-    }
+      return this._audioPlaying;
+    },
   },
 });

@@ -20,7 +20,7 @@
         </td>
       </tr>
     </table>
-    </div>
+  </div>
 </template>
 <script setup lang="ts">
 const props = defineProps<{

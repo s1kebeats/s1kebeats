@@ -24,7 +24,11 @@
             data-test="playerBeatArtist"
             class="bg-primary rounded-md px-1 h-[18px] flex items-center transition-all"
           >
-          {{ data.author.displayedName ? data.author.displayedName : data.author.username}}
+            {{
+              data.author.displayedName
+                ? data.author.displayedName
+                : data.author.username
+            }}
           </div>
           <div
             title="BPM"

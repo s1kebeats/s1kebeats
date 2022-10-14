@@ -13,14 +13,14 @@
       </NuxtLink>
     </div>
     <BaseItemsList>
-        <slot />
+      <slot />
     </BaseItemsList>
   </section>
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-    title: string;
-    linkTitle?: string;
-    linkUrl?: string;
-}>()
+  title: string;
+  linkTitle?: string;
+  linkUrl?: string;
+}>();
 </script>

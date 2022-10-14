@@ -1,12 +1,12 @@
 <template>
-    <BaseItemsList class="gap-1">
-        <NuxtLink :to="`/search?tags=${item.id}`" v-for="item in list">
-            <MainTag :data="item" />
-        </NuxtLink>
-    </BaseItemsList>
+  <BaseItemsList class="gap-1">
+    <NuxtLink v-for="item in list" :to="`/search?tags=${item.id}`">
+      <MainTag :data="item" />
+    </NuxtLink>
+  </BaseItemsList>
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-    list: Tag[]
-}>()
+  list: Tag[];
+}>();
 </script>

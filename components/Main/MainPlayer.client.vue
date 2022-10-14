@@ -124,7 +124,7 @@ watch(playing, (newValue: boolean): void => {
       if (Math.ceil(audio.currentTime) === audioDuration.value) {
         // setting audio time to zero and pausing the audio
         setAudioTime(0);
-        store.setAudioPlaying(false)
+        store.setAudioPlaying(false);
       }
       // doesn't update current time if we are choosing it while audio is playing
       audioTimeOnUp.value = Math.ceil(audio.currentTime);

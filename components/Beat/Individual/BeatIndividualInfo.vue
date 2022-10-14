@@ -6,7 +6,10 @@
     <BeatIndividualDownloadButton :url="data.mp3" />
     <BeatIndividualInfoChars :data="data" />
     <BeatIndividualInfoTags v-if="data.tags.length" :data="data" />
-    <BeatIndividualInfoDescription v-if="data.description" :data="data.description" />
+    <BeatIndividualInfoDescription
+      v-if="data.description"
+      :data="data.description"
+    />
   </div>
 </template>
 <script setup lang="ts">
