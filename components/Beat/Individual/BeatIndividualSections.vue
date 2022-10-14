@@ -1,8 +1,8 @@
 <template>
     <div class="flex-1 flex flex-col gap-5">
-      <SectionIndividualPlayer />
+      <BeatIndividualPlayer />
       <BeatIndividualPrices :data="data" /> 
-      <SectionComments />
+      <BeatIndividualComments />
       <SectionRelatedBeats :source="data" />
     </div>
 </template>

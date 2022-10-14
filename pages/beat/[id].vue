@@ -1,7 +1,7 @@
 <template>
   <main class="grow flex flex-col items-center gap-10">
     <SectionBeatIndividualLoadingShimmer v-if="isLoading" />
-    <SectionBeatIndividual v-else :data="data.data" />      
+    <SectionBeatIndividual v-else :data="data.data" />
   </main>
 </template>
 <script setup lang="ts">
