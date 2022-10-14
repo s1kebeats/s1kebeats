@@ -78,12 +78,12 @@
       </div>
     </div>
     <NuxtLink
-      :to="`beat/${data.id}`"
+      :to="`/beat/${data.id}`"
       class="text-black font-semibold text-2xl link link-hover truncate h-[32px]"
     >
       {{ data.name }}
     </NuxtLink>
-    <NuxtLink :to="data.author.username" class="text-black text-sm link link-hover truncate h-[20px]">
+    <NuxtLink :to="`/${data.author.username}`" class="text-black text-sm link link-hover truncate h-[20px]">
       {{ data.author.displayedName ? data.author.displayedName : data.author.username}}
     </NuxtLink>
   </div>
