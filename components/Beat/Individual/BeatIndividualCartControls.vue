@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center gap-5">
     <div class="text-black text-left text-sm">
-      TOTAL:
+      ИТОГ:
       <span class="font-semibold">{{ data[store.getSelected()] }}руб.</span>
     </div>
     <button

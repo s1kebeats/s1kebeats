@@ -11,14 +11,14 @@
     <div
       ref="beforethumb"
       data-test="beforeThumb"
-      class="beforethumb h-full w-0 bg-primary"
+      class="beforethumb h-full rounded-full w-0 bg-white"
     />
     <transition name="overlay">
       <div
         v-show="thumbState"
         ref="thumb"
         data-test="thumb"
-        class="thumb absolute w-[12px] h-[12px] rounded-full bg-primary"
+        class="thumb absolute w-[12px] h-[12px] rounded-full bg-white"
       />
     </transition>
   </div>

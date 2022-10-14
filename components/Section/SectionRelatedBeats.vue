@@ -27,7 +27,7 @@ const props = defineProps<{
 }>();
 const tagQuery = ref(props.source.tags.map((item: Tag) => item.id).join(","));
 const { isLoading, isError, data, error }: any = useQuery(
-  "relatedBeatsData",
+  `${props.source.id}-related`,
   () => axios.get(`http://localhost:3000/api/beats/?tags=${tagQuery.value}`)
 );
 </script>

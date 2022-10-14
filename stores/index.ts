@@ -16,8 +16,11 @@ export const useStore = defineStore("main", {
     getCurrentBeat(): Beat {
       return this._currentBeat;
     },
-    setCurrentBeat(beat: Beat): void {
+    async setCurrentBeat(beat: Beat): Promise<void> {
+      const audio = document.querySelector("#mainAudio") as HTMLAudioElement;
+      audio.src = beat.mp3;
       Object.assign(this._currentBeat, beat);
+      audio.load();
     },
     setAudioPlaying(value?: boolean): void {
       if (value !== undefined) {
@@ -28,6 +31,9 @@ export const useStore = defineStore("main", {
     },
     getAudioPlaying(): boolean {
       return this._audioPlaying;
+    },
+    getMainAudio(): HTMLAudioElement {
+      return document.querySelector("#mainAudio");
     },
   },
 });

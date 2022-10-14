@@ -1,51 +1,55 @@
 <template>
-  <transition name="player">
-    <div
-      v-if="store.getCurrentBeat().mp3"
-      id="player"
-      data-test="player"
-      class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
-      @mouseenter="toggleThumb(true)"
-      @mouseleave="toggleThumb(false)"
+  <div
+    class="h-[70px] rounded-full bg-gradient-to-r from-black to-primary shadow-md flex items-center p-[7.5px] gap-[7.5px]"
+    @mouseenter="toggleThumb(true)"
+    @mouseleave="toggleThumb(false)"
+  >
+    <button
+      class="h-full w-[55px] flex items-center justify-center"
+      @click="store.setAudioPlaying()"
     >
+      <img
+        v-show="!store.getAudioPlaying()"
+        src="~/assets/images/play.svg"
+        class="w-full"
+      />
+      <img
+        v-show="store.getAudioPlaying()"
+        src="~/assets/images/pause.svg"
+        class="w-full"
+      />
+    </button>
+    <div class="flex-1 h-full flex flex-col gap-1 justify-center">
+      <div class="text-xl text-white font-semibold">
+        {{ store.getCurrentBeat().name }} -
+        <NuxtLink
+          :to="`/${store.getCurrentBeat().author.displayedName}`"
+          class=""
+          >{{
+            store.getCurrentBeat().author.displayedName
+              ? store.getCurrentBeat().author.displayedName
+              : store.getCurrentBeat().author.username
+          }}</NuxtLink
+        >
+      </div>
       <BaseRangeInput
+        class="rounded-full bg-[#a09da7] h-[4px]"
         :thumb-state="thumbState"
         :max="audioDuration - 1"
-        class="player__timeline"
         :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
         @toggle-thumb="focusThumb"
         @update-value="updateAudioTime"
         @set-value="setAudioTime"
       />
+    </div>
+    <div class="w-[55px] h-[55px] flex items-center justify-center">
       <div
-        class="responsive flex h-[42px] items-center 525:max-w-full 525:px-2"
+        class="cursor-pointer w-[45px] h-[45px] mr-1 rounded-full bg-white flex items-center justify-center text-xs text-[#878787] font-semibold hover:text-black transition-all"
       >
-        <div class="flex h-full items-center gap-2">
-          <button
-            data-test="playPauseButton"
-            class="play w-[25px] h-[25px]"
-            :class="store.getAudioPlaying() ? 'pause' : ''"
-            @click="store.setAudioPlaying()"
-          />
-          <div
-            class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
-          >
-            <span class="text-center w-[30px] 710:w-[25px]">
-              {{ audioCurrentTimeOutput }}
-            </span>
-            <span class="text-center w-[5px]"> / </span>
-            <span class="text-center w-[30px] 710:w-[25px]">
-              {{ audioDurationOutput }}
-            </span>
-          </div>
-        </div>
-        <PlayerInfo :data="beat" />
-        <div class="flex h-full items-center justify-end gap-5 710:w-[88px]">
-          <PlayerVolume @update-audio-volume="setAudioVolume" />
-        </div>
+        10%
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
@@ -56,8 +60,8 @@ const { _currentBeat: beat, _audioPlaying: playing } = storeToRefs(store);
 const audio = store.getMainAudio();
 // needed audio values
 const timelineUp = ref(true);
-const audioTimeOnUp = ref(0);
-const audioTimeOnDown = ref(0);
+const audioTimeOnUp = ref(audio.currentTime);
+const audioTimeOnDown = ref(audio.currentTime);
 const audioDuration = ref(0);
 const thumbState = ref(false);
 const thumbFocused = ref(false);
@@ -165,29 +169,3 @@ const setAudioVolume = (newValue: number) => {
 //   axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
 // };
 </script>
-<style lang="scss" scoped>
-.play {
-  background: center no-repeat url("~/assets/images/play.svg");
-  background-size: 30px;
-  &.pause {
-    background: center no-repeat url("~/assets/images/pause.svg");
-    background-size: 30px;
-  }
-}
-.download {
-  background: center no-repeat url("~/assets/images/download.svg");
-  background-size: 30px;
-}
-
-.player-enter-active,
-.player-leave-active {
-  transition: 0.2s;
-}
-
-.player-enter-from {
-  transform: translateY(63px);
-}
-.player-leave-to {
-  transform: translateY(0px);
-}
-</style>
