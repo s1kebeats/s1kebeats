@@ -2,12 +2,12 @@
   <div
     data-test="beat"
     class="flex flex-col w-[204px] 930:w-[145px] bg-base-100 rounded-lg"
-    @mouseenter="showOverlay"
-    @mouseleave="hideOverlay"
   >
     <div
       class="w-full h-[204px] 930:h-[145px] relative mb-3 select-none cursor-pointer"
       @click="playBeat"
+      @mouseenter="showOverlay"
+      @mouseleave="hideOverlay"
     >
       <transition name="overlay">
         <div

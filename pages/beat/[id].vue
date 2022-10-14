@@ -12,4 +12,5 @@ const { isLoading, isError, data, error } = useQuery(
   "recommededBeatsData",
   () => axios.get(`http://localhost:3000/api/beats/${route.params.id}`)
 );
+definePageMeta({ layout: "beat" });
 </script>
