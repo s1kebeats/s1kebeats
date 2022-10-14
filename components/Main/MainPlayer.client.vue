@@ -1,7 +1,7 @@
 <template>
   <transition name="player">
     <div
-      v-if="store.currentBeat.mp3"
+      v-if="store.getCurrentBeat().mp3"
       id="player"
       data-test="player"
       class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
@@ -24,8 +24,8 @@
           <button
             data-test="playPauseButton"
             class="play w-[25px] h-[25px]"
-            :class="store.playing ? 'pause' : ''"
-            @click="store.playPause()"
+            :class="store.getAudioPlaying() ? 'pause' : ''"
+            @click="store.setAudioPlaying()"
           />
           <div
             class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
@@ -39,16 +39,9 @@
             </span>
           </div>
         </div>
-        <PlayerInfo :beat="beat" />
+        <PlayerInfo :data="beat" />
         <div class="flex h-full items-center justify-end gap-5 710:w-[88px]">
           <PlayerVolume @update-audio-volume="setAudioVolume" />
-          <a
-            data-test="downloadLink"
-            download=""
-            class="block w-[25px] h-[25px] download"
-            :href="beat.wave"
-            @click="downloadIncrement"
-          />
         </div>
       </div>
     </div>
@@ -58,7 +51,7 @@
 import { storeToRefs } from "pinia";
 const store = useStore();
 // global beat and playing values
-const { beat, playing } = storeToRefs(store);
+const { _currentBeat: beat, _audioPlaying: playing } = storeToRefs(store);
 // audio
 const audio = new Audio();
 // needed audio values
@@ -89,7 +82,7 @@ onMounted(() => {
   });
   document.addEventListener("keyup", (e: KeyboardEvent): void => {
     if (e.key === " ") {
-      store.playPause();
+      store.setAudioPlaying();
     }
   });
 });
@@ -100,14 +93,14 @@ function audioInit(): void {
   // update local current time
   audioTimeOnUp.value = audio.currentTime;
   // play audio
-  store.playPause(true);
+  store.setAudioPlaying(true);
 }
 // watching global beat instance to maintain its changing
 watch(
   beat,
   (): void => {
     // pausing audio when global beat changes
-    store.playPause(false);
+    store.setAudioPlaying(false);
     // changing audio source
     if (typeof beat.value.mp3 === "string") {
       audio.src = beat.value.mp3;
@@ -131,7 +124,7 @@ watch(playing, (newValue: boolean): void => {
       if (Math.ceil(audio.currentTime) === audioDuration.value) {
         // setting audio time to zero and pausing the audio
         setAudioTime(0);
-        store.playing = false;
+        store.setAudioPlaying(false)
       }
       // doesn't update current time if we are choosing it while audio is playing
       audioTimeOnUp.value = Math.ceil(audio.currentTime);
@@ -145,13 +138,13 @@ watch(playing, (newValue: boolean): void => {
 // computed property for current time output
 const audioCurrentTimeOutput = computed((): string => {
   // watch for store.copy to be able to select time when audio is playing
-  return timeOutput(
+  return useTimeOutput(
     timelineUp.value ? audioTimeOnUp.value : audioTimeOnDown.value
   );
 });
 // computed property for audio duration output
 const audioDurationOutput = computed((): string => {
-  return timeOutput(audioDuration.value);
+  return useTimeOutput(audioDuration.value);
 });
 // function is used to update current time output, not the value itself!
 const updateAudioTime = (newValue: number): void => {

@@ -12,10 +12,10 @@ export const useCart = defineStore("cart", {
             this.items[id] = ver
         },
         removeItem(id: number) {
-            delete this.items.id
+            delete this.items[id]
         },
         checkItem(id: number, ver: 'wavePrice' | 'stemsPrice'): boolean {
-            return Object.keys(this.items).includes(String(id)) && this.items[id] === ver
+            return this.items[id] === ver
         },
         setSelected(ver: 'wavePrice' | 'stemsPrice'): void {
             this.selected = ver

@@ -3,7 +3,7 @@
     <div class="flex items-center justify-center flex-1 gap-2">
       <img
         data-test="playerBeatWrap"
-        :src="beat.wrap"
+        :src="data.image"
         width="26px"
         height="26px"
         alt="wrap-image"
@@ -14,7 +14,7 @@
           class="flex items-center text-md font-semibold text-white"
           data-test="playerBeatName"
         >
-          {{ beat.name }}
+          {{ data.name }}
         </div>
         <div
           class="text-xs text-white flex items-center gap-1 select-none 710:hidden"
@@ -24,14 +24,14 @@
             data-test="playerBeatArtist"
             class="bg-primary rounded-md px-1 h-[18px] flex items-center transition-all"
           >
-            {{ beat.artist.name }}
+          {{ data.author.displayedName ? data.author.displayedName : data.author.username}}
           </div>
           <div
             title="BPM"
             data-test="playerBeatBpm"
             class="bg-accent rounded-md px-1 h-[18px] flex items-center transition-all"
           >
-            {{ beat.bpm }}BPM
+            {{ data.bpm }}BPM
           </div>
         </div>
       </div>
@@ -40,6 +40,6 @@
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-  beat: Beat;
+  data: Beat;
 }>();
 </script>

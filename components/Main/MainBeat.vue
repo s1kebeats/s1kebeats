@@ -16,7 +16,7 @@
           class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
         >
           <svg
-            v-show="store.getCurrentBeat().mp3 === data.mp3 && copyHovered && store.audioPlaying"
+            v-show="store.getCurrentBeat().mp3 === data.mp3 && copyHovered && store.getAudioPlaying()"
             data-test="pauseIcon"
             xmlns="http://www.w3.org/2000/svg"
             class="w-[60px]"
@@ -30,7 +30,7 @@
           </svg>
           <svg
             v-show="
-              store.getCurrentBeat().mp3 === data.mp3 && !copyHovered && store.audioPlaying
+              store.getCurrentBeat().mp3 === data.mp3 && !copyHovered && store.getAudioPlaying()
             "
             data-test="playingIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@
           </svg>
           <svg
             v-show="
-              (store.getCurrentBeat().mp3 && store.getCurrentBeat().mp3 !== data.mp3) || !store.audioPlaying
+              (store.getCurrentBeat().mp3 && store.getCurrentBeat().mp3 !== data.mp3) || !store.getAudioPlaying()
             "
             data-test="playIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const store = useStore();
 const router = useRouter();
 const props = defineProps<{ data: Beat }>();
 // global playing state
-const { audioPlaying } = storeToRefs(store);
+const { _audioPlaying: audioPlaying } = storeToRefs(store);
 // overlay value
 const hovered = ref(false);
 // overlay inside overlay value (was made to be able to change icons when beat is playing)
@@ -135,7 +135,7 @@ const hideOverlay = (): void => {
 const playBeat = (): void => {
   // pause
   if (store.getCurrentBeat().mp3 === props.data.mp3) {
-    store.playPause();
+    store.setAudioPlaying();
     return;
   }
   store.setCurrentBeat(props.data);

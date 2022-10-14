@@ -4,6 +4,6 @@
     <BaseHeader />
     <slot />
     <BaseFooter />
-    <!-- <MainPlayer /> -->
+    <MainPlayer />
   </div>
 </template>

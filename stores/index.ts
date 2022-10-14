@@ -4,7 +4,7 @@ export const useStore = defineStore("main", {
   state: () => ({
     showOverlay: false,
     _currentBeat: <Beat>{},
-    audioPlaying: false,
+    _audioPlaying: false,
   }),
   actions: {
     toggleOverlay(): void {
@@ -19,8 +19,14 @@ export const useStore = defineStore("main", {
     setCurrentBeat(beat: Beat): void {
       Object.assign(this._currentBeat, beat)
     },
-    playPause(): void {
-      this.audioPlaying = !this.audioPlaying
+    setAudioPlaying(value?: boolean): void {
+      if (value !== undefined) { this._audioPlaying = value }
+      else {
+        this._audioPlaying = !this._audioPlaying
+      }
+    },
+    getAudioPlaying(): boolean {
+      return this._audioPlaying
     }
   },
 });

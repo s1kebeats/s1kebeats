@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col gap-5 flex-1">
-        <div class="text-lg font-semibold text-black flex items-center h-[40px]">Комментарии</div>
-        <CommentsForm />
-        <CommentsListLoadingShimmer v-if="isLoading" />
-        <CommentsList v-else :list="data.data" />
-    </div>
+  <div class="border-[1px] rounded-lg p-5 flex flex-col gap-5">
+    <div class="text-lg font-semibold text-black flex items-center h-[40px]">Комментарии</div>
+    <CommentsForm />
+    <CommentsListLoadingShimmer v-if="isLoading" />
+    <CommentsList v-else :list="data.data" />
+  </div>
 </template>
 <script setup lang="ts">
 import { useQuery } from "vue-query";
