@@ -36,9 +36,9 @@
         class="rounded-full bg-[#a09da7] h-[4px]"
         :thumb-state="thumbState"
         :max="store.getAudioDuration() - 1"
-        :value="store.getAudioTime()"
+        :value="store.getFakeAudioTime() ? store.getFakeAudioTime() : store.getAudioTime()"
         @toggle-thumb="focusThumb"
-        @update-value="updateAudioTime"
+        @update-value="setFakeAudioTime"
         @set-value="setAudioTime"
       />
     </div>
@@ -86,8 +86,8 @@ onUnmounted(() => {
   document.removeEventListener("keydown", spaceDown);
   document.removeEventListener("keyup", spaceUp);
 });
-const updateAudioTime = (value: number) => {
-  store.updateAudioTime(value)
+const setFakeAudioTime = (value: number) => {
+  store.setFakeAudioTime(value)
 }
 const setAudioTime = (value: number) => {
   store.setAudioTime(value)

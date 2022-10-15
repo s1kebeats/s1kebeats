@@ -7,6 +7,7 @@ export const useStore = defineStore("main", {
     _audioPlaying: false,
     _audioDuration: 0,
     _audioTime: 0,
+    _fakeAudioTime: 0,
   }),
   actions: {
     toggleOverlay(): void {
@@ -44,14 +45,21 @@ export const useStore = defineStore("main", {
       }
     },
     setAudioTime(time: number): void {
+      this.setFakeAudioTime(0)
       this.getMainAudio().currentTime = time;
-      this._audioTime = time;
+      this.updateAudioTime(time)
     },
     updateAudioTime(time: number): void {
       this._audioTime = time;
     },
+    setFakeAudioTime(time: number): void {
+      this._fakeAudioTime = time;
+    },
     getAudioTime(): number {
       return this._audioTime;
+    },
+    getFakeAudioTime(): number {
+      return this._fakeAudioTime;
     },
     getAudioPlaying(): boolean {
       return this._audioPlaying;
