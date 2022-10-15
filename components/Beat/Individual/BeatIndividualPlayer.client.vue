@@ -6,7 +6,7 @@
   >
     <button
       class="h-full w-[55px] flex items-center justify-center"
-      @click="store.setAudioPlaying()"
+      @click="store.toggleAudioPlaying()"
     >
       <img
         v-show="!store.getAudioPlaying()"
@@ -35,8 +35,8 @@
       <BaseRangeInput
         class="rounded-full bg-[#a09da7] h-[4px]"
         :thumb-state="thumbState"
-        :max="audioDuration - 1"
-        :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
+        :max="store.getAudioDuration() - 1"
+        :value="store.getAudioTime()"
         @toggle-thumb="focusThumb"
         @update-value="updateAudioTime"
         @set-value="setAudioTime"
@@ -52,17 +52,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
 const store = useStore();
-// global beat and playing values
-const { _currentBeat: beat, _audioPlaying: playing } = storeToRefs(store);
-// audio
-const audio = store.getMainAudio();
-// needed audio values
-const timelineUp = ref(true);
-const audioTimeOnUp = ref(audio.currentTime);
-const audioTimeOnDown = ref(audio.currentTime);
-const audioDuration = ref(0);
 const thumbState = ref(false);
 const thumbFocused = ref(false);
 const toggleThumb = (state: boolean): void => {
@@ -77,95 +67,29 @@ const focusThumb = (state: boolean): void => {
   toggleThumb(false);
 };
 // play pause on space bind
-onMounted(() => {
-  document.addEventListener("keydown", (e: KeyboardEvent): void => {
-    // prevent scroll
-    if (e.key === " ") {
-      e.preventDefault();
-    }
-  });
-  document.addEventListener("keyup", (e: KeyboardEvent): void => {
-    if (e.key === " ") {
-      store.setAudioPlaying();
-    }
-  });
-});
-// update refs and play audio when metadata is loaded
-function audioInit(): void {
-  // update local audioDuration state
-  audioDuration.value = Math.ceil(audio.duration);
-  // update local current time
-  audioTimeOnUp.value = audio.currentTime;
-  // play audio
-  store.setAudioPlaying(true);
-}
-// watching global beat instance to maintain its changing
-watch(
-  beat,
-  (): void => {
-    // pausing audio when global beat changes
-    store.setAudioPlaying(false);
-    // changing audio source
-    if (typeof beat.value.mp3 === "string") {
-      audio.src = beat.value.mp3;
-    }
-    // firing audioInit when audio metadata's loaded, turning audio on
-    audio.addEventListener("loadedmetadata", audioInit);
-  },
-  { deep: true }
-);
-// current time output interval
-let int: number;
-// watching global playing value to play and pause audio
-watch(playing, (newValue: boolean): void => {
-  // if audio is being turned on
-  if (newValue) {
-    // play
-    audio.play().catch((error) => console.log(error));
-    // interval which updates current time nad its output
-    int = setInterval(() => {
-      // if audio ended
-      if (Math.ceil(audio.currentTime) === audioDuration.value) {
-        // setting audio time to zero and pausing the audio
-        setAudioTime(0);
-        store.setAudioPlaying(false);
-      }
-      // doesn't update current time if we are choosing it while audio is playing
-      audioTimeOnUp.value = Math.ceil(audio.currentTime);
-    }, 100);
-    return;
+function spaceDown(e: KeyboardEvent) {
+  // prevent scroll
+  if (e.key === " ") {
+    e.preventDefault();
   }
-  // if audio is being paused
-  clearInterval(int);
-  audio.pause();
+}
+function spaceUp(e: KeyboardEvent) {
+  if (e.key === " ") {
+    store.toggleAudioPlaying();
+  }
+}
+onMounted(() => {
+  document.addEventListener("keydown", spaceDown);
+  document.addEventListener("keyup", spaceUp);
 });
-// computed property for current time output
-const audioCurrentTimeOutput = computed((): string => {
-  // watch for store.copy to be able to select time when audio is playing
-  return useTimeOutput(
-    timelineUp.value ? audioTimeOnUp.value : audioTimeOnDown.value
-  );
+onUnmounted(() => {
+  document.removeEventListener("keydown", spaceDown);
+  document.removeEventListener("keyup", spaceUp);
 });
-// computed property for audio duration output
-const audioDurationOutput = computed((): string => {
-  return useTimeOutput(audioDuration.value);
-});
-// function is used to update current time output, not the value itself!
-const updateAudioTime = (newValue: number): void => {
-  timelineUp.value = false;
-  audioTimeOnDown.value = newValue;
-};
-// function updates audio.currentTime itself
-const setAudioTime = (newValue: number): void => {
-  timelineUp.value = true;
-  audioTimeOnUp.value = audio.currentTime = newValue;
-};
-// function sets audio volume
-const setAudioVolume = (newValue: number) => {
-  // volume range has max=100 for the ease of perception
-  audio.volume = +(newValue / 100).toFixed(2);
-};
-// const downloadIncrement = () => {
-//   axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
-// };
+const updateAudioTime = (value: number) => {
+  store.updateAudioTime(value)
+}
+const setAudioTime = (value: number) => {
+  store.setAudioTime(value)
+}
 </script>

@@ -4,6 +4,9 @@
     <BaseHeader />
     <slot />
     <BaseFooter />
-    <MainPlayer />
+    <MainPlayer v-if="store.getAudioDuration()" />
   </div>
 </template>
+<script setup lang="ts">
+const store = useStore();
+</script>

@@ -5,7 +5,7 @@
         <BaseLoadingShimmer class="h-[21px] w-[125px] rounded-lg" />
       </div>
       <BaseLoadingShimmer class="w-full rounded-lg h-[35px]" />
-      <BaseLoadingShimmer class="h-[117px] rounded-lg my-5" />
+      <BaseLoadingShimmer class="h-[80px] rounded-lg" />
     </div>
   </div>
 </template>

@@ -1,51 +1,46 @@
 <template>
-  <transition name="player">
-    <div
-      v-if="store.getCurrentBeat().mp3"
-      id="player"
-      data-test="player"
-      class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
-      @mouseenter="toggleThumb(true)"
-      @mouseleave="toggleThumb(false)"
-    >
-      <BaseRangeInput
-        :thumb-state="thumbState"
-        :max="audioDuration - 1"
-        class="player__timeline"
-        :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
-        @toggle-thumb="focusThumb"
-        @update-value="updateAudioTime"
-        @set-value="setAudioTime"
-      />
-      <div
-        class="responsive flex h-[42px] items-center 525:max-w-full 525:px-2"
-      >
-        <div class="flex h-full items-center gap-2">
-          <button
-            data-test="playPauseButton"
-            class="play w-[25px] h-[25px]"
-            :class="store.getAudioPlaying() ? 'pause' : ''"
-            @click="store.setAudioPlaying()"
-          />
-          <div
-            class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
-          >
-            <span class="text-center w-[30px] 710:w-[25px]">
-              {{ audioCurrentTimeOutput }}
-            </span>
-            <span class="text-center w-[5px]"> / </span>
-            <span class="text-center w-[30px] 710:w-[25px]">
-              {{ audioDurationOutput }}
-            </span>
-          </div>
-        </div>
-        <PlayerInfo :data="beat" />
-        <div class="flex h-full items-center justify-end gap-5 710:w-[88px]">
-          <PlayerVolume @update-audio-volume="setAudioVolume" />
+  <div
+    id="player"
+    data-test="player"
+    class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
+    @mouseenter="toggleThumb(true)"
+    @mouseleave="toggleThumb(false)"
+  >
+    <BaseRangeInput
+      :thumb-state="thumbState"
+      :max="audioDuration - 1"
+      class="player__timeline"
+      :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
+      @toggle-thumb="focusThumb"
+      @update-value="updateAudioTime"
+      @set-value="setAudioTime"
+    />
+    <div class="responsive flex h-[42px] items-center 525:max-w-full 525:px-2">
+      <div class="flex h-full items-center gap-2">
+        <button
+          data-test="playPauseButton"
+          class="play w-[25px] h-[25px]"
+          :class="store.getAudioPlaying() ? 'pause' : ''"
+          @click="store.setAudioPlaying()"
+        />
+        <div
+          class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
+        >
+          <span class="text-center w-[30px] 710:w-[25px]">
+            {{ audioCurrentTimeOutput }}
+          </span>
+          <span class="text-center w-[5px]"> / </span>
+          <span class="text-center w-[30px] 710:w-[25px]">
+            {{ audioDurationOutput }}
+          </span>
         </div>
       </div>
+      <PlayerInfo :data="beat" />
+      <div class="flex h-full items-center justify-end gap-5 710:w-[88px]">
+        <PlayerVolume @update-audio-volume="setAudioVolume" />
+      </div>
     </div>
-  </transition>
+  </div>
 </template>
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
@@ -58,7 +53,7 @@ const audio = store.getMainAudio();
 const timelineUp = ref(true);
 const audioTimeOnUp = ref(0);
 const audioTimeOnDown = ref(0);
-const audioDuration = ref(0);
+const audioDuration = store.getAudioDuration();
 const thumbState = ref(false);
 const thumbFocused = ref(false);
 const toggleThumb = (state: boolean): void => {
@@ -73,23 +68,27 @@ const focusThumb = (state: boolean): void => {
   toggleThumb(false);
 };
 // play pause on space bind
+function spaceDown(e: KeyboardEvent) {
+  // prevent scroll
+  if (e.key === " ") {
+    e.preventDefault();
+  }
+}
+function spaceUp(e: KeyboardEvent) {
+  if (e.key === " ") {
+    store.setAudioPlaying();
+  }
+}
 onMounted(() => {
-  document.addEventListener("keydown", (e: KeyboardEvent): void => {
-    // prevent scroll
-    if (e.key === " ") {
-      e.preventDefault();
-    }
-  });
-  document.addEventListener("keyup", (e: KeyboardEvent): void => {
-    if (e.key === " ") {
-      store.setAudioPlaying();
-    }
-  });
+  document.addEventListener("keydown", spaceDown);
+  document.addEventListener("keyup", spaceUp);
+});
+onUnmounted(() => {
+  document.removeEventListener("keydown", spaceDown);
+  document.removeEventListener("keyup", spaceUp);
 });
 // update refs and play audio when metadata is loaded
 function audioInit(): void {
-  // update local audioDuration state
-  audioDuration.value = Math.ceil(audio.duration);
   // update local current time
   audioTimeOnUp.value = audio.currentTime;
   // play audio
@@ -121,7 +120,7 @@ watch(playing, (newValue: boolean): void => {
     // interval which updates current time nad its output
     int = setInterval(() => {
       // if audio ended
-      if (Math.ceil(audio.currentTime) === audioDuration.value) {
+      if (Math.ceil(audio.currentTime) === audioDuration) {
         // setting audio time to zero and pausing the audio
         setAudioTime(0);
         store.setAudioPlaying(false);
@@ -144,7 +143,7 @@ const audioCurrentTimeOutput = computed((): string => {
 });
 // computed property for audio duration output
 const audioDurationOutput = computed((): string => {
-  return useTimeOutput(audioDuration.value);
+  return useTimeOutput(audioDuration);
 });
 // function is used to update current time output, not the value itself!
 const updateAudioTime = (newValue: number): void => {
@@ -161,9 +160,6 @@ const setAudioVolume = (newValue: number) => {
   // volume range has max=100 for the ease of perception
   audio.volume = +(newValue / 100).toFixed(2);
 };
-// const downloadIncrement = () => {
-//   axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
-// };
 </script>
 <style lang="scss" scoped>
 .play {

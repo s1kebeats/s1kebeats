@@ -5,9 +5,9 @@ export default defineNuxtConfig({
     // Will register file from project server-middleware directory to handle /server-api/* requests
     { path: "/api", handler: "~/server_api/index.ts" },
   ],
-  vite: {
-    plugins: [eslintPlugin()],
-  },
+  // vite: {
+  //   plugins: [eslintPlugin()],
+  // },
   modules: ["@pinia/nuxt", "@nuxtjs/tailwindcss"],
   imports: {
     dirs: ["stores"],

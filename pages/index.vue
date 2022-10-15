@@ -6,20 +6,20 @@
       link-title="Посмотреть все биты"
       link-url="/beats?orderBy=createdAt"
     >
-      <template
+      <!-- <template
         v-if="recommendedBeatsData.pending || recommendedAuthorsData.pending"
       >
         <BeatLoadingShimmer v-for="_ in Array(6)" />
-      </template>
-      <RecommededBeatsList v-else :list="recommendedBeatsData.data" />
+      </template> -->
+      <RecommededBeatsList :list="recommendedBeatsData.data" />
     </SectionItemsList>
     <SectionItemsList title="Рекоммендуемые авторы">
-      <template
+      <!-- <template
         v-if="recommendedBeatsData.pending || recommendedAuthorsData.pending"
       >
         <AuthorLoadingShimmer v-for="_ in Array(8)" />
-      </template>
-      <RecommededAuthorsList v-else :list="recommendedAuthorsData.data" />
+      </template> -->
+      <RecommededAuthorsList :list="recommendedAuthorsData.data" />
     </SectionItemsList>
   </main>
 </template>
