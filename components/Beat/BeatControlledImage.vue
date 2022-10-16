@@ -72,9 +72,12 @@ const hideOverlay = (): void => {
 const playBeat = (): void => {
   // pause
   if (store.getCurrentBeat().id === props.data.id) {
-    store.setAudioPlaying();
+    store.toggleAudioPlaying();
     return;
   }
   store.setCurrentBeat(props.data);
+  if (!store.getAudioPlaying()) {
+    store.toggleAudioPlaying()
+  }
 };
 </script>

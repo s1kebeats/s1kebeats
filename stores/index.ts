@@ -8,6 +8,7 @@ export const useStore = defineStore("main", {
     _audioDuration: 0,
     _audioTime: 0,
     _fakeAudioTime: 0,
+    _audioVolume: 100,
   }),
   actions: {
     toggleOverlay(): void {
@@ -23,6 +24,9 @@ export const useStore = defineStore("main", {
       const audio = document.querySelector("#mainAudio") as HTMLAudioElement;
       audio.src = beat.mp3;
       Object.assign(this._currentBeat, beat);
+      if (this.getAudioPlaying()) {
+        this.toggleAudioPlaying()
+      }
     },
     setAudioDuration(duration: number): void {
       this._audioDuration = duration;
@@ -40,14 +44,18 @@ export const useStore = defineStore("main", {
         this.getMainAudio().play();
         this._audioPlaying = true;
         interval = setInterval(() => {
+          if (Math.ceil(this.getMainAudio().currentTime) === this.getAudioDuration()) {
+            this.toggleAudioPlaying();
+            this.setAudioTime(0);
+          }
           this.updateAudioTime(Math.ceil(this.getMainAudio().currentTime));
         }, 1000);
       }
     },
     setAudioTime(time: number): void {
-      this.setFakeAudioTime(0)
+      this.setFakeAudioTime(0);
       this.getMainAudio().currentTime = time;
-      this.updateAudioTime(time)
+      this.updateAudioTime(time);
     },
     updateAudioTime(time: number): void {
       this._audioTime = time;
@@ -66,6 +74,13 @@ export const useStore = defineStore("main", {
     },
     getMainAudio(): HTMLAudioElement {
       return document.querySelector("#mainAudio");
+    },
+    getAudioVolume(): number {
+      return this._audioVolume;
+    },
+    setAudioVolume(volume: number): void {
+      this.getMainAudio().volume = volume / 100;
+      this._audioVolume = volume;
     },
   },
 });

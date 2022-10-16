@@ -6,24 +6,19 @@
   >
     <BaseRangeInput
       :thumb-state="thumbState"
-      :value="audioVolume"
+      :value="store.getAudioVolume()"
       :max="100"
-      class="w-[65px] h-[2px] mx-[6px]"
+      class="w-[65px] h-[2px] mx-[6px] rounded-full"
       @toggle-thumb="focusThumb"
-      @update-value="updateAudioVolume"
+      @update-value="setAudioVolume"
     />
-    <button
-      data-test="volumeButton"
-      class="block w-[26px] h-[26px] volume"
-      :class="audioVolume ? '' : 'muted'"
-      @click="toggleAudioVolume"
-    ></button>
+    <button @click="toggleAudioVolume">
+      <img src="~/assets/images/volume-medium.svg" class="w-[22px]" />
+    </button>
   </div>
 </template>
 <script setup lang="ts">
-const emit = defineEmits<{
-  (e: "updateAudioVolume", value: number): void;
-}>();
+const store = useStore();
 const thumbState = ref(false);
 const thumbFocused = ref(false);
 const focusThumb = (state: boolean): void => {
@@ -37,34 +32,20 @@ const toggleThumb = (state: boolean): void => {
   }
   thumbState.value = state;
 };
-const audioVolume = ref(
-  localStorage.getItem("volume") !== null
-    ? +localStorage.getItem("volume")!
-    : 100
-);
-onMounted(() => {
-  emit("updateAudioVolume", audioVolume.value);
-});
-const updateAudioVolume = (value: number): void => {
-  audioVolume.value = value;
-  emit("updateAudioVolume", audioVolume.value);
+const setAudioVolume = (volume: number): void => {
+  if (volume) localStorage.setItem("audioVolume", String(volume));
+  store.setAudioVolume(volume);
 };
 const toggleAudioVolume = (): void => {
-  // mute
-  if (audioVolume.value) audioVolume.value = 0;
-  // unmute
-  else
-    audioVolume.value =
-      localStorage.getItem("volume") !== null
-        ? +localStorage.getItem("volume")!
-        : 100;
-  emit("updateAudioVolume", audioVolume.value);
+  if (store.getAudioVolume()) {
+    setAudioVolume(0);
+  } else {
+    store.setAudioVolume(+localStorage.getItem("audioVolume"));
+  }
 };
-// changing local storage volume value
-watch(audioVolume, (value) => {
-  // not setting muted value
-  if (value) localStorage.setItem("volume", String(value));
-});
+onMounted(() => {
+  store.setAudioVolume(+localStorage.getItem("audioVolume"));
+})
 </script>
 <style lang="scss">
 .volume {

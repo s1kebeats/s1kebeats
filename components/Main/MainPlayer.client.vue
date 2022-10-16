@@ -9,7 +9,11 @@
     <BaseRangeInput
       :thumb-state="thumbState"
       :max="store.getAudioDuration() - 1"
-      :value="store.getFakeAudioTime() ? store.getFakeAudioTime() : store.getAudioTime()"
+      :value="
+        store.getFakeAudioTime()
+          ? store.getFakeAudioTime()
+          : store.getAudioTime()
+      "
       @toggle-thumb="focusThumb"
       @update-value="setFakeAudioTime"
       @set-value="setAudioTime"
@@ -26,7 +30,13 @@
           class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
         >
           <span class="text-center w-[30px] 710:w-[25px]">
-            {{ useTimeOutput(store.getFakeAudioTime() ? store.getFakeAudioTime() : store.getAudioTime()) }}
+            {{
+              useTimeOutput(
+                store.getFakeAudioTime()
+                  ? store.getFakeAudioTime()
+                  : store.getAudioTime()
+              )
+            }}
           </span>
           <span class="text-center w-[5px]"> / </span>
           <span class="text-center w-[30px] 710:w-[25px]">
@@ -36,7 +46,7 @@
       </div>
       <PlayerInfo :data="store.getCurrentBeat()" />
       <div class="flex h-full items-center justify-end gap-5 710:w-[88px]">
-        <PlayerVolume @update-audio-volume="setAudioVolume" />
+        <PlayerVolume />
       </div>
     </div>
   </div>
@@ -77,16 +87,11 @@ onUnmounted(() => {
   document.removeEventListener("keyup", spaceUp);
 });
 const setFakeAudioTime = (value: number) => {
-  store.setFakeAudioTime(value)
-}
+  store.setFakeAudioTime(value);
+};
 const setAudioTime = (value: number) => {
-  store.setAudioTime(value)
-}
-// // function sets audio volume
-// const setAudioVolume = (newValue: number) => {
-//   // volume range has max=100 for the ease of perception
-//   audio.volume = +(newValue / 100).toFixed(2);
-// };
+  store.setAudioTime(value);
+};
 </script>
 <style lang="scss" scoped>
 .play {
