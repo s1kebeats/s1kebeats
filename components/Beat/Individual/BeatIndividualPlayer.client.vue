@@ -46,13 +46,7 @@
         @set-value="setAudioTime"
       />
     </div>
-    <div class="w-[55px] h-[55px] flex items-center justify-center">
-      <div
-        class="cursor-pointer w-[45px] h-[45px] mr-1 rounded-full bg-white flex items-center justify-center text-xs text-[#878787] font-semibold hover:text-black transition-all"
-      >
-        10%
-      </div>
-    </div>
+    <BeatIndividualPlayerVolume />
   </div>
 </template>
 <script setup lang="ts">
