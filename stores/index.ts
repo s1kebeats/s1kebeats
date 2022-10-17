@@ -25,7 +25,7 @@ export const useStore = defineStore("main", {
       audio.src = beat.mp3;
       Object.assign(this._currentBeat, beat);
       if (this.getAudioPlaying()) {
-        this.toggleAudioPlaying()
+        this.toggleAudioPlaying();
       }
     },
     setAudioDuration(duration: number): void {
@@ -44,7 +44,10 @@ export const useStore = defineStore("main", {
         this.getMainAudio().play();
         this._audioPlaying = true;
         interval = setInterval(() => {
-          if (Math.ceil(this.getMainAudio().currentTime) === this.getAudioDuration()) {
+          if (
+            Math.ceil(this.getMainAudio().currentTime) ===
+            this.getAudioDuration()
+          ) {
             this.toggleAudioPlaying();
             this.setAudioTime(0);
           }

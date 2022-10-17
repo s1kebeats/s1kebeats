@@ -45,7 +45,7 @@ const toggleAudioVolume = (): void => {
 };
 onMounted(() => {
   store.setAudioVolume(+localStorage.getItem("audioVolume"));
-})
+});
 </script>
 <style lang="scss">
 .volume {

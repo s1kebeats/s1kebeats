@@ -2,23 +2,14 @@
   <main class="grow flex flex-col items-center gap-10">
     <SectionLanding />
     <SectionItemsList
+      class="responsive"
       title="Рекоммендуемые биты"
       link-title="Посмотреть все биты"
       link-url="/beats?orderBy=createdAt"
     >
-      <!-- <template
-        v-if="recommendedBeatsData.pending || recommendedAuthorsData.pending"
-      >
-        <BeatLoadingShimmer v-for="_ in Array(6)" />
-      </template> -->
       <RecommededBeatsList :list="recommendedBeatsData.data" />
     </SectionItemsList>
-    <SectionItemsList title="Рекоммендуемые авторы">
-      <!-- <template
-        v-if="recommendedBeatsData.pending || recommendedAuthorsData.pending"
-      >
-        <AuthorLoadingShimmer v-for="_ in Array(8)" />
-      </template> -->
+    <SectionItemsList class="responsive" title="Рекоммендуемые авторы">
       <RecommededAuthorsList :list="recommendedAuthorsData.data" />
     </SectionItemsList>
   </main>

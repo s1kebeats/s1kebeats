@@ -5,7 +5,7 @@
     <BeatIndividualInfoBase :data="data" />
     <BeatIndividualDownloadButton :url="data.mp3" />
     <BeatIndividualInfoChars :data="data" />
-    <BeatIndividualInfoTags v-if="data.tags.length" :data="data" />
+    <BeatIndividualInfoTags v-if="data.tags.length" :data="data.tags" />
     <BeatIndividualInfoDescription
       v-if="data.description"
       :data="data.description"

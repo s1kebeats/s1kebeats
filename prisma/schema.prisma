@@ -34,6 +34,9 @@ model User {
   displayedName String?        @db.VarChar(63)
   about         String?        @db.VarChar(255)
   image         String         @default("")
+  youtubeLink   String?
+  vkLink        String?
+  instagramLink String?
 }
 
 model Beat {

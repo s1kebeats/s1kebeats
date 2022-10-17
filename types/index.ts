@@ -1,12 +1,12 @@
 export {};
 
 declare global {
-  interface AuthorIndividual {
+  interface Author {
     displayedName?: string;
     username: string;
     image: string;
   }
-  interface Author {
+  interface AuthorForBeat {
     username: string;
     displayedName?: string;
   }
@@ -14,10 +14,23 @@ declare global {
     id: number;
     name: string;
     bpm: number;
-    author: Author;
+    author: AuthorForBeat;
     image: string;
     mp3: string;
     wavePrice: number;
+  }
+  interface AuthorIndividual {
+    displayedName?: string;
+    username: string;
+    image: string;
+    createdAt: string;
+    about: string;
+    beats: Beat[];
+    playsCount: number;
+    beatsCount: number;
+    youtubeLink?: string;
+    vkLink?: string;
+    instagramLink?: string;
   }
   interface Tag {
     id: number;

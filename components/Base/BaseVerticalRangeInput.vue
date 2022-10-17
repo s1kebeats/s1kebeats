@@ -12,7 +12,6 @@
       data-test="beforeThumb"
       class="absolute h-0 w-full gradi bottom-0"
     />
-    
   </div>
 </template>
 <script setup lang="ts">
@@ -36,12 +35,12 @@ const setHeight = (value: number): void => {
 };
 const updateValue = (event: MouseEvent): void => {
   // updating move price to handle range resizing
-  heightPrice.value = +(rangeWrapper.value!.clientHeight / props.max!).toFixed(2);
+  heightPrice.value = +(rangeWrapper.value!.clientHeight / props.max!).toFixed(
+    2
+  );
   // new thumb position (left: Xpx)
   let newHeight =
-    
-    rangeWrapper.value!.getBoundingClientRect().bottom
-    - event.clientY
+    rangeWrapper.value!.getBoundingClientRect().bottom - event.clientY;
   // right side thumb limit
   const maxHeight = rangeWrapper.value!.clientHeight;
   // limiting left side
@@ -53,9 +52,7 @@ const updateValue = (event: MouseEvent): void => {
     newHeight = maxHeight;
   }
   // counting new range value and emitting it
-  const newValue = +(
-    newHeight / heightPrice.value
-  ).toFixed(0);
+  const newValue = +(newHeight / heightPrice.value).toFixed(0);
   locaValue.value = newValue;
   emit("updateValue", newValue);
 };
@@ -91,12 +88,18 @@ watch(
 // setting initial STATIC thumb position
 onMounted(() => {
   // updating move price to handle range resizing
-  heightPrice.value = +(rangeWrapper.value!.clientWidth / props.max!).toFixed(2);
+  heightPrice.value = +(rangeWrapper.value!.clientWidth / props.max!).toFixed(
+    2
+  );
   setHeight(props.value!);
 });
 </script>
 <style lang="scss" scoped>
 .gradi {
-  background: linear-gradient(0deg,rgba(160, 157, 167, 0.5),rgba(116,95,199,.5));
+  background: linear-gradient(
+    0deg,
+    rgba(160, 157, 167, 0.5),
+    rgba(116, 95, 199, 0.5)
+  );
 }
 </style>

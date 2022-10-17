@@ -1,5 +1,5 @@
 <template>
-  <section class="responsive flex flex-col gap-5">
+  <section class="flex flex-col gap-5">
     <div class="flex items-center justify-between">
       <h1 class="text-left text-xl font-semibold text-black">
         {{ title }}

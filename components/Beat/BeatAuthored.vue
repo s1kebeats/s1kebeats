@@ -22,16 +22,6 @@
     >
       {{ data.name }}
     </NuxtLink>
-    <NuxtLink
-      :to="`/${data.author.username}`"
-      class="text-black text-sm link link-hover truncate h-[20px]"
-    >
-      {{
-        data.author.displayedName
-          ? data.author.displayedName
-          : data.author.username
-      }}
-    </NuxtLink>
   </div>
 </template>
 <script setup lang="ts">

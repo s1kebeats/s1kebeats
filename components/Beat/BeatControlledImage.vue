@@ -77,7 +77,7 @@ const playBeat = (): void => {
   }
   store.setCurrentBeat(props.data);
   if (!store.getAudioPlaying()) {
-    store.toggleAudioPlaying()
+    store.toggleAudioPlaying();
   }
 };
 </script>
