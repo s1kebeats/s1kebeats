@@ -1,6 +1,6 @@
 <template>
     <div class="w-[55px] h-[55px] flex items-center justify-center">
-      <BaseVerticalRangeInput :value="store.getAudioVolume()" :max="100" @update-value="setAudioVolume" />
+      <BaseVerticalRangeInput class="shadow-lg" :value="store.getAudioVolume()" :max="100" @update-value="setAudioVolume" />
     </div>
 </template>
 <script setup lang="ts">

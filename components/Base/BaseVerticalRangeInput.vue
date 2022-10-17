@@ -3,14 +3,14 @@
     ref="rangeWrapper"
     data-test="customRange"
     tabindex="0"
-    class="focus:outline-none overflow-hidden relative cursor-pointer w-[45px] h-[45px] mr-1 rounded-full bg-white flex items-center justify-center text-xs text-[#878787] font-semibold hover:text-black transition-all"
+    class="focus:outline-none overflow-hidden relative cursor-pointer w-[45px] h-[45px] mr-1 rounded-full bg-white flex items-center justify-center text-xs text-black font-semibold"
     @mousedown.prevent="rangeHandler"
   >
-    {{ value }}%
+    <span class="absolute z-[1]">{{ value }}%</span>
     <div
       ref="nodeValue"
       data-test="beforeThumb"
-      class="absolute h-0 w-full bg-red-500 bottom-0"
+      class="absolute h-0 w-full gradi bottom-0"
     />
     
   </div>
@@ -95,3 +95,8 @@ onMounted(() => {
   setHeight(props.value!);
 });
 </script>
+<style lang="scss" scoped>
+.gradi {
+  background: linear-gradient(0deg,rgba(160, 157, 167, 0.5),rgba(116,95,199,.5));
+}
+</style>
