@@ -3,7 +3,7 @@
     <!-- <SectionOverlay /> -->
     <BaseHeader />
     <slot />
-    <BaseFooter />
+    <!-- <BaseFooter /> -->
     <MainPlayer v-if="store.getAudioDuration()" />
   </div>
 </template>

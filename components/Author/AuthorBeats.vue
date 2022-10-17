@@ -1,5 +1,5 @@
 <template>
-  <SectionItemsList class="flex-1" title="Биты">
+  <SectionItemsList class="self-start flex-1" title="Биты">
     <BaseItemsList>
       <BeatAuthored v-for="item in data" :key="item.id" :data="item" />
     </BaseItemsList>

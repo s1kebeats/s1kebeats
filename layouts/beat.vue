@@ -3,6 +3,6 @@
     <!-- <SectionOverlay /> -->
     <BaseHeader />
     <slot />
-    <BeatFooter />
+    <!-- <BeatFooter /> -->
   </div>
 </template>

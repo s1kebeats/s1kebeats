@@ -1,7 +1,13 @@
 <template>
-  <section class="responsive pt-5 flex justify-center items-start gap-5">
+  <section class="flex-1 responsive pt-5 flex justify-center gap-5">
     <AuthorIndividualInfo :data="data" />
-    <AuthorBeats :data="data.beats" />
+    <AuthorBeats v-if="data.beats.length" :data="data.beats" />
+    <div class="flex-1 flex items-center justify-center text-black font-semibold" v-else>
+      <div class="flex flex-col items-center justify-center gap-2 text-lg">
+        <img src="~/assets/images/radio.svg" class="w-[45px]">
+        Автор еще ничего не опубликовал.
+      </div>      
+    </div>
   </section>
 </template>
 <script setup lang="ts">
