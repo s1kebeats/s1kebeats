@@ -9,6 +9,7 @@
       :value="store.getAudioVolume()"
       :max="100"
       class="w-[65px] h-[2px] mx-[6px] rounded-full"
+      :colors="{back: '#a09da7',front: '#FFFFFF'}"
       @toggle-thumb="focusThumb"
       @update-value="setAudioVolume"
     />

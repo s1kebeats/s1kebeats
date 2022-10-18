@@ -17,6 +17,7 @@
       @toggle-thumb="focusThumb"
       @update-value="setFakeAudioTime"
       @set-value="setAudioTime"
+      :colors="{back: '#a09da7',front: '#745fc7'}"
     />
     <div class="responsive flex h-[42px] items-center 525:max-w-full 525:px-2">
       <div class="flex h-full items-center gap-2">

@@ -3,7 +3,8 @@
     ref="range"
     data-test="customRange"
     tabindex="0"
-    class="custom-range relative cursor-pointer h-[3px] w-full box-border flex items-center bg-base-300 focus:outline-none"
+    class="custom-range relative cursor-pointer h-[3px] w-full box-border flex items-center focus:outline-none"
+    :class="`bg-[${colors.back}]`"
     @mousedown.prevent="thumbHandler"
     @focus="toggleThumb(true)"
     @focusout="toggleThumb(false)"
@@ -11,14 +12,16 @@
     <div
       ref="beforethumb"
       data-test="beforeThumb"
-      class="beforethumb h-full rounded-full w-0 bg-white"
+      class="beforethumb h-full rounded-full w-0"
+      :class="`bg-[${colors.front}]`"
     />
     <transition name="overlay">
       <div
         v-show="thumbState"
         ref="thumb"
         data-test="thumb"
-        class="thumb absolute w-[12px] h-[12px] rounded-full bg-white"
+        class="thumb absolute w-[12px] h-[12px] rounded-full"
+        :class="`bg-[${colors.front}]`"
       />
     </transition>
   </div>
@@ -30,11 +33,15 @@ const emit = defineEmits<{
   (e: "setValue", value: number): void;
   (e: "toggleThumb", state: boolean): void;
 }>();
-const props = defineProps({
-  max: Number,
-  value: Number,
-  thumbState: Boolean,
-});
+const props = defineProps<{
+  max: number;
+  value: number;
+  thumbState: boolean;
+  colors: {
+    back: string;
+    front: string;
+  }
+}>();
 const movePrice = ref(0);
 const locaValue = ref(0);
 const range = ref() as Ref<HTMLDivElement>;
