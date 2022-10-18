@@ -19,14 +19,17 @@ const router = express.Router();
 function computeAuthorBeats(user: AuthorIndividual): AuthorIndividual {
   return {
     ...user,
-    beatsCount: user.beats.length
-  }
+    beatsCount: user.beats.length,
+  };
 }
 function computeAuthorPlays(user: AuthorIndividual): AuthorIndividual {
   return {
     ...user,
-    playsCount: user.beats.reduce((acc: number, curr: BeatIndividual): number => acc + curr.plays, 0)
-  }
+    playsCount: user.beats.reduce(
+      (acc: number, curr: BeatIndividual): number => acc + curr.plays,
+      0
+    ),
+  };
 }
 
 router.get("/:username", async (req, res, next) => {

@@ -5,7 +5,10 @@
     <AuthorIndividualInfoBase :data="data" />
     <AuthorIndividualInfoChars :data="data" />
     <AuthorIndividualInfoAbout v-if="data.about" :data="data.about" />
-    <AuthorIndividualInfoSocials v-if="data.vkLink || data.youtubeLink || data.instagramLink" :data="data" />
+    <AuthorIndividualInfoSocials
+      v-if="data.vkLink || data.youtubeLink || data.instagramLink"
+      :data="data"
+    />
   </div>
 </template>
 <script setup lang="ts">

@@ -19,17 +19,18 @@
         <div
           class="text-xs text-white flex items-center gap-1 select-none 710:hidden"
         >
-          <div
+          <NuxtLink
+            :to="`/${data.author.username}`"
             title="Type"
             data-test="playerBeatArtist"
-            class="bg-primary rounded-md px-1 h-[18px] flex items-center transition-all"
+            class="bg-primary rounded-md px-1 h-[18px] flex items-center transition-all transition-all"
           >
             {{
               data.author.displayedName
                 ? data.author.displayedName
                 : data.author.username
             }}
-          </div>
+          </NuxtLink>
           <div
             title="BPM"
             data-test="playerBeatBpm"

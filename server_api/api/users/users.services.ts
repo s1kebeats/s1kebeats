@@ -52,14 +52,29 @@ export const findUserByUsername = (username: string) => {
       displayedName: true,
       about: true,
       image: true,
-      beats: true,
+      beats: {
+        select: {
+          id: true,
+          name: true,
+          bpm: true,
+          author: {
+            select: {
+              username: true,
+              displayedName: true,
+            },
+          },
+          image: true,
+          mp3: true,
+          wavePrice: true,
+        }
+      },
       youtubeLink: true,
       instagramLink: true,
       vkLink: true,
     },
   });
-  return user
-}
+  return user;
+};
 
 export const allUsers = () =>
   prisma.user.findMany({

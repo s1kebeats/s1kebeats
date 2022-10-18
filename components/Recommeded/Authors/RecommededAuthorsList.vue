@@ -1,7 +1,5 @@
 <template>
-  <BaseItemsList>
-    <MainAuthor v-for="item in list" :key="item.username" :data="item" />
-  </BaseItemsList>
+  <MainAuthor v-for="item in list" :key="item.username" :data="item" />
 </template>
 <script setup lang="ts">
 const props = defineProps<{
