@@ -18,6 +18,7 @@ declare global {
     image: string;
     mp3: string;
     wavePrice: number;
+    plays: number;
   }
   interface AuthorIndividual {
     displayedName?: string;

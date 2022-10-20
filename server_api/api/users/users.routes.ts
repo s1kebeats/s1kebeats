@@ -25,17 +25,14 @@ function computeAuthorBeats(user: AuthorIndividual): AuthorIndividual {
 function computeAuthorPlays(user: AuthorIndividual): AuthorIndividual {
   return {
     ...user,
-    playsCount: user.beats.reduce(
-      (acc: number, curr: BeatIndividual): number => acc + curr.plays,
-      0
-    ),
+    playsCount: user.beats.reduce((acc, curr) => acc + curr.plays, 0)
   };
 }
 
 router.get("/:username", async (req, res, next) => {
   try {
     const username = req.params.username;
-    const user = await findUserByUsername(username);
+    const user: any = await findUserByUsername(username);
     res.json(computeAuthorPlays(computeAuthorBeats(user)));
   } catch (err) {
     next(err);

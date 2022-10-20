@@ -66,6 +66,7 @@ export const findUserByUsername = (username: string) => {
           image: true,
           mp3: true,
           wavePrice: true,
+          plays: true,
         }
       },
       youtubeLink: true,
