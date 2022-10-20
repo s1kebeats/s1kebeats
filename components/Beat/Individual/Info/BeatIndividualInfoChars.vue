@@ -1,26 +1,24 @@
 <template>
-  <div class="w-full border-y-[1px]">
-    <table class="my-5 text-sm text-black">
-      <tr>
-        <td class="text-left">Опубликован</td>
-        <td class="w-full text-right">
+    <div class="w-full border-y-[1px] py-5 text-sm text-black">
+      <p class="flex justify-between">
+        <span class="text-left">Опубликован</span>
+        <span class="w-full text-right">
           {{ useDateOutput(data.createdAt) }}
-        </td>
-      </tr>
-      <tr>
-        <td class="text-left">BPM</td>
-        <td class="w-full text-right">
+        </span>
+      </p>
+      <p class="flex justify-between">
+        <span class="text-left">BPM</span>
+        <span class="w-full text-right">
           {{ data.bpm }}
-        </td>
-      </tr>
-      <tr>
-        <td class="text-left">Прослушивания</td>
-        <td class="w-full text-right">
+        </span>
+      </p>
+      <p class="flex justify-between">
+        <span class="text-left">Прослушивания</span>
+        <span class="w-full text-right">
           {{ data.plays }}
-        </td>
-      </tr>
-    </table>
-  </div>
+        </span>
+      </p>
+    </div>
 </template>
 <script setup lang="ts">
 const props = defineProps<{

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex flex-col gap-2">
-    <div class="text-sm text-black text-left font-semibold">Теги</div>
+    <p class="text-sm text-black text-left font-semibold">Теги</p>
     <BeatIndividualTagList :list="data" />
   </div>
 </template>

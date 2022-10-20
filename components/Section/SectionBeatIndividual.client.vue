@@ -19,6 +19,7 @@ onMounted(() => {
       image: props.data.image,
       mp3: props.data.mp3,
       wavePrice: props.data.wavePrice,
+      plays: props.data.plays,
     });
 });
 </script>
