@@ -13,6 +13,6 @@ import axios from "axios";
 const route = useRoute();
 const { isLoading, data, isError, error } = await useQuery(
     `authors-${route.query.query}`,
-    () => axios.get(`http://localhost:3000/api/users/query=${route.query.query}`)  
+    () => axios.get(`http://localhost:3000/api/users?query=${route.query.query}`)  
 )
 </script>

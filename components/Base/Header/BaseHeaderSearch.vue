@@ -14,6 +14,7 @@
       class="flex-1 h-[20px] focus:outline-none text-sm"
       placeholder="Найди свой звук"
       :value="searchQuery.query"
+      autocomplete="off"
       @input="searchQueryInput"
     />
     <BaseSelect :options="searchOptions" @select="changeSearchType" />
@@ -43,8 +44,9 @@ const searchQueryInput = (e: Event): void => {
   searchQuery.query = target.value;
 };
 const submitSearchQuery = async () => {
-  if (!searchQuery.query) delete searchQuery.query;
-  await navigateTo(`/${searchQuery.type}?query=${searchQuery.query}`);
+  if (searchQuery.query) {
+    await navigateTo(`/${searchQuery.type}?query=${searchQuery.query}`);
+  }
 };
 const submitOnEnter = (e: KeyboardEvent) => {
   if (e.key === "Enter" && document.activeElement === searchInput.value) {
