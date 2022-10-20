@@ -1,17 +1,8 @@
 <template>
-  <main class="grow flex flex-col items-center gap-10">
+  <main class="grow flex flex-col items-center gap-10 pb-10">
     <SectionLanding />
-    <SectionItemsList
-      class="responsive"
-      title="Рекоммендуемые биты"
-      link-title="Посмотреть все биты"
-      link-url="/beats?orderBy=createdAt"
-    >
-      <RecommededBeatsList :list="recommendedBeatsData.data" />
-    </SectionItemsList>
-    <SectionItemsList class="responsive" title="Рекоммендуемые авторы">
-      <RecommededAuthorsList :list="recommendedAuthorsData.data" />
-    </SectionItemsList>
+    <SectionRecommendedBeats :data="recommendedBeatsData.data" />
+    <SectionRecommendedAuthors :data="recommendedAuthorsData.data" />
   </main>
 </template>
 <script setup lang="ts">

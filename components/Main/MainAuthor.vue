@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2">
+  <article class="flex flex-col gap-2">
     <NuxtLink :to="`/${data.username}`" class="rounded-full">
       <img
         :src="data.image"
@@ -13,10 +13,10 @@
     >
       {{ data.displayedName ? data.displayedName : data.username }}
     </NuxtLink>
-  </div>
+  </article>
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-  data: AuthorIndividual;
+  data: Author;
 }>();
 </script>

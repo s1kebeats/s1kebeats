@@ -1,5 +1,5 @@
 <template>
-  <div
+  <article
     data-test="beat"
     class="flex flex-col w-[230px] 930:w-[145px] bg-base-100 rounded-lg"
   >
@@ -32,7 +32,7 @@
           : data.author.username
       }}
     </NuxtLink>
-  </div>
+  </article>
 </template>
 <script setup lang="ts">
 // global store
