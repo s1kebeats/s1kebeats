@@ -1,5 +1,5 @@
 import express from "express";
-import { findUserByUsername, allUsers } from "./users.services";
+import { findUserByUsername, allUsers, findUsers } from "./users.services";
 
 const router = express.Router();
 
@@ -40,7 +40,12 @@ router.get("/:username", async (req, res, next) => {
 });
 router.get("/", async (req, res, next) => {
   try {
-    const users = await allUsers();
+    let users;
+    if (req.query.query) {
+      users = await findUsers(req.query.query);
+    } else {
+      users = await allUsers();
+    }
     res.json(users);
   } catch (error) {
     next(error);

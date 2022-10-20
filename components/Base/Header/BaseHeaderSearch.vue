@@ -44,7 +44,7 @@ const searchQueryInput = (e: Event): void => {
 };
 const submitSearchQuery = async () => {
   if (!searchQuery.query) delete searchQuery.query;
-  await navigateTo(`/search?${new URLSearchParams(searchQuery).toString()}`);
+  await navigateTo(`/${searchQuery.type}?query=${searchQuery.query}`);
 };
 const submitOnEnter = (e: KeyboardEvent) => {
   if (e.key === "Enter" && document.activeElement === searchInput.value) {

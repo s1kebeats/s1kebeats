@@ -5,6 +5,7 @@
     tabindex="0"
     class="custom-range relative cursor-pointer h-[3px] w-full box-border flex items-center focus:outline-none"
     :class="`bg-[${colors.back}]`"
+    :style="`background:${colors.back}`"
     @mousedown.prevent="thumbHandler"
     @focus="toggleThumb(true)"
     @focusout="toggleThumb(false)"
@@ -14,6 +15,7 @@
       data-test="beforeThumb"
       class="beforethumb h-full rounded-full w-0"
       :class="`bg-[${colors.front}]`"
+      :style="`background:${colors.front}`"
     />
     <transition name="overlay">
       <div
@@ -22,6 +24,7 @@
         data-test="thumb"
         class="thumb absolute w-[12px] h-[12px] rounded-full"
         :class="`bg-[${colors.front}]`"
+        :style="`background:${colors.front}`"
       />
     </transition>
   </div>

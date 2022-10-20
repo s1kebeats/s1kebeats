@@ -85,3 +85,27 @@ export const allUsers = () =>
       image: true,
     },
   });
+
+export const findUsers = (query?: string) => (
+  prisma.user.findMany({
+    where: {
+      OR: [
+        {
+          username: {
+            contains: query
+          }
+        },
+        {
+          displayedName: {
+            contains: query
+          }
+        }
+      ]
+    },
+    select: {
+      username: true,
+      displayedName: true,
+      image: true,
+    },
+  })
+)
