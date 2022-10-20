@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-start gap-4 w-full">
+  <article class="flex items-start gap-4 w-full">
     <NuxtLink class="rounded-full" :to="`/${data.author.username}`">
       <img
         :src="data.author.image"
@@ -19,11 +19,11 @@
               : data.author.username
           }}</NuxtLink
         >
-        <div class="text-xs">{{ useCommentTimeOutput(data.createdAt) }}</div>
+        <span class="text-xs">{{ useCommentTimeOutput(data.createdAt) }}</span>
       </div>
-      <div class="text-black text-sm font-semibold">{{ data.content }}</div>
+      <p class="text-black text-sm font-semibold">{{ data.content }}</p>
     </div>
-  </div>
+  </article>
 </template>
 <script setup lang="ts">
 const props = defineProps<{

@@ -8,9 +8,9 @@
     "
     @click="select"
   >
-    <div class="text-lg font-semibold pb-1">{{ data.title }}</div>
-    <div class="text-sm font-semibold text-primary">{{ data.price }}руб.</div>
-    <div class="text-xs">{{ data.desc }}</div>
+    <p class="text-lg font-semibold pb-1">{{ data.title }}</p>
+    <p class="text-sm font-semibold text-primary">{{ data.price }}руб.</p>
+    <p class="text-xs">{{ data.desc }}</p>
   </div>
 </template>
 <script setup lang="ts">

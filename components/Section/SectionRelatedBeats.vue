@@ -6,9 +6,9 @@
     </BaseItemsList>
   </div>
   <div v-else class="pb-10">
-    <div class="text-lg font-semibold text-black flex items-center mb-5">
+    <p class="text-lg font-semibold text-black flex items-center mb-5">
       Похожие биты
-    </div>
+    </p>
     <BaseItemsList>
       <BeatRelated
         v-for="item in data.data.filter((item) => item.id !== props.source.id)"

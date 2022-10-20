@@ -1,8 +1,8 @@
 <template>
   <div class="border-[1px] rounded-lg p-5 flex flex-col gap-5">
-    <div class="text-lg font-semibold text-black flex items-center h-[40px]">
+    <p class="text-lg font-semibold text-black flex items-center h-[40px]">
       Комментарии
-    </div>
+    </p>
     <BeatIndividualCommentsForm />
     <BaseLoadingShimmer v-if="isLoading" class="h-[117px] rounded-lg my-5" />
     <BeatIndividualCommentsList v-else :list="data.data" />
