@@ -34,7 +34,7 @@
       </div>
       <BaseRangeInput
         class="rounded-full h-[4px] shadow-lg"
-        :colors="{back: '#a09da7',front: '#FFFFFF'}"
+        :colors="{ back: '#a09da7', front: '#FFFFFF' }"
         :thumb-state="thumbState"
         :max="store.getAudioDuration() - 1"
         :value="

@@ -67,7 +67,7 @@ export const findUserByUsername = (username: string) => {
           mp3: true,
           wavePrice: true,
           plays: true,
-        }
+        },
       },
       youtubeLink: true,
       instagramLink: true,
@@ -86,26 +86,25 @@ export const allUsers = () =>
     },
   });
 
-export const findUsers = (query?: string) => (
+export const findUsers = (query?: string) =>
   prisma.user.findMany({
     where: {
       OR: [
         {
           username: {
-            contains: query
-          }
+            contains: query,
+          },
         },
         {
           displayedName: {
-            contains: query
-          }
-        }
-      ]
+            contains: query,
+          },
+        },
+      ],
     },
     select: {
       username: true,
       displayedName: true,
       image: true,
     },
-  })
-)
+  });

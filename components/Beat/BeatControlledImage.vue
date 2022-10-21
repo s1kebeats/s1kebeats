@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative mb-3 select-none cursor-pointer"
+    class="relative select-none cursor-pointer"
     @click="playBeat"
     @mouseenter="showOverlay"
     @mouseleave="hideOverlay"

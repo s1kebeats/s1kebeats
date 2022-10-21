@@ -25,7 +25,7 @@ function computeAuthorBeats(user: AuthorIndividual): AuthorIndividual {
 function computeAuthorPlays(user: AuthorIndividual): AuthorIndividual {
   return {
     ...user,
-    playsCount: user.beats.reduce((acc, curr) => acc + curr.plays, 0)
+    playsCount: user.beats.reduce((acc, curr) => acc + curr.plays, 0),
   };
 }
 

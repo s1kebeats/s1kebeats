@@ -1,12 +1,12 @@
 <template>
-  <div v-if="isLoading" class="pb-10">
-    <BaseLoadingShimmer class="w-[135px] h-[21px] mb-5 rounded-md" />
+  <div v-if="isLoading" class="flex flex-col gap-5">
+    <BaseLoadingShimmer class="w-[135px] h-[21px] rounded-md" />
     <BaseItemsList class="h-[299px]">
       <BeatRelatedLoadingShimmer v-for="_ in Array(5)" />
     </BaseItemsList>
   </div>
-  <div v-else class="pb-10">
-    <p class="text-lg font-semibold text-black flex items-center mb-5">
+  <div v-else class="flex flex-col gap-5">
+    <p class="text-lg font-semibold text-black flex items-center">
       Похожие биты
     </p>
     <BaseItemsList>

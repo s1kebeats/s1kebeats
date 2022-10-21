@@ -1,10 +1,11 @@
 <template>
   <div
     data-test="beat"
-    class="flex flex-col w-[204px] 930:w-[145px] bg-base-100 rounded-lg"
+    class="flex flex-col w-[204px] gap-3 bg-base-100 rounded-lg"
   >
     <BeatControlledImage :data="data" class="w-full h-[204px]" />
-    <div class="flex gap-2">
+    <div class="flex flex-col">
+      <div class="flex gap-2">
       <span
         class="flex items-center text-sm text-primary font-semibold truncate h-[20px]"
       >
@@ -32,6 +33,7 @@
           : data.author.username
       }}
     </NuxtLink>
+    </div>
   </div>
 </template>
 <script setup lang="ts">

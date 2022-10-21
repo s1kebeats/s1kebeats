@@ -43,7 +43,7 @@ const props = defineProps<{
   colors: {
     back: string;
     front: string;
-  }
+  };
 }>();
 const movePrice = ref(0);
 const locaValue = ref(0);

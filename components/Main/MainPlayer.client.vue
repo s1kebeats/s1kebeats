@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     id="player"
     data-test="player"
     class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
@@ -14,10 +14,10 @@
           ? store.getFakeAudioTime()
           : store.getAudioTime()
       "
+      :colors="{ back: '#a09da7', front: '#745fc7' }"
       @toggle-thumb="focusThumb"
       @update-value="setFakeAudioTime"
       @set-value="setAudioTime"
-      :colors="{back: '#a09da7',front: '#745fc7'}"
     />
     <div class="responsive flex h-[42px] items-center 525:max-w-full 525:px-2">
       <div class="flex h-full items-center gap-2">
@@ -50,7 +50,7 @@
         <PlayerVolume />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script setup lang="ts">
 const store = useStore();
