@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   // vite: {
   //   plugins: [eslintPlugin()],
   // },
-  modules: ["@pinia/nuxt", "@nuxtjs/tailwindcss"],
+  modules: ["@pinia/nuxt", "@nuxtjs/tailwindcss", 'nuxt-icon'],
   imports: {
     dirs: ["stores"],
   },

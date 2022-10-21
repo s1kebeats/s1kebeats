@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-full bg-primary text-xs text-white py-1 px-3 max-w-[120px] truncate hover:bg-black transition-all"
+    class="rounded-[100vw] bg-primary text-[.65vw] text-white py-[.2vw] px-[.6vw] max-w-[6vw] truncate hover:bg-black transition-all"
   >
     #{{ data.name }}
   </div>

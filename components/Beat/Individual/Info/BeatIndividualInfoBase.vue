@@ -3,17 +3,17 @@
     <img
       data-test="beatWrap"
       :src="data.image"
-      class="rounded-[.6vw] object-cover h-[230px] w-[230px] shadow-lg"
+      class="rounded-[.6vw] object-cover h-[12vw] w-[12vw] shadow-lg"
     />
-    <div class="mt-3 w-full flex flex-col items-center">
+    <div class="text-black text-center mt-[.6vw] w-full flex flex-col items-center">
       <div
-        class="text-black text-center font-semibold text-2xl w-full truncate"
+        class="font-semibold text-[1.35vw] w-full truncate"
       >
         {{ data.name }}
       </div>
       <NuxtLink
         :to="`/${data.author.username}`"
-        class="text-black text-center text-sm truncate w-full link link-hover"
+        class="text-[.75vw] truncate w-full link link-hover"
       >
         {{
           data.author.displayedName

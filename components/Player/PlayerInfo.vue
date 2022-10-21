@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 flex h-full items-center gap-[1vw]">
+  <div class="flex-1 flex h-full items-center gap-[var(--section-gap)]">
     <div class="flex items-center justify-center flex-1 gap-[0.4vw]">
       <img
         :src="data.image"

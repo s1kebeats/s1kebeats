@@ -3,7 +3,7 @@
     ref="rangeWrapper"
     data-test="customRange"
     tabindex="0"
-    class="focus:outline-none overflow-hidden relative cursor-pointer w-[45px] h-[45px] mr-1 rounded-full bg-white flex items-center justify-center text-xs text-black font-semibold"
+    class="focus:outline-none overflow-hidden relative cursor-pointer w-[2.45vw] h-[2.45vw] mr-[.2vw] rounded-full bg-white flex items-center justify-center text-[.65vw] text-black font-semibold"
     @mousedown.prevent="rangeHandler"
   >
     <span class="absolute z-[1]">{{ value }}%</span>

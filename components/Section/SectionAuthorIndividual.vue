@@ -1,5 +1,5 @@
 <template>
-  <section class="flex-1 w-[var(--section-width)] flex justify-center gap-[1vw]">
+  <section class="flex-1 w-[var(--section-width)] flex justify-center gap-[var(--section-gap)]">
     <AuthorIndividualInfo :data="data" />
     <AuthorBeats v-if="data.beats.length" :data="data.beats" />
     <div

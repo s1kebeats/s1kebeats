@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-1 flex flex-col gap-[var(--section-gap)]">
+  <article class="flex-1 flex flex-col gap-[var(--section-gap)] w-[var(--section-60-width)]">
     <BeatIndividualPlayer v-if="store.getAudioDuration()" />
     <BaseLoadingShimmer v-else class="h-[70px] rounded-full" />
     <BeatIndividualPrices :data="data" />

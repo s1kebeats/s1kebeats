@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[55px] h-[55px] flex items-center justify-center">
+  <div class="w-[2.75vw] h-[2.75vw] flex items-center justify-center">
     <BaseVerticalRangeInput
       class="shadow-lg"
       :value="store.getAudioVolume()"

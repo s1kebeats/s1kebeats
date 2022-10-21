@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full flex flex-col gap-2 border-t-[1px] pt-5">
-    <p class="text-sm text-black text-left font-semibold">Описание</p>
-    <p class="text-sm text-black text-left">{{ data }}</p>
+  <div class="w-full flex flex-col gap-[.6vw] border-t-[1px] pt-[var(--section-gap)] text-[.75vw] text-black text-left">
+    <p class="font-semibold">Описание</p>
+    <p>{{ data }}</p>
   </div>
 </template>
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap gap-[1vw] overflow-hidden">
+  <div class="flex flex-wrap gap-[var(--section-gap)] overflow-hidden">
     <slot />
   </div>
 </template>

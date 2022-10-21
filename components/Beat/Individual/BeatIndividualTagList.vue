@@ -1,5 +1,5 @@
 <template>
-  <BaseItemsList class="gap-1">
+  <BaseItemsList class="gap-[.2vw]">
     <NuxtLink v-for="item in list" :to="`/search?tags=${item.id}`">
       <MainTag :data="item" />
     </NuxtLink>

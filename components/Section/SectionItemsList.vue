@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col gap-[1vw]">
+  <section class="flex flex-col gap-[var(--section-gap)]">
     <div class="flex items-center justify-between">
       <h1 class="text-left text-[1vw] font-semibold text-black">
         {{ title }}
