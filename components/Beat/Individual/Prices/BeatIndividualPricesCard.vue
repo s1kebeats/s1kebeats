@@ -1,6 +1,6 @@
 <template>
   <div
-    class="cursor-pointer rounded-lg border-[1px] text-black py-2 px-3 w-[300px] transition-all"
+    class="cursor-pointer rounded-[.6vw] border-[1px] text-black py-2 px-3 w-[300px] transition-all"
     :class="
       store.getSelected() === data.value
         ? 'border-primary bg-[rgba(121,69,252,.15)]'

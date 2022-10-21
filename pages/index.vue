@@ -1,11 +1,12 @@
 <template>
-  <main class="grow flex flex-col items-center gap-[2vw] pb-[2vw]">
+  <main class="grow flex flex-col items-center gap-[2vw] pb-[2vw]" :class="store.getAudioDuration() ? 'pb-[4.4vw]' : ''">
     <SectionLanding />
     <SectionRecommendedBeats :data="recommendedBeatsData.data" />
     <SectionRecommendedAuthors :data="recommendedAuthorsData.data" />
   </main>
 </template>
 <script setup lang="ts">
+const store = useStore()
 const recommendedBeatsData: any = reactive(
   await useFetch("http://localhost:3000/api/beats")
 );

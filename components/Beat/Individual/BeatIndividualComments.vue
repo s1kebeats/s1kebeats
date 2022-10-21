@@ -1,10 +1,10 @@
 <template>
-  <div class="border-[1px] rounded-lg p-5 flex flex-col gap-[var(--section-gap)]">
+  <div class="border-[1px] rounded-[.6vw] p-5 flex flex-col gap-[var(--section-gap)]">
     <p class="text-lg font-semibold text-black flex items-center h-[40px]">
       Комментарии
     </p>
     <BeatIndividualCommentsForm />
-    <BaseLoadingShimmer v-if="isLoading" class="h-[117px] rounded-lg my-5" />
+    <BaseLoadingShimmer v-if="isLoading" class="h-[117px] rounded-[.6vw] my-5" />
     <BeatIndividualCommentsList v-else :list="data.data" />
   </div>
 </template>

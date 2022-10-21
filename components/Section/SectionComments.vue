@@ -1,5 +1,5 @@
 <template>
-  <div class="border-[1px] rounded-lg p-5 flex flex-col gap-[var(--section-gap)]">
+  <div class="border-[1px] rounded-[.6vw] p-5 flex flex-col gap-[var(--section-gap)]">
     <div class="text-lg font-semibold text-black flex items-center h-[40px]">
       Комментарии
     </div>

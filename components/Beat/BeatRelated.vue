@@ -1,7 +1,7 @@
 <template>
   <div
     data-test="beat"
-    class="flex flex-col w-[204px] gap-3 bg-base-100 rounded-lg"
+    class="flex flex-col w-[204px] gap-3 bg-base-100 rounded-[.6vw]"
   >
     <BeatControlledImage :data="data" class="w-full h-[204px]" />
     <div class="flex flex-col">

@@ -1,31 +1,29 @@
 <template>
-  <div
-    data-test="beat"
-    class="flex flex-col w-[230px] gap-3 bg-base-100 rounded-lg"
+  <article
+    class="flex flex-col gap-[.6vw] w-[var(--section-60-item-5)]"
   >
-    <BeatControlledImage :data="data" class="w-full h-[230px]" />
+    <BeatControlledImage :data="data" class="w-full h-[var(--section-60-item-5)]" />
     <div class="flex flex-col">
-      <div class="flex gap-2">
-      <div
-        class="flex items-center text-sm text-primary font-semibold truncate h-[20px]"
+      <p class="flex gap-[.4vw] font-semibold text-[.75vw]">
+        <span
+          class="flex items-center text-primary truncate"
+        >
+          {{ data.wavePrice }}руб.
+        </span>
+        <span
+          class="flex items-center text-black truncate"
+        >
+          {{ data.bpm }}BPM
+        </span>
+      </p>
+      <NuxtLink
+        :to="`/beat/${data.id}`"
+        class="text-black font-semibold text-[1.25vw] link link-hover truncate"
       >
-        {{ data.wavePrice }}руб.
-      </div>
-      <div
-        class="flex items-center text-sm text-black font-semibold truncate h-[20px]"
-      >
-        {{ data.bpm }}BPM
-      </div>
+        {{ data.name }}
+      </NuxtLink>
     </div>
-    <NuxtLink
-      :to="`/beat/${data.id}`"
-      class="text-black font-semibold text-2xl link link-hover truncate h-[32px]"
-    >
-      {{ data.name }}
-    </NuxtLink>
-    </div>
-
-  </div>
+  </article>
 </template>
 <script setup lang="ts">
 // global store

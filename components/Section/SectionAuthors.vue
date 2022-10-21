@@ -1,5 +1,5 @@
 <template>
-  <SectionItemsList class="responsive" title="Авторы">
+  <SectionItemsList class="w-[var(--section-width)]" title="Авторы">
     <AuthorBig v-for="item in data" :key="item.username" :data="item" />
   </SectionItemsList>
 </template>

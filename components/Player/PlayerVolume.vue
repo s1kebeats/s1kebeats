@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center gap-1 710:hidden"
+    class="flex items-center gap-[0.2vw]"
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
   >
@@ -8,13 +8,13 @@
       :thumb-state="thumbState"
       :value="store.getAudioVolume()"
       :max="100"
-      class="w-[65px] h-[2px] mx-[6px] rounded-full"
+      class="w-[3.5vw] h-[2px] mx-[.2vw] rounded-[100%]"
       :colors="{ back: '#a09da7', front: '#FFFFFF' }"
       @toggle-thumb="focusThumb"
       @update-value="setAudioVolume"
     />
     <button @click="toggleAudioVolume">
-      <img src="~/assets/images/volume-medium.svg" class="w-[22px]" />
+      <img src="~/assets/images/volume-medium.svg" class="w-[1.3vw]" />
     </button>
   </div>
 </template>

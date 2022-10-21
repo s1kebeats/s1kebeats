@@ -2,7 +2,7 @@
   <div class="relative">
     <button
       ref="selectButton"
-      class="flex text-black rounded-lg text-[.75vw] h-[1.25vw] items-center gap-[0.2vw]"
+      class="flex text-black rounded-[.6vw] text-[.75vw] h-[1.25vw] items-center gap-[0.2vw]"
       @click="toggleSelect"
       @focusout="hideSelect"
     >

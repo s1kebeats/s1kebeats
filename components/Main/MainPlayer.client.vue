@@ -2,7 +2,7 @@
   <section
     id="player"
     data-test="player"
-    class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
+    class="bg-black w-full h-[2.4vw] flex flex-col items-center fixed bottom-0"
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
   >
@@ -19,18 +19,18 @@
       @update-value="setFakeAudioTime"
       @set-value="setAudioTime"
     />
-    <div class="responsive flex h-[42px] items-center 525:max-w-full 525:px-2">
-      <div class="flex h-full items-center gap-2">
+    <div class="w-[var(--section-width)] flex flex-1 items-center">
+      <div class="flex h-full items-center gap-[0.4vw]">
         <button
           data-test="playPauseButton"
-          class="play w-[25px] h-[25px]"
+          class="play w-[1.3vw] h-[1.3vw]"
           :class="store.getAudioPlaying() ? 'pause' : ''"
           @click="store.toggleAudioPlaying()"
         />
         <div
-          class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
+          class="flex items-center justify-center h-full text-[.65vw] text-white"
         >
-          <span class="text-center w-[30px] 710:w-[25px]">
+          <span class="text-center w-[1.6vw]">
             {{
               useTimeOutput(
                 store.getFakeAudioTime()
@@ -39,14 +39,14 @@
               )
             }}
           </span>
-          <span class="text-center w-[5px]"> / </span>
-          <span class="text-center w-[30px] 710:w-[25px]">
+          /
+          <span class="text-center w-[1.6vw]">
             {{ useTimeOutput(store.getAudioDuration()) }}
           </span>
         </div>
       </div>
       <PlayerInfo :data="store.getCurrentBeat()" />
-      <div class="flex h-full items-center justify-end gap-[var(--section-gap)] 710:w-[88px]">
+      <div class="flex h-full items-center justify-end gap-[1vw]">
         <PlayerVolume />
       </div>
     </div>

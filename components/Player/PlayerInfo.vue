@@ -1,29 +1,24 @@
 <template>
-  <div class="flex-1 flex h-full items-center gap-[var(--section-gap)]">
-    <div class="flex items-center justify-center flex-1 gap-2">
+  <div class="flex-1 flex h-full items-center gap-[1vw]">
+    <div class="flex items-center justify-center flex-1 gap-[0.4vw]">
       <img
-        data-test="playerBeatWrap"
         :src="data.image"
-        width="26px"
-        height="26px"
-        alt="wrap-image"
-        class="rounded-lg object-cover w-[26px] h-[26px]"
+        class="rounded-[.3vw] object-cover w-[1.4vw] h-[1.4vw]"
       />
-      <div class="flex gap-3">
-        <div
-          class="flex items-center text-md font-semibold text-white"
+      <div class="flex gap-[0.6vw]">
+        <p
+          class="flex items-center text-[0.85vw] font-semibold text-white"
           data-test="playerBeatName"
         >
           {{ data.name }}
-        </div>
+        </p>
         <div
-          class="text-xs text-white flex items-center gap-1 select-none 710:hidden"
+          class="text-[0.65vw] text-white flex items-center gap-[0.2vw] select-none"
         >
           <NuxtLink
             :to="`/${data.author.username}`"
-            title="Type"
             data-test="playerBeatArtist"
-            class="bg-primary rounded-[.4vw] px-1 h-[18px] flex items-center transition-all transition-all"
+            class="bg-primary rounded-[.4vw] px-[0.2vw] h-[.95vw] flex items-center transition-all"
           >
             {{
               data.author.displayedName
@@ -32,9 +27,8 @@
             }}
           </NuxtLink>
           <div
-            title="BPM"
             data-test="playerBeatBpm"
-            class="bg-accent rounded-[.4vw] px-1 h-[18px] flex items-center transition-all"
+            class="bg-accent rounded-[.4vw] px-[0.2vw] h-[.95vw] flex items-center transition-all"
           >
             {{ data.bpm }}BPM
           </div>

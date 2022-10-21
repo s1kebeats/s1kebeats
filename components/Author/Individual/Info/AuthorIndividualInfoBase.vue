@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full flex flex-col gap-3 items-center">
+  <div class="w-full flex flex-col gap-[.6vw] items-center">
     <img
       :src="data.image"
-      class="rounded-full object-cover h-[100px] w-[100px] shadow-lg"
+      class="rounded-full object-cover h-[5.5vw] w-[5.5vw] shadow-lg"
     />
     <p
-      class="w-full text-black text-center font-semibold text-xl w-full truncate"
+      class="w-full text-black text-center font-semibold text-[.95vw] w-full truncate"
     >
       {{ data.displayedName ? data.displayedName : data.username }}
     </p>

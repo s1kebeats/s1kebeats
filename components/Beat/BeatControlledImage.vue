@@ -14,7 +14,7 @@
         "
         key="pause"
         data-test="hovered"
-        class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
+        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[.6vw] flex justify-center items-center"
       >
         <img src="~/assets/images/pause.svg" class="w-[60px]" />
       </div>
@@ -26,7 +26,7 @@
         "
         key="playing"
         data-test="hovered"
-        class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
+        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[.6vw] flex justify-center items-center"
       >
         <img src="~/assets/images/volume-medium.svg" class="w-[50px]" />
       </div>
@@ -42,7 +42,7 @@
         "
         key="play"
         data-test="hovered"
-        class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
+        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[.6vw] flex justify-center items-center"
       >
         <img src="~/assets/images/play.svg" class="w-[60px]" />
       </div>
@@ -50,7 +50,7 @@
     <img
       data-test="beatWrap"
       :src="data.image"
-      class="rounded-lg object-cover w-full h-full shadow-lg"
+      class="rounded-[.6vw] object-cover w-full h-full shadow-lg"
     />
   </div>
 </template>

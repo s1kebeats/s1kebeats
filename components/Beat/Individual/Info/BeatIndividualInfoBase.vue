@@ -3,7 +3,7 @@
     <img
       data-test="beatWrap"
       :src="data.image"
-      class="rounded-lg object-cover h-[230px] w-[230px] shadow-lg"
+      class="rounded-[.6vw] object-cover h-[230px] w-[230px] shadow-lg"
     />
     <div class="mt-3 w-full flex flex-col items-center">
       <div

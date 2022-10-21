@@ -20,16 +20,16 @@
       <div
         v-show="showDialog"
         ref="dialogPanel"
-        class="absolute z-[2] bg-white rounded-[.4vw] p-2 border-[1px] flex flex-col gap-2 shadow-md right-0 top-[34px]"
+        class="absolute z-[2] bg-white rounded-[.4vw] p-[.4vw] border-[1px] flex flex-col gap-[.4vw] shadow-md right-0 top-[2.4vw] text-[.75vw]"
       >
         <button
-          class="bg-primary rounded-[.4vw] px-3 py-1 min-w-[60px] text-sm text-white"
+          class="bg-primary rounded-[.4vw] px-[.6vw] py-[.2vw] text-white"
           @click="loginNavigation"
         >
           Вход
         </button>
         <button
-          class="bg-base-200 rounded-[.4vw] px-3 py-1 min-w-[60px] text-sm text-black"
+          class="bg-base-200 rounded-[.4vw] px-[.6vw] py-[.2vw] text-black"
           @click="registrationNavigation"
         >
           Регистрация

@@ -1,6 +1,6 @@
 <template>
   <article
-    class="self-start border-base-200 border-[1px] rounded-lg w-[380px] flex flex-col items-center gap-[var(--section-gap)] py-8 px-7"
+    class="self-start border-[1px] rounded-[.6vw] w-[19vw] flex flex-col items-center gap-[1vw] py-[1.4vw] px-[1.2vw]"
   >
     <AuthorIndividualInfoBase :data="data" />
     <AuthorIndividualInfoChars :data="data" />

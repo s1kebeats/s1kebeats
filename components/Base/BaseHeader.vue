@@ -1,6 +1,6 @@
 <template>
   <header
-    class="w-full h-[3vw] border-base-200 flex items-center justify-between px-[1vw] text-center select-none"
+    class="w-full h-[3vw] border-base-200 border-b-[1px] flex items-center justify-between px-[1vw] text-center select-none"
   >
     <BaseHeaderLogo />
     <slot>
