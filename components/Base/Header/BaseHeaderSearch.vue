@@ -1,17 +1,17 @@
 <template>
   <div
-    class="h-[30px] rounded-full flex-1 border-[1px] max-w-[600px] px-3 flex gap-2 items-center"
+    class="h-[1.6vw] rounded-[100vw] flex-1 border-[1px] max-w-[31vw] px-[0.6vw] flex gap-[0.4vw] items-center"
   >
     <img
       src="~/assets/images/search.svg"
-      class="w-[18px] cursor-pointer"
+      class="w-[.95vw] cursor-pointer"
       alt="Поиск"
       @click="submitSearchQuery"
     />
     <input
       ref="searchInput"
       type="text"
-      class="flex-1 h-[20px] focus:outline-none text-sm"
+      class="flex-1 h-[1.1vw] focus:outline-none text-[.75vw]"
       placeholder="Найди свой звук"
       :value="searchQuery.query"
       autocomplete="off"

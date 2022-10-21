@@ -1,5 +1,5 @@
 <template>
-  <main class="grow flex flex-col items-center gap-10 pb-10">
+  <main class="grow flex flex-col items-center gap-[2vw] pb-[2vw]">
     <SectionLanding />
     <SectionRecommendedBeats :data="recommendedBeatsData.data" />
     <SectionRecommendedAuthors :data="recommendedAuthorsData.data" />

@@ -1,3 +1,32 @@
 :root {
-    
+    --section-gap: 1vw;
+    --section-width: 80vw;
+
+    --section-gap-2: calc(var(--section-gap)*1);
+    --section-gap-3: calc(var(--section-gap)*2);
+    --section-gap-4: calc(var(--section-gap)*3);
+    --section-gap-5: calc(var(--section-gap)*4);
+    --section-gap-6: calc(var(--section-gap)*5);
+    --section-gap-7: calc(var(--section-gap)*6);
+    --section-gap-8: calc(var(--section-gap)*7);
+    --section-gap-9: calc(var(--section-gap)*8);
+    --section-gap-10: calc(var(--section-gap)*9);
+    --section-width-gap-2: calc(var(--section-width) - var(--section-gap-2));
+    --section-width-gap-3: calc(var(--section-width) - var(--section-gap-3));
+    --section-width-gap-4: calc(var(--section-width) - var(--section-gap-4));
+    --section-width-gap-5: calc(var(--section-width) - var(--section-gap-5));
+    --section-width-gap-6: calc(var(--section-width) - var(--section-gap-6));
+    --section-width-gap-7: calc(var(--section-width) - var(--section-gap-7));
+    --section-width-gap-8: calc(var(--section-width) - var(--section-gap-8));
+    --section-width-gap-9: calc(var(--section-width) - var(--section-gap-9));
+    --section-width-gap-10: calc(var(--section-width) - var(--section-gap-10));
+    --section-item-2: calc(var(--section-width-gap-2)/2);
+    --section-item-3: calc(var(--section-width-gap-3)/3);
+    --section-item-4: calc(var(--section-width-gap-4)/4);
+    --section-item-5: calc(var(--section-width-gap-5)/5);
+    --section-item-6: calc(var(--section-width-gap-6)/6);
+    --section-item-7: calc(var(--section-width-gap-7)/7);
+    --section-item-8: calc(var(--section-width-gap-8)/8);
+    --section-item-9: calc(var(--section-width-gap-9)/9);
+    --section-item-10: calc(var(--section-width-gap-10)/10);
 }

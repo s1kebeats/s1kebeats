@@ -1,18 +1,14 @@
 <template>
   <header
-    class="w-full h-[60px] box-border border-base-200 flex items-center justify-between gap-5 px-5 text-center select-none"
-    :class="!store.showOverlay ? 'border-b' : ''"
+    class="w-full h-[3vw] border-base-200 flex items-center justify-between px-[1vw] text-center select-none"
   >
-    <BaseHeaderLogo class="525:flex-1" />
+    <BaseHeaderLogo />
     <slot>
       <BaseHeaderSearch />
-      <div class="flex gap-5 items-center">
-        <BaseNav class="525:hidden text-black text-sm" />
+      <div class="flex gap-[var(--section-gap)] items-center">
+        <BaseNav class="text-black text-[.75vw]" />
         <BaseHeaderProfile />
       </div>
     </slot>
   </header>
 </template>
-<script setup lang="ts">
-const store = useStore();
-</script>

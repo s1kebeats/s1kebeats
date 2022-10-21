@@ -1,5 +1,5 @@
 <template>
-  <section class="flex-1 responsive flex justify-center items-start gap-5">
+  <section class="flex-1 responsive flex justify-center items-start gap-[var(--section-gap)]">
     <BeatIndividualInfo :data="data" />
     <BeatIndividualSections :data="data" />
   </section>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-5">
+  <div class="flex items-center gap-[var(--section-gap)]">
     <p class="text-black text-left text-sm">
       ИТОГ:
       <span class="font-semibold">{{ data[store.getSelected()] }}руб.</span>

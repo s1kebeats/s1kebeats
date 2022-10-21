@@ -1,31 +1,30 @@
 <template>
   <article
-    data-test="beat"
-    class="flex flex-col gap-3 w-[230px] 930:w-[145px] bg-base-100 rounded-lg"
+    class="flex flex-col gap-[.6vw] w-[var(--section-item-6)]"
   >
-    <BeatControlledImage :data="data" class="w-full h-[230px]" />
+    <BeatControlledImage :data="data" class="w-full h-[var(--section-item-6)]" />
     <div class="flex flex-col">
-      <p class="flex gap-2">
+      <p class="flex gap-[.4vw] font-semibold text-[.75vw]">
         <span
-          class="flex items-center text-sm text-primary font-semibold truncate h-[20px]"
+          class="flex items-center text-primary truncate"
         >
           {{ data.wavePrice }}руб.
         </span>
         <span
-          class="flex items-center text-sm text-black font-semibold truncate h-[20px]"
+          class="flex items-center text-black truncate"
         >
           {{ data.bpm }}BPM
         </span>
       </p>
       <NuxtLink
         :to="`/beat/${data.id}`"
-        class="text-black font-semibold text-2xl link link-hover truncate h-[32px]"
+        class="text-black font-semibold text-[1.25vw] link link-hover truncate"
       >
         {{ data.name }}
       </NuxtLink>
       <NuxtLink
         :to="`/${data.author.username}`"
-        class="text-black text-sm link link-hover truncate h-[20px]"
+        class="text-black text-[.75vw] link link-hover truncate"
       >
         {{
           data.author.displayedName

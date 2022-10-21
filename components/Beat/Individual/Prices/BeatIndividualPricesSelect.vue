@@ -1,5 +1,5 @@
 <template>
-  <div class="border-t-[1px] pt-5 flex gap-5">
+  <div class="border-t-[1px] pt-5 flex gap-[var(--section-gap)]">
     <BeatIndividualPricesCard
       :data="{
         title: 'WAV Неогранич.',

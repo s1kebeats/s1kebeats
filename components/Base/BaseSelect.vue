@@ -2,7 +2,7 @@
   <div class="relative">
     <button
       ref="selectButton"
-      class="flex text-black rounded-lg text-sm h-[24px] items-center gap-[3px]"
+      class="flex text-black rounded-lg text-[.75vw] h-[1.25vw] items-center gap-[0.2vw]"
       @click="toggleSelect"
       @focusout="hideSelect"
     >
@@ -11,21 +11,21 @@
       </span>
       <img
         src="~/assets/images/chevron-down.svg"
-        class="w-[15px] transition-all"
-        :class="showSelect ? 'rotate-180 pb-[3px]' : ''"
+        class="w-[.8vw] transition-all"
+        :class="showSelect ? 'rotate-180 pb-[0.2vw]' : ''"
       />
     </button>
     <transition name="modal">
       <div
         v-show="showSelect"
         ref="orderingsPanel"
-        class="absolute z-[2] border-full border-[1px] bg-base-100 rounded-md py-1 px-3 flex flex-col gap-1 shadow-md right-0 top-[30px]"
+        class="absolute z-[2] border-full border-[1px] bg-base-100 rounded-[.4vw] py-[0.2vw] px-[0.6vw] flex flex-col gap-[0.2vw] shadow-md right-0 top-[1.55vw]"
       >
         <button
           v-for="option in options"
           :key="option.id"
           ref="orderOption1"
-          class="w-full flex hover:text-black text-sm items-center gap-1"
+          class="w-full flex hover:text-black text-[.75vw] items-center gap-[0.2vw]"
           :class="selectedOption.id == option.id ? 'text-black' : ''"
           @click="selectOption(option)"
         >

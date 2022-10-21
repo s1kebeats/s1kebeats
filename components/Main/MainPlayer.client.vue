@@ -46,7 +46,7 @@
         </div>
       </div>
       <PlayerInfo :data="store.getCurrentBeat()" />
-      <div class="flex h-full items-center justify-end gap-5 710:w-[88px]">
+      <div class="flex h-full items-center justify-end gap-[var(--section-gap)] 710:w-[88px]">
         <PlayerVolume />
       </div>
     </div>

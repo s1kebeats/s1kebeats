@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 flex h-full items-center gap-5">
+  <div class="flex-1 flex h-full items-center gap-[var(--section-gap)]">
     <div class="flex items-center justify-center flex-1 gap-2">
       <img
         data-test="playerBeatWrap"
@@ -23,7 +23,7 @@
             :to="`/${data.author.username}`"
             title="Type"
             data-test="playerBeatArtist"
-            class="bg-primary rounded-md px-1 h-[18px] flex items-center transition-all transition-all"
+            class="bg-primary rounded-[.4vw] px-1 h-[18px] flex items-center transition-all transition-all"
           >
             {{
               data.author.displayedName
@@ -34,7 +34,7 @@
           <div
             title="BPM"
             data-test="playerBeatBpm"
-            class="bg-accent rounded-md px-1 h-[18px] flex items-center transition-all"
+            class="bg-accent rounded-[.4vw] px-1 h-[18px] flex items-center transition-all"
           >
             {{ data.bpm }}BPM
           </div>

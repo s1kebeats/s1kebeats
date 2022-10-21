@@ -1,17 +1,17 @@
 <template>
   <section
-    class="landing select-none border-b flex items-center justify-center w-full h-[480px]"
+    class="landing select-none border-b flex items-center justify-center w-full h-[25vw]"
   >
-    <div class="landing__text responsive flex items-center justify-center">
-      <h1 class="text-5xl text-black font-semibold 930:text-3xl">
+    <div class="text-black w-[var(--section-width)] flex items-center justify-center">
+      <h1 class="text-[2.5vw] font-semibold">
         Продавай и покупай биты
       </h1>
-      <div class="flex-1 flex justify-center items-center gap-4 930:gap-3">
+      <div class="flex-1 flex justify-center items-center gap-[0.8vw]">
         <img
-          class="h-[80px] drop-shadow-sm 930:h-[60px]"
+          class="h-[4.2vw]"
           src="~/assets/images/logo.svg"
         />
-        <span class="text-black text-7xl font-['Poppins'] 930:text-5xl">
+        <span class="text-[3.4vw] font-['Poppins']">
           s1kebeats
         </span>
       </div>
@@ -26,14 +26,5 @@
     rgba(243, 239, 252, 1) 60%,
     rgba(121, 69, 252, 1) 100%
   );
-  &__text {
-    @media screen and (max-width: 1150px) {
-      gap: 56px;
-      flex-direction: column;
-    }
-    @media screen and (max-width: 930px) {
-      gap: 25px;
-    }
-  }
 }
 </style>

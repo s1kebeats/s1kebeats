@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex gap-4 justify-end" data-test="main">
+  <nav class="flex gap-[0.8vw] justify-end">
     <NuxtLink
       title="На главную"
       to="/"

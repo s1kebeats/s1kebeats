@@ -1,9 +1,6 @@
 <template>
-  <NuxtLink title="На главную" to="/" class="flex items-center gap-2">
-    <img class="h-[26px] drop-shadow-sm" src="~/assets/images/logo.svg" />
-    <span class="text-[23px] font-['Poppins']"> s1kebeats </span>
+  <NuxtLink title="На главную" to="/" class="flex items-center gap-[0.4vw]">
+    <img class="h-[1.4vw]" src="~/assets/images/logo.svg" />
+    <span class="text-[1.2vw] font-['Poppins']"> s1kebeats </span>
   </NuxtLink>
 </template>
-<script setup lang="ts">
-const store = useStore();
-</script>

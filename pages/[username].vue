@@ -1,5 +1,5 @@
 <template>
-  <main class="grow flex flex-col items-center gap-10 pt-5 pb-10">
+  <main class="grow flex flex-col items-center gap-[var(--section-double-gap)] pt-5 pb-10">
     <h1 v-if="isError">{{ error }}</h1>
     <template v-else>
       <SectionAuthorIndividualLoadingShimmer v-if="isLoading" key="shimmer" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-5 items-center my-5 flex-1">
+  <div class="flex flex-col gap-[var(--section-gap)] items-center my-5 flex-1">
     <template v-if="list.length">
       <MainComment v-for="item in list" :key="item.id" :data="item" />
     </template>

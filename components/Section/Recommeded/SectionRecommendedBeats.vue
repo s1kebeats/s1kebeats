@@ -1,6 +1,6 @@
 <template>
   <SectionItemsList
-    class="responsive"
+    class="w-[var(--section-width)]"
     title="Рекоммендуемые биты"
     link-title="Посмотреть все биты"
     link-url="/beats?orderBy=createdAt"
