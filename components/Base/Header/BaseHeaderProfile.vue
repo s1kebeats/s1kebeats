@@ -10,11 +10,7 @@
         src="~/assets/images/profile-default.svg"
         alt="Profile Picture"
       />
-      <img
-        src="~/assets/images/chevron-down.svg"
-        class="w-[.85vw] transition-all"
-        :class="showDialog ? 'rotate-180 pb-[0.2vw]' : ''"
-      />
+      <Icon name="mdi:chevron-down" size="1vw" class="cursor-pointer transition-all" :class="showDialog ? 'rotate-180' : ''" />
     </button>
     <transition name="modal">
       <div

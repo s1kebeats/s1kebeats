@@ -14,7 +14,8 @@
       @update-value="setAudioVolume"
     />
     <button @click="toggleAudioVolume">
-      <img src="~/assets/images/volume-medium.svg" class="w-[1.3vw]" />
+      <icon v-show="store.getAudioVolume()" name="material-symbols:volume-down-rounded" color="white" size="1.4vw" />
+      <icon v-show="!store.getAudioVolume()" name="material-symbols:volume-mute-rounded" color="white" size="1.4vw" />
     </button>
   </div>
 </template>

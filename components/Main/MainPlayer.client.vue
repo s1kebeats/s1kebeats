@@ -22,11 +22,11 @@
     <div class="w-[var(--section-width)] flex flex-1 items-center">
       <div class="flex h-full items-center gap-[0.4vw]">
         <button
-          data-test="playPauseButton"
-          class="play w-[1.3vw] h-[1.3vw]"
-          :class="store.getAudioPlaying() ? 'pause' : ''"
           @click="store.toggleAudioPlaying()"
-        />
+        >
+        <icon v-show="!store.getAudioPlaying()" name="material-symbols:play-circle-rounded" color="white" size="1.4vw" />
+        <icon v-show="store.getAudioPlaying()" name="material-symbols:pause-circle-rounded" color="white" size="1.4vw" />
+      </button>
         <div
           class="flex items-center justify-center h-full text-[.65vw] text-white"
         >
@@ -95,14 +95,6 @@ const setAudioTime = (value: number) => {
 };
 </script>
 <style lang="scss" scoped>
-.play {
-  background: center no-repeat url("~/assets/images/play.svg");
-  background-size: 30px;
-  &.pause {
-    background: center no-repeat url("~/assets/images/pause.svg");
-    background-size: 30px;
-  }
-}
 .download {
   background: center no-repeat url("~/assets/images/download.svg");
   background-size: 30px;

@@ -5,7 +5,7 @@
       :href="data.youtubeLink"
       class="w-full flex items-center gap-[.6vw]"
     >
-      <img src="~/assets/images/logo-youtube.svg" class="w-[1vw]" />
+      <Icon name="mdi:youtube" size="1.3vw" color="black" />
       YouTube
     </a>
     <a
@@ -13,7 +13,7 @@
       :href="data.vkLink"
       class="w-full flex items-center gap-[.6vw]"
     >
-      <img src="~/assets/images/logo-vk.svg" class="w-[1vw]" />
+      <Icon name="mdi:vk" size="1.3vw" color="black" />
       Вконтакте
     </a>
     <a
@@ -21,7 +21,7 @@
       :href="data.instagramLink"
       class="w-full flex items-center gap-[.6vw]"
     >
-      <img src="~/assets/images/logo-instagram.svg" class="w-[1vw]" />
+    <Icon name="mdi:instagram" size="1.3vw" color="black" />
       Instagram
     </a>
   </div>

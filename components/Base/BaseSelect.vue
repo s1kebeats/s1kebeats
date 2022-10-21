@@ -2,18 +2,14 @@
   <div class="relative">
     <button
       ref="selectButton"
-      class="flex text-black rounded-[.6vw] text-[.75vw] h-[1.25vw] items-center gap-[0.2vw]"
+      class="flex text-black rounded-[.6vw] text-[.75vw] h-[1.25vw] items-center gap-[0.1vw]"
       @click="toggleSelect"
       @focusout="hideSelect"
     >
       <span :class="showSelect ? 'text-black' : ''">
         {{ selectedOption.text }}
       </span>
-      <img
-        src="~/assets/images/chevron-down.svg"
-        class="w-[.8vw] transition-all"
-        :class="showSelect ? 'rotate-180 pb-[0.2vw]' : ''"
-      />
+      <Icon name="mdi:chevron-down" size="1vw" class="cursor-pointer transition-all" :class="showSelect ? 'rotate-180' : ''" />
     </button>
     <transition name="modal">
       <div

@@ -2,12 +2,7 @@
   <div
     class="h-[1.6vw] rounded-[100vw] flex-1 border-[1px] max-w-[31vw] px-[0.6vw] flex gap-[0.4vw] items-center"
   >
-    <img
-      src="~/assets/images/search.svg"
-      class="w-[.95vw] cursor-pointer"
-      alt="Поиск"
-      @click="submitSearchQuery"
-    />
+    <Icon name="material-symbols:search" size="1.1vw" @click="submitSearchQuery" class="cursor-pointer" />
     <input
       ref="searchInput"
       type="text"
