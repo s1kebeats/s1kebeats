@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full border-y-[1px] py-[var(--section-gap)] text-[.75vw] text-black">
+  <div class="w-full border-y-[1px] py-[20px] text-[14px] text-black">
     <p class="flex justify-between">
       <span class="text-left">Опубликован</span>
       <span class="w-full text-right">

@@ -1,12 +1,12 @@
 <template>
-  <section class="flex flex-col gap-[var(--section-gap)]">
+  <section class="flex flex-col gap-[20px]">
     <div class="flex items-center justify-between">
-      <h1 class="text-left text-[1vw] font-semibold text-black">
+      <h1 class="text-left text-[18px] font-semibold text-black">
         {{ title }}
       </h1>
       <NuxtLink
         v-if="linkTitle && linkUrl"
-        class="hover:text-black transition-all text-[.85vw]"
+        class="hover:text-black transition-all text-[16px]"
         :to="linkUrl"
       >
         {{ linkTitle }}

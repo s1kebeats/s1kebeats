@@ -6,7 +6,7 @@
 
       <button
         data-test="searchButton"
-        class="flex hover:text-black px-2 rounded-[.6vw] text-sm h-[24px] items-center gap-[6px]"
+        class="flex hover:text-black px-2 rounded-[10px] text-sm h-[24px] items-center gap-[6px]"
         @click="toggleSearch"
       >
         Filters

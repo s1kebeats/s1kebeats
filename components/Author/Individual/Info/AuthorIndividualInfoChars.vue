@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full border-t-[1px] pt-[1vw] text-[.75vw] text-black">
+  <div class="w-full border-t-[1px] pt-[20px] text-[14px] text-black">
       <p class="flex justify-between">
         <span class="text-left">Биты</span>
         <span class="w-full text-right">

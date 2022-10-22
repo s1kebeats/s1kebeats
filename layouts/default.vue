@@ -1,6 +1,5 @@
 <template>
   <div id="default">
-    <!-- <SectionOverlay /> -->
     <BaseHeader />
     <slot />
     <!-- <BaseFooter /> -->

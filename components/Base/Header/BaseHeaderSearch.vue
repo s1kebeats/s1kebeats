@@ -1,12 +1,12 @@
 <template>
   <div
-    class="h-[1.6vw] rounded-[100vw] flex-1 border-[1px] max-w-[31vw] px-[0.6vw] flex gap-[0.4vw] items-center"
+    class="h-[30px] rounded-full flex-1 border-[1px] max-w-[600px] px-[10px] flex gap-[10px] items-center"
   >
-    <Icon name="material-symbols:search" size="1.1vw" @click="submitSearchQuery" class="cursor-pointer" />
+    <Icon name="material-symbols:search" size="20px" @click="submitSearchQuery" class="cursor-pointer" />
     <input
       ref="searchInput"
       type="text"
-      class="flex-1 h-[1.1vw] focus:outline-none text-[.75vw]"
+      class="flex-1 h-[20px] focus:outline-none text-[14px]"
       placeholder="Найди свой звук"
       :value="searchQuery.query"
       autocomplete="off"

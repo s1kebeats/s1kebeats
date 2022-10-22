@@ -1,5 +1,5 @@
 <template>
-  <main class="grow flex flex-col items-center gap-[2vw] pb-[2vw]" :class="store.getAudioDuration() ? 'pb-[4.4vw]' : ''">
+  <main class="grow flex flex-col items-center gap-[20px] pb-[40px]" :class="store.getAudioDuration() ? 'pb-[80px]' : ''">
     <SectionLanding />
     <SectionRecommendedBeats :data="recommendedBeatsData.data" />
     <SectionRecommendedAuthors :data="recommendedAuthorsData.data" />

@@ -1,11 +1,11 @@
 <template>
-  <div v-if="isLoading" class="flex flex-col gap-[var(--section-gap)]">
-    <BaseLoadingShimmer class="w-[135px] h-[21px] rounded-[.4vw]" />
+  <div v-if="isLoading" class="flex flex-col gap-[20px]">
+    <BaseLoadingShimmer class="w-[135px] h-[21px] rounded-[6px]" />
     <BaseItemsList class="h-[299px]">
       <BeatRelatedLoadingShimmer v-for="_ in Array(5)" />
     </BaseItemsList>
   </div>
-  <div v-else class="flex flex-col gap-[var(--section-gap)]">
+  <div v-else class="flex flex-col gap-[20px]">
     <p class="text-lg font-semibold text-black flex items-center">
       Похожие биты
     </p>

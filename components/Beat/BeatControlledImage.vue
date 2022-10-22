@@ -14,9 +14,9 @@
         "
         key="pause"
         data-test="hovered"
-        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[.6vw] flex justify-center items-center"
+        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[10px] flex justify-center items-center"
       >
-        <icon name="material-symbols:pause-circle-rounded" color="white" size="3.2vw" />
+        <icon name="material-symbols:pause-circle-rounded" color="white" size="60px" />
       </div>
       <div
         v-show="
@@ -26,9 +26,9 @@
         "
         key="playing"
         data-test="hovered"
-        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[.6vw] flex justify-center items-center"
+        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[10px] flex justify-center items-center"
       >
-        <icon name="material-symbols:volume-down-rounded" color="white" size="3.3vw" />
+        <icon name="material-symbols:volume-down-rounded" color="white" size="60px" />
       </div>
       <div
         v-show="
@@ -42,15 +42,15 @@
         "
         key="play"
         data-test="hovered"
-        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[.6vw] flex justify-center items-center"
+        class="absolute bg-black bg-opacity-80 w-full h-full rounded-[10px] flex justify-center items-center"
       >
-      <icon name="material-symbols:play-circle-rounded" color="white" size="3.2vw" />
+      <icon name="material-symbols:play-circle-rounded" color="white" size="60px" />
       </div>
     </transition-group>
     <img
       data-test="beatWrap"
       :src="data.image"
-      class="rounded-[.6vw] object-cover w-full h-full shadow-lg"
+      class="rounded-[10px] object-cover w-full h-full shadow-lg"
     />
   </div>
 </template>

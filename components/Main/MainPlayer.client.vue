@@ -2,7 +2,7 @@
   <section
     id="player"
     data-test="player"
-    class="bg-black w-full h-[2.4vw] flex flex-col items-center fixed bottom-0"
+    class="bg-black w-full h-[40px] flex flex-col items-center fixed bottom-0"
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
   >
@@ -19,18 +19,18 @@
       @update-value="setFakeAudioTime"
       @set-value="setAudioTime"
     />
-    <div class="w-[var(--section-width)] flex flex-1 items-center">
-      <div class="flex h-full items-center gap-[0.4vw]">
+    <div class="w-[80%] flex flex-1 items-center">
+      <div class="flex h-full items-center gap-[8px]">
         <button
           @click="store.toggleAudioPlaying()"
         >
-        <icon v-show="!store.getAudioPlaying()" name="material-symbols:play-circle-rounded" color="white" size="1.4vw" />
-        <icon v-show="store.getAudioPlaying()" name="material-symbols:pause-circle-rounded" color="white" size="1.4vw" />
+        <icon v-show="!store.getAudioPlaying()" name="material-symbols:play-circle-rounded" color="white" size="25px" />
+        <icon v-show="store.getAudioPlaying()" name="material-symbols:pause-circle-rounded" color="white" size="25px" />
       </button>
         <div
-          class="flex items-center justify-center h-full text-[.65vw] text-white"
+          class="flex items-center justify-center h-full text-[11px] text-white"
         >
-          <span class="text-center w-[1.6vw]">
+          <span class="text-center w-[30px]">
             {{
               useTimeOutput(
                 store.getFakeAudioTime()
@@ -40,13 +40,13 @@
             }}
           </span>
           /
-          <span class="text-center w-[1.6vw]">
+          <span class="text-center w-[30px]">
             {{ useTimeOutput(store.getAudioDuration()) }}
           </span>
         </div>
       </div>
       <PlayerInfo :data="store.getCurrentBeat()" />
-      <div class="flex h-full items-center justify-end gap-[var(--section-gap)]">
+      <div class="flex h-full items-center justify-end">
         <PlayerVolume />
       </div>
     </div>
@@ -94,12 +94,7 @@ const setAudioTime = (value: number) => {
   store.setAudioTime(value);
 };
 </script>
-<style lang="scss" scoped>
-.download {
-  background: center no-repeat url("~/assets/images/download.svg");
-  background-size: 30px;
-}
-
+<style lang="scss">
 .player-enter-active,
 .player-leave-active {
   transition: 0.2s;

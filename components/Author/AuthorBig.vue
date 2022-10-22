@@ -1,5 +1,5 @@
 <template>
-    <article class="flex flex-col gap-[0.4vw]">
+    <article class="flex flex-col gap-[8px]">
       <NuxtLink :to="`/${data.username}`" class="w-[var(--section-item-7)] h-[var(--section-item-7)] rounded-full">
         <img
           :src="data.image"
@@ -9,7 +9,7 @@
       </NuxtLink>
       <NuxtLink
         :to="`/${data.username}`"
-        class="text-black text-[1.25vw] text-center font-semibold truncate link link-hover"
+        class="text-black text-[24px] text-center font-semibold truncate link link-hover"
       >
         {{ data.displayedName ? data.displayedName : data.username }}
       </NuxtLink>

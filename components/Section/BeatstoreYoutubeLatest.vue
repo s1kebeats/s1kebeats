@@ -4,7 +4,7 @@
       Latest on Youtube
     </h1>
     <div
-      class="h-[300px] w-[640px] bg-base-300 rounded-[.6vw] 700:w-[90%] 700:h-[25vh]"
+      class="h-[300px] w-[640px] bg-base-300 rounded-[10px] 700:w-[90%] 700:h-[25vh]"
     >
       <iframe
         v-show="!loading"
@@ -12,12 +12,12 @@
         :src="videoUrl"
         alt="youtube player"
         title="YouTube video player"
-        class="shadow-lg w-full h-full rounded-[.6vw]"
+        class="shadow-lg w-full h-full rounded-[10px]"
         frameborder="0"
         allowfullscreen
       >
       </iframe>
-      <BaseLoadingShimmer v-if="loading" class="rounded-[.6vw]" />
+      <BaseLoadingShimmer v-if="loading" class="rounded-[10px]" />
     </div>
   </section>
 </template>

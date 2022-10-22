@@ -1,6 +1,6 @@
 <template>
   <div
-    class="cursor-pointer rounded-[.6vw] border-[1px] text-black py-2 px-3 w-[300px] transition-all"
+    class="cursor-pointer rounded-[10px] border-[1px] text-black py-[8px] px-[10px] w-[300px] transition-all"
     :class="
       store.getSelected() === data.value
         ? 'border-primary bg-[rgba(121,69,252,.15)]'
@@ -8,9 +8,9 @@
     "
     @click="select"
   >
-    <p class="text-lg font-semibold pb-1">{{ data.title }}</p>
-    <p class="text-sm font-semibold text-primary">{{ data.price }}руб.</p>
-    <p class="text-xs">{{ data.desc }}</p>
+    <p class="text-[18px] font-semibold pb-[4px]">{{ data.title }}</p>
+    <p class="text-[14px] font-semibold text-primary">{{ data.price }}руб.</p>
+    <p class="text-[12px]">{{ data.desc }}</p>
   </div>
 </template>
 <script setup lang="ts">

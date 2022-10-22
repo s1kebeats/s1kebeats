@@ -1,26 +1,18 @@
 <template>
   <div
-    class="h-[3.5vw] rounded-[100vw] bg-gradient-to-r from-black to-primary shadow-md flex items-center p-[.375vw] gap-[.375vw]"
+    class="h-[70px] rounded-full bg-gradient-to-r from-black to-primary shadow-md flex items-center p-[7.5px] gap-[7.5px]"
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
   >
     <button
-      class="h-full w-[2.75vw] flex items-center justify-center"
+      class="h-full flex items-center justify-center"
       @click="store.toggleAudioPlaying()"
     >
-      <img
-        v-show="!store.getAudioPlaying()"
-        src="~/assets/images/play.svg"
-        class="w-full"
-      />
-      <img
-        v-show="store.getAudioPlaying()"
-        src="~/assets/images/pause.svg"
-        class="w-full"
-      />
+      <icon v-show="!store.getAudioPlaying()" name="material-symbols:play-circle-rounded" color="white" size="55px" />
+      <icon v-show="store.getAudioPlaying()" name="material-symbols:pause-circle-rounded" color="white" size="55px" />
     </button>
-    <div class="flex-1 h-full flex flex-col gap-[.2vw] justify-center">
-      <div class="text-[1.25vw] text-white font-semibold">
+    <div class="flex-1 h-full flex flex-col gap-[4px] justify-center">
+      <div class="text-[24px] text-white font-semibold">
         {{ store.getCurrentBeat().name }} -
         <NuxtLink
           :to="`/${store.getCurrentBeat().author.displayedName}`"

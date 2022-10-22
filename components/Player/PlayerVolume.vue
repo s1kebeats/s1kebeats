@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center gap-[0.2vw]"
+    class="flex items-center gap-[4px]"
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
   >
@@ -8,14 +8,14 @@
       :thumb-state="thumbState"
       :value="store.getAudioVolume()"
       :max="100"
-      class="w-[3.5vw] h-[2px] mx-[.2vw] rounded-[100%]"
+      class="w-[70px] h-[2px] mx-[4px] rounded-full"
       :colors="{ back: '#a09da7', front: '#FFFFFF' }"
       @toggle-thumb="focusThumb"
       @update-value="setAudioVolume"
     />
     <button @click="toggleAudioVolume">
-      <icon v-show="store.getAudioVolume()" name="material-symbols:volume-down-rounded" color="white" size="1.4vw" />
-      <icon v-show="!store.getAudioVolume()" name="material-symbols:volume-mute-rounded" color="white" size="1.4vw" />
+      <icon v-show="store.getAudioVolume()" name="material-symbols:volume-down-rounded" color="white" size="28px" />
+      <icon v-show="!store.getAudioVolume()" name="material-symbols:volume-mute-rounded" color="white" size="28px" />
     </button>
   </div>
 </template>
@@ -49,13 +49,3 @@ onMounted(() => {
   store.setAudioVolume(+localStorage.getItem("audioVolume"));
 });
 </script>
-<style lang="scss">
-.volume {
-  background: center no-repeat url("~/assets/images/volume-medium.svg");
-  background-size: 26px;
-  &.muted {
-    background: -3px center no-repeat url("~/assets/images/volume-off.svg");
-    background-size: 26px;
-  }
-}
-</style>

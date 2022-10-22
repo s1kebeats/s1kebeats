@@ -1,30 +1,30 @@
 <template>
   <article
-    class="flex flex-col gap-[.6vw] w-[var(--section-item-6)]"
+    class="flex flex-col gap-[10px] w-[var(--section-item-6)]"
   >
     <BeatControlledImage :data="data" class="w-full h-[var(--section-item-6)]" />
-    <div class="flex flex-col">
-      <p class="flex gap-[.4vw] font-semibold text-[.75vw]">
+    <div class="flex flex-col text-black">
+      <p class="items-center flex gap-[6px] font-semibold text-[14px]">
         <span
-          class="flex items-center text-primary truncate"
+          class="text-primary truncate"
         >
           {{ data.wavePrice }}руб.
         </span>
         <span
-          class="flex items-center text-black truncate"
+          class="text-black truncate"
         >
           {{ data.bpm }}BPM
         </span>
       </p>
       <NuxtLink
         :to="`/beat/${data.id}`"
-        class="text-black font-semibold text-[1.25vw] link link-hover truncate"
+        class="font-semibold text-[24px] link link-hover truncate"
       >
         {{ data.name }}
       </NuxtLink>
       <NuxtLink
         :to="`/${data.author.username}`"
-        class="text-black text-[.75vw] link link-hover truncate"
+        class="text-[14px] link link-hover truncate"
       >
         {{
           data.author.displayedName
@@ -36,28 +36,5 @@
   </article>
 </template>
 <script setup lang="ts">
-// global store
-import { storeToRefs } from "pinia";
-const store = useStore();
-const router = useRouter();
 const props = defineProps<{ data: Beat }>();
-// global playing state
-const { _audioPlaying: audioPlaying } = storeToRefs(store);
-// overlay value
-const hovered = ref(false);
-onMounted((): void => {
-  // indicate if beat if playing when we change page
-  if (store.getCurrentBeat().id === props.data.id) {
-    hovered.value = true;
-  }
-});
-watch(audioPlaying, (): void => {
-  // set hovered value to show volume icon when playing
-  if (store.getCurrentBeat().id === props.data.id) {
-    hovered.value = true;
-    return;
-  }
-  // if beat is not currently playing
-  hovered.value = false;
-});
 </script>

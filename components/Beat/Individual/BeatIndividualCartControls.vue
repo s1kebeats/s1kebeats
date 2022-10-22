@@ -1,14 +1,14 @@
 <template>
-  <div class="flex items-center gap-[var(--section-gap)]">
-    <p class="text-black text-left text-sm">
+  <div class="flex items-center gap-[20px]">
+    <p class="text-black text-left text-[14px]">
       ИТОГ:
       <span class="font-semibold">{{ data[store.getSelected()] }}руб.</span>
     </p>
     <button
-      class="text-white text-sm px-3 rounded-[.6vw] h-[40px] w-[200px] shadow-md flex items-center gap-2 transition-all bg-green-500 hover:bg-green-600"
+      class="text-white text-[14px] px-[20px] rounded-[10px] h-[40px] gap-[10px] shadow-md flex items-center transition-all bg-green-500 hover:bg-green-600"
       @click="store.addItem(data.id, store.getSelected())"
     >
-      <img src="~/assets/images/cart.svg" />
+      <icon name="material-symbols:shopping-cart-rounded" size="20px" />
       <span class="w-full text-center">{{
         store.checkItem(data.id, store.getSelected())
           ? "Посмотреть корзину"

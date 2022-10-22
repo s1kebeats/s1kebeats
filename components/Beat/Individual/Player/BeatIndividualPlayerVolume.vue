@@ -1,12 +1,10 @@
 <template>
-  <div class="w-[2.75vw] h-[2.75vw] flex items-center justify-center">
     <BaseVerticalRangeInput
-      class="shadow-lg"
+      class="shadow-lg mr-[5px]"
       :value="store.getAudioVolume()"
       :max="100"
       @update-value="setAudioVolume"
     />
-  </div>
 </template>
 <script setup lang="ts">
 const store = useStore();

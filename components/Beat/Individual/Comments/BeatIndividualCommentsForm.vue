@@ -1,25 +1,23 @@
 <template>
-  <div class="flex gap-4 items-end">
+  <div class="flex gap-[.8vw] items-end">
     <img
       src="~/assets/images/profile-default.svg"
       class="rounded-full h-[35px] w-[35px]"
-      width="35px"
-      height="35px"
     />
     <input
       :value="value"
       type="text"
-      class="transition-all border-b-[1px] pb-2 flex-1 focus:outline-none text-sm focus:border-primary"
+      class="transition-all border-b-[1px] pb-[8px] flex-1 focus:outline-none text-[14px] focus:border-primary"
       placeholder="Написать комментарий..."
       @input="changeValue"
     />
     <button
-      class="transition-all rounded-full h-[35px] w-[35px] bg-base-300 flex items-center justify-center"
+      class="transition-all rounded-full h-[35px] w-[35px] flex items-center justify-center"
       :disabled="!value"
-      :class="value ? 'bg-primary' : 'cursor-not-allowed'"
+      :class="!value ? 'cursor-not-allowed' : ''"
       @click="loginRedirect"
     >
-      <img src="~/assets/images/send.svg" class="w-[15px]" />
+      <icon name="mdi:send-circle" size="35px" class="transition-all" :color="value ? '#745fc7' : '#cfcfcf'" />
     </button>
   </div>
 </template>

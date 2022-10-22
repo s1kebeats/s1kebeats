@@ -1,6 +1,6 @@
 <template>
   <article
-    class="border-base-200 border-[1px] rounded-[.6vw] w-[20vw] flex flex-col items-center gap-[var(--section-gap)] py-[1.4vw] px-[1.2vw]"
+    class="border-base-200 border-[1px] rounded-[10px] w-[400px] flex flex-col items-center gap-[20px] p-[25px]"
   >
     <BeatIndividualInfoBase :data="data" />
     <BeatIndividualDownloadButton :url="data.mp3" />
