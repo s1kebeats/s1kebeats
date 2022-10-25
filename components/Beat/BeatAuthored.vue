@@ -22,29 +22,3 @@
     </div>
   </article>
 </template>
-<script setup lang="ts">
-// global store
-import { storeToRefs } from "pinia";
-const store = useStore();
-const router = useRouter();
-const props = defineProps<{ data: Beat }>();
-// global playing state
-const { _audioPlaying: audioPlaying } = storeToRefs(store);
-// overlay value
-const hovered = ref(false);
-onMounted((): void => {
-  // indicate if beat if playing when we change page
-  if (store.getCurrentBeat().id === props.data.id) {
-    hovered.value = true;
-  }
-});
-watch(audioPlaying, (): void => {
-  // set hovered value to show volume icon when playing
-  if (store.getCurrentBeat().id === props.data.id) {
-    hovered.value = true;
-    return;
-  }
-  // if beat is not currently playing
-  hovered.value = false;
-});
-</script>

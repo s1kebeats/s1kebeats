@@ -36,15 +36,25 @@ const emit = defineEmits<{
   (e: "setValue", value: number): void;
   (e: "toggleThumb", state: boolean): void;
 }>();
-const props = defineProps<{
-  max: number;
-  value: number;
-  thumbState: boolean;
-  colors: {
-    back: string;
-    front: string;
-  };
-}>();
+const props = withDefaults(
+  defineProps<{
+    max: number;
+    value: number;
+    thumbState: boolean;
+    colors: {
+      back: string;
+      front: string;
+    };
+  }>(),
+  {
+    max: 100,
+    value: 0,
+    colors: {
+      back: "black",
+      front: "red",
+    },
+  }
+);
 const movePrice = ref(0);
 const locaValue = ref(0);
 const range = ref() as Ref<HTMLDivElement>;

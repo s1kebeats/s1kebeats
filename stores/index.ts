@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 
 export const useStore = defineStore("main", {
   state: () => ({
-    showOverlay: false,
     _currentBeat: <Beat>{},
     _audioPlaying: false,
     _audioDuration: 0,
@@ -11,17 +10,11 @@ export const useStore = defineStore("main", {
     _audioVolume: 100,
   }),
   actions: {
-    toggleOverlay(): void {
-      // making overflow y hidden on body
-      document.querySelector("#body")!.classList.toggle("locked");
-      // changing overlay state
-      this.overlay = !this.overlay;
-    },
     getCurrentBeat(): Beat {
       return this._currentBeat;
     },
     setCurrentBeat(beat: Beat): void {
-      const audio = document.querySelector("#mainAudio") as HTMLAudioElement;
+      const audio = this.getMainAudio();
       audio.src = beat.mp3;
       Object.assign(this._currentBeat, beat);
       if (this.getAudioPlaying()) {

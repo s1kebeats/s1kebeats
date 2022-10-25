@@ -1,8 +1,8 @@
 <template>
-  <audio id="mainAudio" preload="metadata" @loadedmetadata="setAudioDuration">
-    <source src="" type="audio/mpeg" />
-  </audio>
   <NuxtLayout>
+    <audio id="mainAudio" preload="metadata" @loadedmetadata="setAudioDuration">
+      <source src="" type="audio/mpeg" />
+    </audio>
     <NuxtPage />
   </NuxtLayout>
 </template>

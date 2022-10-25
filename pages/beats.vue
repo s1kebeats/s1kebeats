@@ -12,7 +12,7 @@ import { useQuery } from "vue-query";
 import axios from "axios";
 const route = useRoute();
 const { isLoading, data, isError, error, refetch } = await useQuery(
-  route.query.q ? `beats-${route.query.q}` : 'beats',
+  route.query.q ? `beats-${route.query.q}` : "beats",
   () =>
     axios.get(
       route.query.q

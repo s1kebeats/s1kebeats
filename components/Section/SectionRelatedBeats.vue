@@ -21,12 +21,11 @@
 <script setup lang="ts">
 import { useQuery } from "vue-query";
 import axios from "axios";
-const route = useRoute();
 const props = defineProps<{
   source: BeatIndividual;
 }>();
 const tagQuery = ref(props.source.tags.map((item: Tag) => item.id).join(","));
-const { isLoading, isError, data, error }: any = useQuery(
+const { isLoading, isError, data, error } = useQuery(
   `${props.source.id}-related`,
   () => axios.get(`http://localhost:3000/api/beats/?tags=${tagQuery.value}`)
 );

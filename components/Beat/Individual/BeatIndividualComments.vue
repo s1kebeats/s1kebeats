@@ -15,7 +15,7 @@
 import { useQuery } from "vue-query";
 import axios from "axios";
 const route = useRoute();
-const { isLoading, isError, data, error }: any = useQuery("commentsData", () =>
+const { isLoading, isError, data, error } = useQuery("commentsData", () =>
   axios.get(`http://localhost:3000/api/comments/${route.params.id}`)
 );
 </script>
