@@ -9,7 +9,12 @@
       <span :class="showSelect ? 'text-black' : ''">
         {{ selectedOption.text }}
       </span>
-      <Icon name="mdi:chevron-down" size="18px" class="cursor-pointer transition-all" :class="showSelect ? 'rotate-180' : ''" />
+      <Icon
+        name="mdi:chevron-down"
+        size="18px"
+        class="cursor-pointer transition-all"
+        :class="showSelect ? 'rotate-180' : ''"
+      />
     </button>
     <transition name="modal">
       <div

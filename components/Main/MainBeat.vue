@@ -1,20 +1,13 @@
 <template>
-  <article
-    class="flex flex-col gap-[10px] w-[var(--section-item-6)]"
-  >
-    <BeatControlledImage :data="data" class="w-full h-[var(--section-item-6)]" />
+  <article class="flex flex-col gap-[10px] w-[var(--section-item-6)]">
+    <BeatControlledImage
+      :data="data"
+      class="w-full h-[var(--section-item-6)]"
+    />
     <div class="flex flex-col text-black">
       <p class="items-center flex gap-[6px] font-semibold text-[14px]">
-        <span
-          class="text-primary truncate"
-        >
-          {{ data.wavePrice }}руб.
-        </span>
-        <span
-          class="text-black truncate"
-        >
-          {{ data.bpm }}BPM
-        </span>
+        <span class="text-primary truncate"> {{ data.wavePrice }}руб. </span>
+        <span class="text-black truncate"> {{ data.bpm }}BPM </span>
       </p>
       <NuxtLink
         :to="`/beat/${data.id}`"

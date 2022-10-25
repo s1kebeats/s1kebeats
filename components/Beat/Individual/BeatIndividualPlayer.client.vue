@@ -8,8 +8,18 @@
       class="h-full flex items-center justify-center"
       @click="store.toggleAudioPlaying()"
     >
-      <icon v-show="!store.getAudioPlaying()" name="material-symbols:play-circle-rounded" color="white" size="55px" />
-      <icon v-show="store.getAudioPlaying()" name="material-symbols:pause-circle-rounded" color="white" size="55px" />
+      <icon
+        v-show="!store.getAudioPlaying()"
+        name="material-symbols:play-circle-rounded"
+        color="white"
+        size="55px"
+      />
+      <icon
+        v-show="store.getAudioPlaying()"
+        name="material-symbols:pause-circle-rounded"
+        color="white"
+        size="55px"
+      />
     </button>
     <div class="flex-1 h-full flex flex-col gap-[4px] justify-center">
       <div class="text-[24px] text-white font-semibold">

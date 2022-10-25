@@ -28,7 +28,7 @@ export const findBeatById = (id: number) =>
       },
     },
   });
-export const findBeats = (sort: string, { tags, name, bpm }) => {
+export const findBeats = (sort: string, { tags, q, bpm }) => {
   const queryArgs = {
     orderBy: { [sort]: "desc" },
     where: {},
@@ -48,6 +48,36 @@ export const findBeats = (sort: string, { tags, name, bpm }) => {
     },
   };
 
+  if (q) {
+    queryArgs.where = {
+      OR: [
+        {
+          name: {
+            contains: q,
+            mode: "insensitive",
+          },
+        },
+        {
+          author: {
+            OR: [
+              {
+                username: {
+                  contains: q,
+                  mode: "insensitive",
+                },
+              },
+              {
+                displayedName: {
+                  contains: q,
+                  mode: "insensitive",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    };
+  }
   if (tags.length) {
     queryArgs.where.tags = {
       some: {
@@ -55,12 +85,6 @@ export const findBeats = (sort: string, { tags, name, bpm }) => {
           in: tags,
         },
       },
-    };
-  }
-  if (name) {
-    queryArgs.where.name = {
-      contains: name,
-      mode: "insensitive",
     };
   }
   if (bpm) {

@@ -16,7 +16,11 @@
         data-test="hovered"
         class="absolute bg-black bg-opacity-80 w-full h-full rounded-[10px] flex justify-center items-center"
       >
-        <icon name="material-symbols:pause-circle-rounded" color="white" size="60px" />
+        <icon
+          name="material-symbols:pause-circle-rounded"
+          color="white"
+          size="60px"
+        />
       </div>
       <div
         v-show="
@@ -28,7 +32,11 @@
         data-test="hovered"
         class="absolute bg-black bg-opacity-80 w-full h-full rounded-[10px] flex justify-center items-center"
       >
-        <icon name="material-symbols:volume-down-rounded" color="white" size="60px" />
+        <icon
+          name="material-symbols:volume-down-rounded"
+          color="white"
+          size="60px"
+        />
       </div>
       <div
         v-show="
@@ -44,7 +52,11 @@
         data-test="hovered"
         class="absolute bg-black bg-opacity-80 w-full h-full rounded-[10px] flex justify-center items-center"
       >
-      <icon name="material-symbols:play-circle-rounded" color="white" size="60px" />
+        <icon
+          name="material-symbols:play-circle-rounded"
+          color="white"
+          size="60px"
+        />
       </div>
     </transition-group>
     <img

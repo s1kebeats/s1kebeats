@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full border-t-[1px] flex flex-col gap-[.40px] pt-[20px] text-[14px] text-black">
+  <div
+    class="w-full border-t-[1px] flex flex-col gap-[.40px] pt-[20px] text-[14px] text-black"
+  >
     <a
       v-if="data.youtubeLink"
       :href="data.youtubeLink"
@@ -21,7 +23,7 @@
       :href="data.instagramLink"
       class="w-full flex items-center gap-[10px]"
     >
-    <Icon name="mdi:instagram" size="25px" color="black" />
+      <Icon name="mdi:instagram" size="25px" color="black" />
       Instagram
     </a>
   </div>

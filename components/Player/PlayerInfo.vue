@@ -6,13 +6,11 @@
         class="rounded-[.3vw] object-cover w-[24px] h-[24px]"
       />
       <div class="flex gap-[10px]">
-        <p
-          class="flex items-center text-[15px] font-semibold text-white"
-        >
+        <p class="flex items-center text-[15px] font-semibold text-white">
           {{ data.name }}
         </p>
         <div
-          class="text-[12px] text-white flex items-center gap-[0.40px] select-none"
+          class="text-[12px] text-white flex items-center gap-[4px] select-none"
         >
           <NuxtLink
             :to="`/${data.author.username}`"

@@ -21,12 +21,20 @@
     />
     <div class="w-[80%] flex flex-1 items-center">
       <div class="flex h-full items-center gap-[8px]">
-        <button
-          @click="store.toggleAudioPlaying()"
-        >
-        <icon v-show="!store.getAudioPlaying()" name="material-symbols:play-circle-rounded" color="white" size="25px" />
-        <icon v-show="store.getAudioPlaying()" name="material-symbols:pause-circle-rounded" color="white" size="25px" />
-      </button>
+        <button @click="store.toggleAudioPlaying()">
+          <icon
+            v-show="!store.getAudioPlaying()"
+            name="material-symbols:play-circle-rounded"
+            color="white"
+            size="25px"
+          />
+          <icon
+            v-show="store.getAudioPlaying()"
+            name="material-symbols:pause-circle-rounded"
+            color="white"
+            size="25px"
+          />
+        </button>
         <div
           class="flex items-center justify-center h-full text-[11px] text-white"
         >

@@ -4,7 +4,10 @@
       Комментарии
     </p>
     <BeatIndividualCommentsForm />
-    <BaseLoadingShimmer v-if="isLoading" class="h-[117px] rounded-[10px] my-5" />
+    <BaseLoadingShimmer
+      v-if="isLoading"
+      class="h-[117px] rounded-[10px] my-5"
+    />
     <BeatIndividualCommentsList v-else :list="data.data" />
   </div>
 </template>

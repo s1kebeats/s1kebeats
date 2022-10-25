@@ -2,7 +2,12 @@
   <div
     class="h-[30px] rounded-full flex-1 border-[1px] max-w-[600px] px-[10px] flex gap-[10px] items-center"
   >
-    <Icon name="material-symbols:search" size="20px" @click="submitSearchQuery" class="cursor-pointer" />
+    <Icon
+      name="material-symbols:search"
+      size="20px"
+      class="cursor-pointer"
+      @click="submitSearchQuery"
+    />
     <input
       ref="searchInput"
       type="text"
@@ -40,7 +45,7 @@ const searchQueryInput = (e: Event): void => {
 };
 const submitSearchQuery = async () => {
   if (searchQuery.query) {
-    await navigateTo(`/${searchQuery.type}?query=${searchQuery.query}`);
+    await navigateTo(`/${searchQuery.type}?q=${searchQuery.query}`);
   }
 };
 const submitOnEnter = (e: KeyboardEvent) => {

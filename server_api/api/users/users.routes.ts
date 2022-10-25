@@ -41,8 +41,8 @@ router.get("/:username", async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     let users;
-    if (req.query.query) {
-      users = await findUsers(req.query.query);
+    if (req.query.q) {
+      users = await findUsers(req.query.q);
     } else {
       users = await allUsers();
     }

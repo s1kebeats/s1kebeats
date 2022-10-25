@@ -9,11 +9,11 @@ router.get("/", async (req, res, next) => {
     const sort = req.query.orderBy ? req.query.orderBy : "createdAt";
     const query = {
       tags: [],
-      name: "",
+      q: "",
       bpm: 0,
     };
-    if (req.query.name) {
-      query.name = req.query.name;
+    if (req.query.q) {
+      query.q = req.query.q;
     }
     if (req.query.bpm) {
       query.bpm = req.query.bpm;

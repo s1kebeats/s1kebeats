@@ -12,10 +12,15 @@ import { useQuery } from "vue-query";
 import axios from "axios";
 const route = useRoute();
 const { isLoading, data, isError, error, refetch } = await useQuery(
-  route.query.query ? `authors-${route.query.query}` : 'authors',
-  () => axios.get(route.query.query ? `http://localhost:3000/api/users?query=${route.query.query}` : 'http://localhost:3000/api/users/')
+  route.query.q ? `authors-${route.query.q}` : "authors",
+  () =>
+    axios.get(
+      route.query.q
+        ? `http://localhost:3000/api/users?q=${route.query.q}`
+        : "http://localhost:3000/api/users/"
+    )
 );
 onUpdated(() => {
-  refetch.value()
-})
+  refetch.value();
+});
 </script>

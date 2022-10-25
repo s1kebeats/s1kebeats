@@ -5,10 +5,10 @@
       :src="data.image"
       class="rounded-[10px] object-cover h-[230px] w-[230px] shadow-lg"
     />
-    <div class="text-black text-center mt-[10px] w-full flex flex-col items-center">
-      <div
-        class="font-semibold text-[24px] w-full truncate"
-      >
+    <div
+      class="text-black text-center mt-[10px] w-full flex flex-col items-center"
+    >
+      <div class="font-semibold text-[24px] w-full truncate">
         {{ data.name }}
       </div>
       <NuxtLink

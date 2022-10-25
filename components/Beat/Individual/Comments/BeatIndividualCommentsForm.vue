@@ -17,7 +17,12 @@
       :class="!value ? 'cursor-not-allowed' : ''"
       @click="loginRedirect"
     >
-      <icon name="mdi:send-circle" size="35px" class="transition-all" :color="value ? '#745fc7' : '#cfcfcf'" />
+      <icon
+        name="mdi:send-circle"
+        size="35px"
+        class="transition-all"
+        :color="value ? '#745fc7' : '#cfcfcf'"
+      />
     </button>
   </div>
 </template>
